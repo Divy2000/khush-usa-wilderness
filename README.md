@@ -37,7 +37,7 @@ To add a destination, copy an existing object, give it a unique `id`, set `mode`
 
 ## Photographs and illustrations
 
-`GALLERIES` (in the `photos.js` block of `index.html`) holds 10–16 photographs per destination — exact Wikimedia Commons filenames, all public domain (US National Park Service uploads) or Creative Commons. The first entry of each gallery is the default image in comparisons. Images load through `Special:FilePath/<file>?width=…`; each carries a "Source" chip linking to its Commons file page with full attribution, and the Sources section lists every file. Underneath every image sits a procedurally drawn SVG keyed to the destination's `art` type, so a failed load leaves the illustration rather than a broken image.
+`GALLERIES` (in the `photos.js` block of `index.html`) holds 10–16 photographs for each of the 21 options — exact Wikimedia Commons filenames, all public domain (US National Park Service uploads) or Creative Commons. The first entry of each gallery is the default image in comparisons. Images load through `Special:FilePath/<file>?width=…`; each carries a "Source" chip linking to its Commons file page with full attribution, and the Sources section lists every file. Underneath every image sits a procedurally drawn SVG keyed to the destination's `art` type, so a failed load leaves the illustration rather than a broken image.
 
 Galleries are season-matched where Commons had them: Zion in May, Yosemite Falls photographed May 30, bison calves in Lamar Valley, snow on the Sangre de Cristos above the dunes, Bryce after snow, Zabriskie Point in winter light, Sierra Blanca snow-capped over White Sands, the Everglades in the dry season, Padre Island in November.
 
@@ -46,7 +46,7 @@ Note for previewing: the Claude app's in-chat preview blocks external images, so
 ## Verification done before publishing
 
 - Rendered and exercised with headless Chromium at 390×844 and 1366×860: season switch, row expansion, keyboard operation (arrow keys on the dial, Enter/Space on Compare), 2–3-way comparison, no horizontal overflow, `prefers-reduced-motion` honored.
-- 51 unique official/source URLs plus ~180 Wikimedia Commons photo pages, all taken from pages retrieved during research on September 6, 2026 (NPS, Recreation.gov, Yellowstone National Park Lodges, TPWD, USFWS, New Mexico State Parks, Big Bend Sentinel, FlightConnections, Simple Flying, American Airlines).
+- Official/source URLs for every date and rule, plus 250 Wikimedia Commons photo pages, all taken from pages retrieved during research on September 6, 2026 (NPS, Recreation.gov, Yellowstone National Park Lodges, TPWD, USFWS, New Mexico State Parks, Big Bend Sentinel, FlightConnections, Simple Flying, American Airlines).
 
 ## What still needs a human before booking
 

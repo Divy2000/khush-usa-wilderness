@@ -1092,6 +1092,163 @@ const DESTINATIONS = [
       { label: 'NPS — Padre Island permits and reservations', url: 'https://home.nps.gov/pais/planyourvisit/permitsandreservations.htm' },
       { label: 'USFWS — Aransas NWR', url: 'https://www.fws.gov/refuge/aransas' }
     ]
+  },
+  /* ---------------- ADDED: MAY ---------------- */
+  {
+    id: 'moab', name: 'Arches + Canyonlands (Moab)', place: 'Southeast Utah', mode: 'fly', seasons: ['may'],
+    tagline: "The densest concentration of natural arches on the planet, a 2,000-foot canyon rim at Island in the Sky, and no nonresident fee at either park.",
+    climate: { may: { day: '75–85°F', night: 'high 40s–50s' } },
+    art: 'strata',
+    hub: { code: 'DEN or SLC', yeg: 'Nonstop to Denver (United), then 5.5 h; WestJet\'s Salt Lake nonstop is seasonal, then 3.75 h', dfw: 'Nonstop to Denver and Salt Lake City (American)', drive: 'DEN → Moab 5.5 h; SLC → Moab 3.75 h; Moab → Island in the Sky 0.75 h' },
+    trip: { days: '6–7 days', nights: '5 nights camping' },
+    scores: { may: { wow: 9.5, novelty: 9.5, season: 8, camping: 7, travel: 6.5, variety: 8.5, crowd: 5.5 } },
+    novelty: { has: 'Red rock only in a few small Alberta badlands.', lacks: 'More than 2,000 sandstone arches, Mesa Arch at sunrise, the Colorado River 2,000 feet below Dead Horse Point, and a Bortle 2 night sky.' },
+    weather: { may: "Moab around 75–85°F by day and high 40s to 50s at night, with occasional wind and the odd thunderstorm. Late May is the start of the hot season; hikes are best before 10 am and after 4 pm." },
+    drawback: "The long drive after landing (5.5 hours from Denver) and the hardest campground on this list after Yosemite: Devils Garden is 51 sites, reservation-only from March to October, gone within minutes six months out. Arches dropped timed entry for 2026, but parking lots at Delicate Arch and the Windows still close when full.",
+    surcharge: 0,
+    camping: { type: 'casual', typeLabel: 'Casual camping, hard booking', reservation: 'hard', detail: "Devils Garden (Arches) is the only campground in the park: 51 sites, reservable on Recreation.gov four days to six months ahead for March–October stays. Willow Flat at Island in the Sky has 12 first-come sites. Dead Horse Point State Park has a reservable campground on the mesa, and BLM campgrounds line the Colorado River along Highway 128.", backup: 'Moab has hundreds of motel rooms and several private campgrounds; the BLM river campgrounds are the usual fallback.' },
+    access: [
+      { status: 'rule2026', text: 'Arches ended its timed-entry pilot for 2026 (announced February 18, 2026); the park has said it can reinstate reservations if crowds require it.', url: 'https://www.nationalparksexplorerusa.com/blog/arches-national-park-the-complete-2026-visitor-guide' },
+      { status: 'rule2026', text: 'Devils Garden Campground reservation-only March 1 – October 31; Fiery Furnace needs a separate permit.', url: 'https://www.nationalparkentry.com/park/arches' },
+      { status: 'confirmed', text: 'Arches and Canyonlands are not among the 11 nonresident-fee parks (2026 rule).', url: 'https://www.nps.gov/planyourvisit/passes.htm' }
+    ],
+    route: { title: 'Denver or Salt Lake to Moab', legs: [
+      { at: 'Denver (DEN) or Salt Lake City (SLC)', note: 'Land, rental car, long drive to Moab' },
+      { at: 'Arches (Devils Garden)', nights: 2, note: 'Delicate Arch at sunset, the Windows, Landscape Arch, Fiery Furnace if permitted.' },
+      { at: 'Dead Horse Point / Island in the Sky', nights: 2, note: 'Mesa Arch at sunrise, Grand View Point, Dead Horse Point at sunset.' },
+      { at: 'Colorado River (BLM, Highway 128)', nights: 1, note: 'Fisher Towers, Castle Valley, a slow last morning.' },
+      { at: 'Back to DEN or SLC', note: 'Fly home' }
+    ], miles: '≈ 750–900 mi', drivingDays: '2 long half-days' },
+    sources: [
+      { label: 'NPS — Arches', url: 'https://www.nps.gov/arch/' },
+      { label: 'NPS — Canyonlands', url: 'https://www.nps.gov/cany/' },
+      { label: 'Arches 2026 visitor guide (timed entry ended)', url: 'https://www.nationalparksexplorerusa.com/blog/arches-national-park-the-complete-2026-visitor-guide' }
+    ]
+  },
+  {
+    id: 'channel-islands', name: 'Channel Islands (Santa Cruz Island)', place: 'Off Ventura, California', mode: 'fly', seasons: ['may'],
+    tagline: "A ferry to an island with sea caves, kelp forests and its own species of fox, then a campground a half-mile walk from the pier.",
+    climate: { may: { day: '60–65°F', night: 'low 50s' } },
+    art: 'coast',
+    hub: { code: 'LAX', yeg: 'Nonstop (WestJet)', dfw: 'Nonstop (American)', drive: 'LAX → Ventura Harbor 1.5 h, then a 1–1.5 h ferry to Scorpion Anchorage' },
+    trip: { days: '5–6 days', nights: '3 nights on the island + 1–2 on the coast' },
+    scores: { may: { wow: 8.5, novelty: 9, season: 8, camping: 7, travel: 7.5, variety: 8.5, crowd: 7 } },
+    novelty: { has: 'Islands and cold lakes, yes.', lacks: 'Ocean sea caves you paddle into, kelp forests to snorkel, island foxes in the campground, and dolphins on the ferry.' },
+    weather: { may: "Around 60–65°F by day and low 50s at night, with morning fog and afternoon wind; water in the high 50s, so wetsuits for snorkelling. Wildflowers are finishing and whales are moving through the channel." },
+    drawback: "Everything goes on and off the island by ferry and on your back: gear is carried about half a mile uphill from the pier, there are pit toilets and no fires, and the boat does not run in bad weather. Kayak spots on the ferry are limited to 18 a day.",
+    surcharge: 0,
+    camping: { type: 'casual', typeLabel: 'Casual, carry-in camping', reservation: 'moderate', detail: "Scorpion Canyon Campground on Santa Cruz Island is reservation-only on Recreation.gov and has potable water, picnic tables and pit toilets. Island Packers runs the ferry from Ventura and needs booking; kayak transport is booked by phone and is limited.", backup: 'Motels in Ventura and Oxnard; a night at a coastal state park campground on the mainland.' },
+    access: [
+      { status: 'typical', text: 'Island Packers is the park ferry; Scorpion Anchorage departures are roughly daily from Ventura, about 1.5 hours each way, and the park limits kayaks to 18 a day at Scorpion.', url: 'https://www.islandpackers.com/kayaking/' },
+      { status: 'typical', text: 'Scorpion Canyon Campground: reservation-only, book on Recreation.gov; check the NPS page for water and closures.', url: 'https://www.nps.gov/chis/' },
+      { status: 'confirmed', text: 'Channel Islands is not a nonresident-fee park (2026 rule); there is no entrance fee at all.', url: 'https://www.nps.gov/planyourvisit/passes.htm' }
+    ],
+    route: { title: 'Los Angeles to the island', legs: [
+      { at: 'Los Angeles (LAX)', note: 'Land, rental car, drive up the coast to Ventura' },
+      { at: 'Ventura (motel)', nights: 1, note: 'Early ferry the next morning.' },
+      { at: 'Santa Cruz Island (Scorpion Canyon)', nights: 3, note: 'Cavern Point and Potato Harbor hikes, sea-cave kayaking, snorkelling in the kelp, island foxes at dusk.' },
+      { at: 'Ventura / Santa Barbara coast', nights: 1, note: 'Ferry back, beach evening.' },
+      { at: 'Los Angeles (LAX)', note: 'Fly home' }
+    ], miles: '≈ 200 mi driving', drivingDays: 'none — one ferry each way' },
+    sources: [
+      { label: 'NPS — Channel Islands', url: 'https://www.nps.gov/chis/' },
+      { label: 'Island Packers — kayaking and ferry', url: 'https://www.islandpackers.com/kayaking/' },
+      { label: 'NPS — water sports, Santa Cruz Island', url: 'https://www.nps.gov/places/watersportssci.htm' }
+    ]
+  },
+  {
+    id: 'eastern-sierra', name: 'Eastern Sierra: Alabama Hills + Mono Lake', place: 'Owens Valley, California', mode: 'fly', seasons: ['may'],
+    tagline: "Camp among granite boulders and arches with Mount Whitney behind them, then drive north to the tufa towers of Mono Lake. Four hours from Las Vegas or three and a half from Los Angeles.",
+    climate: { may: { day: '80°F Lone Pine · 60 Mono Lake', night: 'high 40s · mid-30s' } },
+    art: 'granite',
+    hub: { code: 'LAS or LAX', yeg: 'Nonstop to Las Vegas or Los Angeles (WestJet)', dfw: 'Nonstop to both (American)', drive: 'LAS → Lone Pine 4 h (through Death Valley); LAX → Lone Pine 3.5 h; Lone Pine → Mono Lake 2.5 h' },
+    trip: { days: '6–7 days', nights: '5 nights camping' },
+    scores: { may: { wow: 8.5, novelty: 8.5, season: 8.5, camping: 8, travel: 8, variety: 7.5, crowd: 8 } },
+    novelty: { has: 'Snowy 14,000-foot peaks look like home from a distance.', lacks: 'A high-desert boulder field with natural arches at their feet, an alkaline lake with limestone towers, a ghost town, and the eastern side of the Sierra dropping two miles to the valley floor.' },
+    weather: { may: "Lone Pine around 80°F by day and high 40s at night; Mono Lake (6,400 ft) around 60°F by day and mid-30s at night. Whitney Portal Road opens as the snow allows, usually in May. Tioga Pass and the other trans-Sierra passes are still closed, so Yosemite is not reachable from this side." },
+    drawback: "Camping in the Alabama Hills is now limited to designated sites with a free BLM permit, and the popular arches draw sunrise crowds. The high country is snow until June, so this is a valley-and-foothill trip.",
+    surcharge: 0,
+    camping: { type: 'casual', typeLabel: 'Casual dispersed and BLM camping', reservation: 'easy', detail: "Alabama Hills National Scenic Area (BLM): designated sites, free permit, no water. Tuttle Creek Campground (BLM) is first-come with vault toilets. Whitney Portal Campground opens in late spring on Recreation.gov. Around Mono Lake, Forest Service campgrounds along the June Lake Loop open in May.", backup: 'Motels in Lone Pine, Bishop and Lee Vining.' },
+    access: [
+      { status: 'typical', text: 'Alabama Hills camping is in designated sites and requires a free BLM permit; check the BLM page for current rules and any fire restrictions.', url: 'https://www.blm.gov/' },
+      { status: 'typical', text: 'Whitney Portal Road and high campgrounds open on snowmelt, usually in May; Tioga Pass typically opens late May to June.', url: 'https://www.nps.gov/yose/planyourvisit/tiogaopen.htm' },
+      { status: 'confirmed', text: 'No national park entrance or nonresident fee on this route; Mono Lake South Tufa charges a small day fee.', url: 'https://www.nps.gov/planyourvisit/passes.htm' }
+    ],
+    route: { title: 'Las Vegas to Lone Pine and north', legs: [
+      { at: 'Las Vegas (LAS) or Los Angeles (LAX)', note: 'Land, rental car' },
+      { at: 'Alabama Hills / Tuttle Creek', nights: 3, note: 'Mobius Arch at sunrise, Whitney Portal, Movie Road, night skies.' },
+      { at: 'June Lake / Lee Vining', nights: 2, note: 'Mono Lake South Tufa, Bodie ghost town, June Lake Loop.' },
+      { at: 'Return to LAS or LAX', note: 'Fly home; an open-jaw ticket saves 3–4 hours of driving' }
+    ], miles: '≈ 700–800 mi', drivingDays: '2 half-days plus the Lone Pine–Mono Lake leg' },
+    sources: [
+      { label: 'Bureau of Land Management', url: 'https://www.blm.gov/' },
+      { label: 'Mobius Arch — Wikipedia', url: 'https://en.wikipedia.org/wiki/Mobius_Arch' },
+      { label: 'NPS — Tioga Road opening history', url: 'https://www.nps.gov/yose/planyourvisit/tiogaopen.htm' }
+    ]
+  },
+
+  /* ---------------- ADDED: DECEMBER ---------------- */
+  {
+    id: 'sonoran', name: 'Sonoran Desert: Saguaro + Organ Pipe', place: 'Southern Arizona', mode: 'fly', seasons: ['dec'],
+    tagline: "Forests of saguaro and organ pipe cactus, 65°F days, and campgrounds an hour or two from Phoenix, where you both land nonstop all year.",
+    climate: { dec: { day: '~65°F', night: '~40°F' } },
+    art: 'desertmtn',
+    hub: { code: 'PHX', yeg: 'Nonstop (WestJet year-round; Porter seasonal)', dfw: 'Nonstop (American, Southwest)', drive: 'PHX → Lost Dutchman SP 1 h; → Tucson / Saguaro 2 h; → Organ Pipe 2.5 h; → PHX 2.5 h' },
+    trip: { days: '6–7 days', nights: '5–6 nights camping' },
+    scores: { dec: { wow: 8, novelty: 9.5, season: 9.5, camping: 8, travel: 9, variety: 7, crowd: 8 } },
+    novelty: { has: 'Nothing like it.', lacks: 'Saguaros 40 feet tall, organ pipe cactus that grow nowhere else in the US, and desert sunsets at 65°F in December.' },
+    weather: { dec: "Tucson and Phoenix around 65°F by day and around 40°F at night; Organ Pipe slightly warmer. Dry and sunny; a winter storm brings a day of rain and snow on the peaks." },
+    drawback: "The scenery is lower-key than canyons or dunes: this is a cactus-forest and mountain-silhouette trip. Saguaro National Park itself has no car camping; you sleep in the county, state and monument campgrounds around it.",
+    surcharge: 0,
+    camping: { type: 'casual', typeLabel: 'Casual desert camping', reservation: 'moderate', detail: "Gilbert Ray Campground (Pima County, next to Saguaro West) is first-come. Catalina State Park and Lost Dutchman State Park take reservations through Arizona State Parks. Organ Pipe's Twin Peaks Campground has more than 200 sites; check Recreation.gov for the reservation season. Saguaro National Park allows only backcountry camping.", backup: 'Tucson, Ajo and Apache Junction have plenty of lodging.' },
+    access: [
+      { status: 'typical', text: 'Saguaro National Park has no developed campground; car camping is at Gilbert Ray (county), Catalina SP and Organ Pipe.', url: 'https://www.nps.gov/sagu/' },
+      { status: 'typical', text: 'Organ Pipe Cactus National Monument: Twin Peaks Campground and the Ajo Mountain Drive; check the monument page for reservation rules and any border-area advisories.', url: 'https://www.nps.gov/orpi/' },
+      { status: 'confirmed', text: 'Saguaro and Organ Pipe are not nonresident-fee parks (2026 rule).', url: 'https://www.nps.gov/planyourvisit/passes.htm' }
+    ],
+    route: { title: 'Phoenix loop through the cactus country', legs: [
+      { at: 'Phoenix (PHX)', note: 'Land, rental car, east to the Superstitions' },
+      { at: 'Lost Dutchman State Park', nights: 1, note: 'Superstition Mountains at sunset, Siphon Draw.' },
+      { at: 'Saguaro West (Gilbert Ray or Catalina SP)', nights: 2, note: 'Signal Hill petroglyphs, Gates Pass sunset, Arizona-Sonora Desert Museum.' },
+      { at: 'Organ Pipe (Twin Peaks)', nights: 2, note: 'Ajo Mountain Drive, Arch Canyon, the darkest sky of the trip.' },
+      { at: 'Phoenix (PHX)', note: 'Fly home' }
+    ], miles: '≈ 500 mi', drivingDays: '2 half-days' },
+    sources: [
+      { label: 'NPS — Saguaro', url: 'https://www.nps.gov/sagu/' },
+      { label: 'NPS — Organ Pipe Cactus', url: 'https://www.nps.gov/orpi/' },
+      { label: 'Organ Pipe Cactus National Monument — Wikipedia', url: 'https://en.wikipedia.org/wiki/Organ_Pipe_Cactus_National_Monument' }
+    ]
+  },
+  {
+    id: 'nevada-mojave', name: 'Valley of Fire + Red Rock + Mojave Preserve', place: 'Southern Nevada and the Mojave', mode: 'fly', seasons: ['dec'],
+    tagline: "Red Aztec sandstone an hour from the Las Vegas airport, then the Kelso Dunes and the biggest Joshua-tree forest in the Mojave, with no national park fees at all.",
+    climate: { dec: { day: '55–60°F', night: '30s' } },
+    art: 'canyon',
+    hub: { code: 'LAS', yeg: 'Nonstop (WestJet year-round; Porter seasonal)', dfw: 'Nonstop (American, Southwest)', drive: 'LAS → Valley of Fire 1 h; → Red Rock Canyon 1.25 h; → Mojave Preserve (Hole-in-the-Wall) 2.5 h; → LAS 2 h' },
+    trip: { days: '5–6 days', nights: '4–5 nights camping' },
+    scores: { dec: { wow: 8.5, novelty: 9.5, season: 9, camping: 8, travel: 9.5, variety: 7.5, crowd: 7.5 } },
+    novelty: { has: 'Alberta has nothing in this colour range.', lacks: 'The Fire Wave, slot canyons in orange and pink sandstone, a 650-foot dune field that hums when it slides, and Joshua trees on a volcanic dome.' },
+    weather: { dec: "Valley of Fire around 58°F by day and high 30s at night; Red Rock Canyon similar; Hole-in-the-Wall (4,400 ft) around 55°F by day and near 30°F at night. Clear most days; a Pacific storm brings a day of rain and wind." },
+    drawback: "The shortest days on the list and cold nights at Mojave's higher campgrounds. Valley of Fire's two campgrounds are small and fill early on winter weekends; the Mojave's Cima Dome Joshua-tree forest was heavily burned in 2020 and is recovering.",
+    surcharge: 0,
+    camping: { type: 'cold', typeLabel: 'Cold nights, warm days', reservation: 'moderate', detail: "Valley of Fire has two campgrounds (Atlatl Rock and Arch Rock, about 70 sites); check Nevada State Parks for the current reservation system. Red Rock Canyon Campground (BLM) is open roughly September to May on Recreation.gov. Mojave National Preserve's Hole-in-the-Wall and Mid Hills campgrounds are first-come, with roadside camping allowed at established sites.", backup: 'Las Vegas is an hour from the first two; Baker and Primm for the Mojave.' },
+    access: [
+      { status: 'confirmed', text: 'Valley of Fire opened a new visitor center on November 10, 2025.', url: 'https://en.wikipedia.org/wiki/Valley_of_Fire_State_Park' },
+      { status: 'typical', text: 'Mojave National Preserve: Hole-in-the-Wall and Mid Hills campgrounds first-come; Kelso Dunes and Cima Dome via the preserve roads. Check the NPS page for road conditions.', url: 'https://www.nps.gov/moja/' },
+      { status: 'confirmed', text: 'No national park entrance fee at Mojave National Preserve; state-park and BLM fees apply at Valley of Fire and Red Rock Canyon.', url: 'https://www.nps.gov/planyourvisit/passes.htm' }
+    ],
+    route: { title: 'Las Vegas triangle', legs: [
+      { at: 'Las Vegas (LAS)', note: 'Land, rental car, northeast on I-15' },
+      { at: 'Valley of Fire (Atlatl Rock)', nights: 2, note: 'Fire Wave, White Domes loop, Mouse\'s Tank, Elephant Rock at sunset.' },
+      { at: 'Red Rock Canyon (BLM campground)', nights: 1, note: 'Scenic Loop, Calico Tanks, Ice Box Canyon.' },
+      { at: 'Mojave National Preserve (Hole-in-the-Wall)', nights: 2, note: 'Kelso Dunes at sunset, Rings Trail, Cima Dome Joshua trees, Kelso Depot.' },
+      { at: 'Las Vegas (LAS)', note: 'Fly home' }
+    ], miles: '≈ 450 mi', drivingDays: '1.5 half-days' },
+    sources: [
+      { label: 'NPS — Mojave National Preserve', url: 'https://www.nps.gov/moja/' },
+      { label: 'Valley of Fire State Park — Wikipedia', url: 'https://en.wikipedia.org/wiki/Valley_of_Fire_State_Park' },
+      { label: 'Kelso Dunes — Wikipedia', url: 'https://en.wikipedia.org/wiki/Kelso_Dunes' }
+    ]
   }
 ];
 
@@ -1107,7 +1264,6 @@ const CUT = {
     { name: 'Denver + Rocky Mountain in winter', why: "A good ski-and-hot-springs holiday and a poor tent trip: nights well below freezing, no in-park camping at Great Sand Dunes November to March, and scenery closest to home.", url: 'https://home.nps.gov/grsa/planyourvisit/hours.htm' },
     { name: 'Hawaiʻi Island (Volcanoes) instead of Maui', why: "As strong as Maui on novelty, with Kīlauea and Mauna Kea, but Khush would need a connection to Kona while Maui is nonstop for both. Worth swapping if fares favour it.", url: 'https://www.nps.gov/havo/' },
     { name: 'Kauaʻi', why: "The north shore is the wettest place on the islands in December, Nāpali permits are scarce, and neither of you has a nonstop.", url: 'https://www.nps.gov/havo/' },
-    { name: 'Saguaro / Organ Pipe / Sedona as the headline', why: "Good Sonoran Desert camping, but Grand Canyon plus Sedona from Phoenix gives more per day. Saguaro fits as an extra day.", url: 'https://www.nps.gov/sagu/' }
   ]
 };
 
@@ -1382,6 +1538,82 @@ const GALLERIES = {
     { file: 'Aerial View Of Part Of The Padre Island National Seashore.jpg', cap: 'Aerial view of the seashore' }
   ]
 };
+
+GALLERIES['moab'] = [
+  { file: 'Delicate Arch - Arches National Park (28744386992).jpg', cap: 'Delicate Arch' },
+  { file: 'Mesa Arch Canyonlands sunrise.jpg', cap: 'Mesa Arch at sunrise, Island in the Sky' },
+  { file: 'Delicate Arch - Arches National Park Utah.jpg', cap: 'Delicate Arch with the La Sal Mountains' },
+  { file: 'Cloudy Sunset at Delicate Arch (8520706358).jpg', cap: 'Cloudy sunset at Delicate Arch' },
+  { file: 'D7K 2159 - Delicate Arch (sunset) (8014139475).jpg', cap: 'Delicate Arch at sunset' },
+  { file: 'Delicate Arch - Arches National Park, Utah1.jpg', cap: 'Delicate Arch' },
+  { file: 'Delicate Arch Arches National Park Utah USA.JPG', cap: 'Sunset on Delicate Arch', credit: 'WineCountryInn (Wikitravel), CC BY-SA' },
+  { file: 'Delicate Arch in Arches National Park 3.jpg', cap: 'Delicate Arch' },
+  { file: '00 406 Arches National Park (Utah, USA).jpg', cap: 'Arches National Park' },
+  { file: '00 9789 Delicate Arch, Arches-Nationalpark, USA.jpg', cap: 'Delicate Arch' },
+  { file: 'Mesa Arch Canyonlands National Park.jpg', cap: 'Mesa Arch, Canyonlands' },
+  { file: 'Mesa Arch. Canyonlands National Park, Utah (14702389212).jpg', cap: 'Mesa Arch and the canyon below' },
+  { file: 'Mesa Arch in Canyonlands National Park. NPS-Madelyn Carpenter (18064251603).jpg', cap: 'Mesa Arch', credit: 'NPS / Madelyn Carpenter, public domain' },
+  { file: "Mesa Arch is a popular place to visit at Island in the Sky. It's easy to miss it from the White Rim, though. (845f2b11-9cf9-4596-a1f0-9cd3bebbb522).jpg", cap: 'Island in the Sky from the White Rim', credit: 'NPS, public domain' }
+];
+GALLERIES['channel-islands'] = [
+  { file: 'Channel Islands National Park - Santa Cruz Island - beach area with kayakers.jpg', cap: 'Kayakers at Scorpion Anchorage, Santa Cruz Island' },
+  { file: 'Approaching Scorpion Harbor, Santa Cruz Island, Channel Islands National Park, California (8) (4082627889).jpg', cap: 'Approaching Scorpion Harbor by ferry' },
+  { file: 'Between Cavern Point, Potato Harbor, and Scorpion Ranch, Santa Cruz Island, Channel Islands National Park, California (10) (4083601860).jpg', cap: 'Cliffs between Cavern Point and Potato Harbor' },
+  { file: 'Between Cavern Point, Potato Harbor, and Scorpion Ranch, Santa Cruz Island, Channel Islands National Park, California (12) (4082842393).jpg', cap: 'The north shore trail' },
+  { file: 'Between Cavern Point, Potato Harbor, and Scorpion Ranch, Santa Cruz Island, Channel Islands National Park, California (14) (4083604102).jpg', cap: 'Above Scorpion Anchorage' },
+  { file: 'Scorpion Ranch, Santa Cruz Island, Channel Islands National Park (9) (4083394832).jpg', cap: 'Scorpion Ranch, by the campground' },
+  { file: 'Arch Rock, Anacapa Island, Channel Islands National Park, California (4081727865).jpg', cap: 'Arch Rock, Anacapa Island' },
+  { file: 'CavernPointChannelIslands.jpg', cap: 'Cavern Point' },
+  { file: 'Scorpion Anchorage Santa Cruz island.JPG', cap: 'Scorpion Anchorage' },
+  { file: 'Scorpion Anchorage and pier from high vantage point. (c7c240ad-14c7-405d-8a88-fd16c8143e13).jpg', cap: 'Scorpion Anchorage and pier', credit: 'NPS, public domain' },
+  { file: 'Scorpion Anchorage with new Pier in 2021 (09cd2140-17a2-49e4-8aad-e880e6d1acd3).jpg', cap: 'The new pier, 2021', credit: 'NPS, public domain' },
+  { file: 'ScorpionValley (326b8ba526004a81b91936c779998e46).JPG', cap: 'Scorpion Valley, where the campground sits', credit: 'NPS, public domain' },
+  { file: 'Tribal Youth Explore Santa Cruz Island (16437095413).jpg', cap: 'Hiking on Santa Cruz Island', credit: 'NPS, public domain' },
+  { file: 'Channel Islands marine life.jpg', cap: 'Kelp-forest marine life' }
+];
+GALLERIES['eastern-sierra'] = [
+  { file: 'Alabama Hills National Scenic Area - 50648922147.jpg', cap: 'Alabama Hills with the Sierra crest behind' },
+  { file: 'Camping in the Alabama Hills (52852293440).jpg', cap: 'Camping in the Alabama Hills' },
+  { file: 'Camping in the Alabama Hills (52852347938).jpg', cap: 'Camp among the boulders' },
+  { file: 'Cyclops Arch - Alabama Hills California (46542301782).jpg', cap: 'Cyclops Arch' },
+  { file: 'BLM Winter Bucket List -26- Alabama Hills, California, for Scenic Climbs That are Movie-Worthy! (16163630610).jpg', cap: 'Alabama Hills', credit: 'Bureau of Land Management, public domain' },
+  { file: 'Blue Dicks in the Alabama Hills (52835566560).jpg', cap: 'Spring wildflowers in the Alabama Hills' },
+  { file: 'Cloudy with a Chance of Meteors (53922984648).jpg', cap: 'Night sky over the Alabama Hills' },
+  { file: 'Mount Whitney banner.jpg', cap: 'Mount Whitney above the Alabama Hills' },
+  { file: 'IMG South Tufa Area, Mono Lake.jpg', cap: 'South Tufa, Mono Lake' },
+  { file: 'Mono Lake Tufa.JPG', cap: 'Tufa towers, Mono Lake' }
+];
+GALLERIES['sonoran'] = [
+  { file: 'Carnegiea gigantea or Sahuaro or Saguaro.jpg', cap: 'Saguaro at dusk' },
+  { file: 'Organ Pipe and Other Cacti at Organ Pipe National Monument, Arizona (29dbf8a5-4804-48b8-874c-d9d54f7ad7cb).jpg', cap: 'Organ pipe and saguaro, Organ Pipe Cactus National Monument', credit: 'NPS, public domain' },
+  { file: 'Organ pipe cactus arches.jpg', cap: 'Natural arches at Organ Pipe' },
+  { file: 'Sagaro Cactii at Organ Pipe Cactus National Monument.JPG', cap: 'Saguaros at Organ Pipe' },
+  { file: 'Organ Pipe Cactus National Monument (16776330173).jpg', cap: 'Organ Pipe Cactus National Monument' },
+  { file: 'Organ Pipe Cactus National Monument (16776330263).jpg', cap: 'Ajo Mountain Drive country' },
+  { file: 'Organ Pipe Cactus National Monument (16776331923).jpg', cap: 'Organ Pipe Cactus National Monument' },
+  { file: 'Organ Pipe Cactus National Monument (17209022600).jpg', cap: 'Cactus forest' },
+  { file: 'Organ Pipe Cactus National Monument (17209022800).jpg', cap: 'Organ Pipe Cactus National Monument' },
+  { file: 'Organ Pipe Cactus National Monument (17209024050).jpg', cap: 'Sonoran Desert' },
+  { file: 'Organ Pipe Cactus National Monument (17370626956).jpg', cap: 'Organ Pipe Cactus National Monument' },
+  { file: 'Organ Pipe Cactus National Monument (17394618832).jpg', cap: 'Desert floor and mountains' },
+  { file: 'The overlook at the top of Gates Pass provides great opportunities for short hikes, landscape views, and watching the sunset (3dc6cdd5-98ec-4752-a7a5-c95919117716).jpg', cap: 'Gates Pass overlook, Saguaro West', credit: 'NPS, public domain' }
+];
+GALLERIES['nevada-mojave'] = [
+  { file: 'A Couple Looks Down into The Fire Wave.jpg', cap: 'The Fire Wave, Valley of Fire' },
+  { file: 'Valley of Fire State Park 02.jpg', cap: 'Valley of Fire' },
+  { file: 'Colorful Camp, Valley of Fire, NV 5-14 (16593972123).jpg', cap: 'Camp in the Valley of Fire' },
+  { file: 'Cave of Alcoves, Valley of Fire, NV 5-14 (19977636974).jpg', cap: 'Cave of Alcoves' },
+  { file: 'Fire Canyon at Valley Of Fire in NV 1.jpg', cap: 'Fire Canyon' },
+  { file: 'Fire Canyon at Valley Of Fire in NV 2.jpg', cap: 'Fire Canyon' },
+  { file: 'Aztec Sandstone at Valley Of Fire in NV 1.jpg', cap: 'Aztec sandstone' },
+  { file: 'Aztec Sandstone at Valley Of Fire in NV 2.jpg', cap: 'Aztec sandstone' },
+  { file: "A painter's desert (12681236985).jpg", cap: 'Valley of Fire' },
+  { file: 'Chuckwalla Valley of Fire 1.jpg', cap: 'Chuckwalla lizard on the sandstone' },
+  { file: 'Autumn colours in SW Utah - in Valley of Fire State park inSE Nevada (15468527770).jpg', cap: 'Valley of Fire' },
+  { file: 'A Road in the Wilderness - Flickr - aparlette.jpg', cap: 'The park road', credit: 'aparlette (Flickr), CC BY 2.0' },
+  { file: 'Mojave National Preserve Kelso Dunes (49461666752).jpg', cap: 'Kelso Dunes, Mojave National Preserve' }
+];
+
 /* Paired fly/drive versions share a gallery. */
 GALLERIES['bigbend-fly'] = GALLERIES['bigbend']; GALLERIES['bigbend-drive'] = GALLERIES['bigbend'];
 GALLERIES['whitesands-fly'] = GALLERIES['whitesands']; GALLERIES['b2-desert-trio'] = GALLERIES['whitesands'];
