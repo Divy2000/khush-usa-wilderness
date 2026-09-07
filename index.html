@@ -3,10 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Khush, pick your American wilderness — May vs December 2027</title>
-<meta name="description" content="A researched, scored comparison of US camping-and-landscape trips for Khush (Edmonton) and his friend (Dallas): May vs December 2027, fly-in vs drive-from-Dallas.">
+<title>Khush × Dallas — US camping trips compared, May vs December 2027</title>
+<meta name="description" content="Photos and facts for every US camping-and-landscape trip option for Khush (Edmonton) and a friend in Dallas: May vs December 2027, fly-in vs drive-from-Dallas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://commons.wikimedia.org">
+<link rel="preconnect" href="https://upload.wikimedia.org">
 <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&display=swap" rel="stylesheet">
 <style>
 /* ============ TOKENS ============ */
@@ -89,140 +91,6 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
 .nav-links a:hover { color: var(--ink); text-decoration: underline; }
 @media (max-width: 760px) { .nav-links { display: none; } }
 
-/* ============ HERO ============ */
-.hero { position: relative; padding: 0; min-height: min(90vh, 820px); display: block; overflow: hidden; isolation: isolate; }
-.hero-scene { position: absolute; top: 0; right: 0; bottom: 0; left: 46%; z-index: -1; }
-.hero-scene::before { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(90deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 70%, transparent) 14%, transparent 42%); transition: background var(--t) var(--ease); pointer-events: none; }
-.hero-scene svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity var(--t) var(--ease); }
-.hero-scene svg.on { opacity: 1; }
-.hero-scene .layer { will-change: transform; }
-.hero-copy { position: relative; padding: clamp(56px, 9vh, 110px) 0 clamp(40px, 6vw, 72px); }
-.hero-copy > * { max-width: 52%; }
-.hero .kicker { font-size: 1rem; color: var(--ink-2); margin: 0 0 18px; }
-.hero h1 {
-  font-size: clamp(44px, 7.2vw, 108px); font-weight: var(--display-weight); line-height: .94; letter-spacing: -.025em; max-width: 11ch;
-  font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 144;
-}
-.hero h1 .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .06em; }
-.hero h1 .w > span { display: inline-block; transform: translateY(110%); animation: rise .9s var(--ease) forwards; }
-.hero h1 .w:nth-child(2) > span { animation-delay: .08s; } .hero h1 .w:nth-child(3) > span { animation-delay: .16s; }
-.hero h1 .w:nth-child(4) > span { animation-delay: .24s; } .hero h1 .w:nth-child(5) > span { animation-delay: .32s; }
-@keyframes rise { to { transform: translateY(0); } }
-.hero-sub { display: flex; flex-direction: column; gap: 26px; margin-top: 28px; }
-.hero-sub p { font-size: clamp(18px, 1.4vw, 21px); color: var(--ink-2); max-width: 44ch; margin: 0; }
-.hero-choice { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
-.hero-choice .lbl { font-size: .95rem; color: var(--ink-3); }
-.scroll-cue { display: inline-flex; align-items: center; gap: 10px; margin-top: 36px; color: var(--ink-2); text-decoration: none; font-size: .95rem; }
-.scroll-cue i { display: inline-block; width: 1px; height: 40px; background: var(--ink-2); animation: drop 1.8s ease-in-out infinite; transform-origin: top; }
-@keyframes drop { 0%,100% { transform: scaleY(.4); opacity: .4 } 50% { transform: scaleY(1); opacity: 1 } }
-@media (max-width: 900px) {
-  .hero { min-height: 0; }
-  .hero-scene { position: relative; inset: auto; left: 0; height: clamp(220px, 52vw, 340px); z-index: 0; }
-  .hero-scene::before { background: linear-gradient(180deg, transparent 60%, var(--bg) 100%); }
-  .hero-copy { padding-top: 24px; }
-  .hero-copy > * { max-width: none; }
-  .hero h1 { font-size: clamp(42px, 12vw, 64px); }
-}
-
-/* ============ VERDICT ============ */
-.verdict { background: var(--bg-2); transition: background-color var(--t) var(--ease); border-top: 4px solid var(--accent); }
-.verdict-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
-.verdict-grid > * { min-width: 0; }
-.verdict-copy .who { color: var(--ink-2); margin-bottom: 14px; font-size: 1.05rem; }
-.verdict-copy h2 { font-size: clamp(40px, 5.4vw, 74px); font-weight: var(--display-weight); font-variation-settings: "SOFT" 40, "opsz" 96; margin-bottom: 18px; }
-.verdict-copy .place { color: var(--ink-2); font-size: 1.1rem; margin-bottom: 22px; }
-.verdict-art { margin: 0; }
-.photo { position: relative; margin: 0; }
-.photo .frame { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 3; background: var(--bg); box-shadow: 0 1px 0 var(--line), 0 18px 40px -24px rgba(0,0,0,.45); }
-.photo .frame svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-.photo .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .8s var(--ease); }
-.photo .frame img.loaded { opacity: 1; }
-.photo figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; font-size: .84rem; color: var(--ink-2); margin-top: 8px; min-width: 0; }
-.photo figcaption a { color: var(--ink-3); }
-.photo figcaption span { flex: 1 1 220px; }
-.photo.wide .frame { aspect-ratio: 16 / 9; }
-.verdict-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 26px 0 8px; }
-.fact { border-top: 1px solid var(--ink); padding-top: 10px; }
-.fact b { display: block; font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); font-weight: 500; line-height: 1; }
-.fact span { color: var(--ink-2); font-size: .92rem; }
-.drawback { margin-top: 22px; padding: 16px 18px; border-left: 3px solid var(--rock); background: color-mix(in srgb, var(--rock) 10%, transparent); }
-.drawback b { font-family: var(--font-display); font-weight: 500; }
-.scores { margin-top: 28px; }
-.score-row { display: grid; grid-template-columns: 172px 1fr 46px; gap: 14px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
-.score-row .lab { color: var(--ink-2); }
-.score-row .lab small { display: block; color: var(--ink-3); font-size: .8rem; }
-.bar { height: 8px; background: color-mix(in srgb, var(--ink) 12%, transparent); border-radius: 999px; overflow: hidden; }
-.bar i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 999px; transition: width 1.1s var(--ease); }
-.bar.rock i { background: var(--rock); }
-.score-row .num { font-family: var(--font-display); font-size: 1.15rem; text-align: right; }
-.total { display: flex; align-items: baseline; gap: 14px; margin-top: 16px; }
-.total b { font-family: var(--font-display); font-size: clamp(48px, 6vw, 84px); font-weight: 400; line-height: 1; }
-.total span { color: var(--ink-2); }
-@media (max-width: 900px) { .verdict-grid { grid-template-columns: 1fr; } .verdict-facts { grid-template-columns: repeat(3, 1fr); } .score-row { grid-template-columns: 128px 1fr 40px; } }
-
-/* ============ RANKING ============ */
-.rank-list { border-top: 1px solid var(--ink); }
-.rank-row { border-bottom: 1px solid var(--line); transition: opacity .4s var(--ease), transform .4s var(--ease); }
-.rank-row.enter { opacity: 0; transform: translateY(8px); }
-.rank-head { display: grid; grid-template-columns: 56px 108px minmax(0, 5fr) minmax(0, 4fr) 92px 120px; gap: 18px; align-items: center; padding: 20px 0; cursor: pointer; width: 100%; background: none; border: 0; text-align: left; }
-.rank-head .thumb { display: block; width: 108px; aspect-ratio: 4 / 3; border-radius: 4px; overflow: hidden; position: relative; background: var(--bg-2); }
-.rank-head .thumb svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-.rank-head .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s; }
-.rank-head .thumb img.loaded { opacity: 1; }
-.rank-body .photo { margin-bottom: 22px; max-width: 760px; }
-.rank-head:hover .name { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
-.rank-head .pos { font-family: var(--font-display); font-size: clamp(28px, 3vw, 40px); font-weight: 400; color: var(--ink-3); }
-.rank-head .name { font-family: var(--font-display); font-size: clamp(20px, 2vw, 27px); font-weight: 500; display: block; }
-.rank-head .place { color: var(--ink-2); font-size: .92rem; display: block; margin-top: 2px; }
-.rank-head .tag { color: var(--ink-2); font-size: .92rem; }
-.mode-pill { display: inline-block; font-size: .78rem; padding: 3px 9px; border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent); border-radius: 999px; color: var(--accent); margin-top: 6px; }
-.mode-pill.drive { border-color: color-mix(in srgb, var(--rock) 60%, transparent); color: var(--rock); }
-.rank-head .score { font-family: var(--font-display); font-size: clamp(26px, 2.6vw, 36px); text-align: right; }
-.rank-head .score small { display: block; font-family: var(--font-body); font-size: .75rem; color: var(--ink-3); }
-.cmp { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; background: transparent; cursor: pointer; font-size: .85rem; color: var(--ink-2); white-space: nowrap; }
-.cmp[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
-.rank-body { display: none; padding: 0 0 28px 82px; }
-.rank-row.open .rank-body { display: block; }
-.rank-body .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
-.rank-body h4 { font-family: var(--font-body); font-weight: 600; font-size: .95rem; margin: 0 0 6px; color: var(--ink); }
-.rank-body p { font-size: .97rem; color: var(--ink-2); }
-.rank-body .mini { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 6px 0 22px; max-width: 560px; }
-.rank-body .mini div { text-align: center; font-size: .78rem; color: var(--ink-3); }
-.rank-body .mini b { display: block; font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: var(--ink); }
-.rank-body .mini .m { display: block; height: 4px; background: var(--accent); border-radius: 2px; margin: 4px auto 0; }
-.rank-body ul { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: .95rem; }
-.rank-body li { margin-bottom: 5px; }
-.status { display: inline-block; font-size: .72rem; padding: 1px 7px; border-radius: 3px; margin-right: 6px; vertical-align: 2px; font-weight: 600; letter-spacing: .01em; }
-.status.confirmed { background: color-mix(in srgb, var(--status-ok) 18%, transparent); color: var(--status-ok); }
-.status.rule2026 { background: color-mix(in srgb, var(--status-rule) 18%, transparent); color: var(--status-rule); }
-.status.typical { background: color-mix(in srgb, var(--status-typ) 18%, transparent); color: var(--status-typ); }
-.status.tbd { background: color-mix(in srgb, var(--status-tbd) 18%, transparent); color: var(--status-tbd); }
-@media (max-width: 900px) {
-  .rank-head { grid-template-columns: 44px minmax(0, 1fr) 64px; grid-template-areas: "pos name score" "pos tag cmp"; row-gap: 8px; }
-  .rank-head .thumb { display: none; }
-  .rank-head .pos { grid-area: pos; align-self: start; font-size: 24px; }
-  .rank-head .name-cell { grid-area: name; } .rank-head .tag { grid-area: tag; } .rank-head .score { grid-area: score; } .rank-head .cmp-cell { grid-area: cmp; justify-self: end; }
-  .rank-body { padding-left: 0; } .rank-body .cols { grid-template-columns: 1fr; gap: 18px; }
-}
-.compare-tray { position: sticky; bottom: 0; z-index: 40; background: var(--card); border-top: 1px solid var(--line); box-shadow: 0 -10px 30px rgba(0,0,0,.08); transform: translateY(100%); visibility: hidden; transition: transform .4s var(--ease), visibility 0s .4s; }
-.compare-tray.show { transform: translateY(0); visibility: visible; transition: transform .4s var(--ease), visibility 0s; }
-.compare-tray .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; flex-wrap: wrap; }
-.compare-tray .chips { display: flex; gap: 8px; flex-wrap: wrap; }
-.chip { border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: .88rem; }
-.btn { border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 10px 18px; cursor: pointer; font-size: .95rem; }
-.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
-.compare-table { margin-top: 28px; overflow-x: auto; border-top: 1px solid var(--ink); }
-.compare-table table { width: 100%; border-collapse: collapse; min-width: 640px; }
-.compare-table th, .compare-table td { text-align: left; vertical-align: top; padding: 12px 14px 12px 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
-.compare-table th { font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; }
-.compare-table td.lab { color: var(--ink-2); width: 160px; }
-.cut { margin-top: 44px; border-top: 1px solid var(--line); padding-top: 20px; }
-.cut h3 { font-size: 1.25rem; margin-bottom: 10px; }
-.cut-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; }
-.cut-list div { font-size: .95rem; color: var(--ink-2); border-bottom: 1px dashed var(--line); padding: 10px 0; }
-.cut-list b { color: var(--ink); font-weight: 600; }
-@media (max-width: 760px) { .cut-list { grid-template-columns: 1fr; } }
-
 /* ============ NOVELTY AXIS ============ */
 .axis-wrap { position: relative; padding: 24px 0 8px; overflow-x: hidden; }
 .axis-wrap svg { width: 100%; height: auto; display: block; overflow: visible; }
@@ -234,29 +102,6 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
 .axis-note b { font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; display: block; margin-bottom: 4px; }
 .axis-note em { color: var(--ink-2); font-style: normal; }
 @media (max-width: 760px) { .axis-note { grid-template-columns: 1fr; } }
-
-/* ============ COLORADO ============ */
-.co-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 56px); }
-.co-table { border-top: 1px solid var(--ink); }
-.co-row { display: grid; grid-template-columns: minmax(0, 5fr) 120px minmax(0, 8fr); gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: .97rem; }
-.co-row b { font-family: var(--font-display); font-weight: 500; font-size: 1.1rem; }
-.co-row .v { font-weight: 600; }
-.co-row .v.skip { color: var(--rock); } .co-row .v.ok { color: var(--accent); } .co-row .v.best { color: var(--status-ok); }
-@media (max-width: 900px) { .co-grid { grid-template-columns: 1fr; } .co-row { grid-template-columns: 1fr; gap: 6px; } }
-
-/* ============ ROUTES ============ */
-.routes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 44px); }
-.route { border-top: 1px solid var(--ink); padding-top: 18px; }
-.route h3 { font-size: 1.45rem; margin-bottom: 4px; }
-.route .meta { color: var(--ink-2); font-size: .92rem; margin-bottom: 14px; }
-.route svg { width: 100%; height: auto; display: block; margin: 8px 0 12px; overflow: visible; }
-.route ol { margin: 0; padding: 0; list-style: none; counter-reset: leg; }
-.route li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: .95rem; }
-.route li::before { counter-increment: leg; content: counter(leg); font-family: var(--font-display); color: var(--ink-3); font-size: 1.1rem; }
-.route li b { font-weight: 600; }
-.route li .n { color: var(--accent); font-weight: 600; margin-left: 6px; font-size: .85rem; }
-.route li span.note { display: block; color: var(--ink-2); font-size: .92rem; }
-@media (max-width: 860px) { .routes { grid-template-columns: 1fr; } }
 
 /* ============ LOGISTICS ============ */
 .logi { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
@@ -298,16 +143,6 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
 .ledger-key { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 18px; font-size: .9rem; color: var(--ink-2); }
 @media (max-width: 700px) { .ledger-row { grid-template-columns: 1fr; gap: 6px; } }
 
-/* ============ FINAL ============ */
-.final { background: var(--bg-2); transition: background-color var(--t) var(--ease); border-top: 4px solid var(--accent); }
-.final-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 5vw, 72px); }
-.final h3 { font-size: clamp(30px, 3.4vw, 46px); margin-bottom: 14px; font-variation-settings: "SOFT" 40; }
-.final .alts { margin-top: 18px; border-top: 1px solid var(--line); }
-.final .alts div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
-.final .alts b { font-weight: 600; } .final .alts span { color: var(--ink-2); }
-.final .ask { margin-top: 40px; font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); font-weight: 400; max-width: 24ch; line-height: 1.1; }
-@media (max-width: 860px) { .final-grid { grid-template-columns: 1fr; } }
-
 /* ============ SOURCES ============ */
 .sources { padding-bottom: 60px; }
 .weights { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 18px 0 36px; }
@@ -321,14 +156,198 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
 @media (max-width: 760px) { .src-cols { columns: 1; } }
 footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-top: 1px solid var(--line); }
 
+.status { display: inline-block; font-size: .72rem; padding: 1px 7px; border-radius: 3px; margin-right: 6px; vertical-align: 2px; font-weight: 600; letter-spacing: .01em; }
+.status.confirmed { background: color-mix(in srgb, var(--status-ok) 18%, transparent); color: var(--status-ok); }
+.status.rule2026 { background: color-mix(in srgb, var(--status-rule) 18%, transparent); color: var(--status-rule); }
+.status.typical { background: color-mix(in srgb, var(--status-typ) 18%, transparent); color: var(--status-typ); }
+.status.tbd { background: color-mix(in srgb, var(--status-tbd) 18%, transparent); color: var(--status-tbd); }
+
+/* ============ HERO ============ */
+.hero { position: relative; overflow: hidden; isolation: isolate; padding: clamp(28px, 5vh, 56px) 0 clamp(36px, 6vh, 64px); }
+.hero-scene { position: absolute; inset: 0; z-index: -1; }
+.hero-scene::before { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 55%, transparent), color-mix(in srgb, var(--bg) 82%, transparent) 60%, var(--bg)); transition: background var(--t) var(--ease); pointer-events: none; }
+.hero-scene svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity var(--t) var(--ease); }
+.hero-scene svg.on { opacity: 1; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.hero .kicker { font-size: .95rem; color: var(--ink-2); margin: 0 0 14px; letter-spacing: .01em; }
+.hero h1 { font-size: clamp(42px, 5.6vw, 82px); font-weight: var(--display-weight); line-height: .95; letter-spacing: -.025em; max-width: 11ch; font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 144; }
+.hero h1 .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .06em; }
+.hero h1 .w > span { display: inline-block; transform: translateY(110%); animation: rise .9s var(--ease) forwards; }
+.hero h1 .w:nth-child(2) > span { animation-delay: .08s; } .hero h1 .w:nth-child(3) > span { animation-delay: .16s; }
+.hero h1 .w:nth-child(4) > span { animation-delay: .24s; } .hero h1 .w:nth-child(5) > span { animation-delay: .32s; }
+@keyframes rise { to { transform: translateY(0); } }
+.hero .lede { font-size: clamp(17px, 1.3vw, 20px); color: var(--ink-2); max-width: 40ch; margin: 22px 0 24px; }
+.hero .lede b { color: var(--ink); font-weight: 700; }
+.hero-choice { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.hero-choice .lbl { font-size: .9rem; color: var(--ink-3); }
+.mosaic { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: minmax(120px, 17vw); gap: 10px; }
+.mosaic .tile { position: relative; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: var(--bg-2); cursor: pointer; text-align: left; box-shadow: 0 14px 32px -22px rgba(0,0,0,.6); }
+.mosaic .tile:first-child { grid-column: span 2; grid-row: span 2; }
+.mosaic .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s var(--ease), transform .6s var(--ease); }
+.mosaic .tile img.loaded { opacity: 1; }
+.mosaic .tile:hover img { transform: scale(1.03); }
+.mosaic .tile-lab { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 12px 10px; background: linear-gradient(180deg, transparent, rgba(0,0,0,.65)); color: #fff; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: .85rem; }
+.mosaic .tile-lab b { font-family: var(--font-display); font-weight: 500; font-size: 1rem; }
+.mosaic .tile-lab span { font-family: var(--font-display); font-size: 1.05rem; opacity: .9; }
+.mosaic .tile:first-child .tile-lab b { font-size: 1.35rem; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .hero h1 { font-size: clamp(40px, 11vw, 60px); } .mosaic { grid-auto-rows: minmax(90px, 26vw); gap: 6px; } }
+
+/* ============ CHIPS / PILLS ============ */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-block; font-size: .78rem; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-2); background: color-mix(in srgb, var(--card) 70%, transparent); white-space: nowrap; }
+.chip.mode { border-color: color-mix(in srgb, var(--accent) 55%, transparent); color: var(--accent); font-weight: 600; }
+.chip.mode.drive { border-color: color-mix(in srgb, var(--rock) 60%, transparent); color: var(--rock); }
+.chip.camp-casual { border-color: color-mix(in srgb, var(--status-ok) 55%, transparent); color: var(--status-ok); }
+.chip.camp-cold { border-color: color-mix(in srgb, var(--accent) 55%, transparent); color: var(--accent); }
+.chip.camp-winter { border-color: var(--ink-3); color: var(--ink); }
+.pill { border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; font-size: .88rem; }
+.chip-credit, .credit { font-size: .72rem; line-height: 1; padding: 5px 8px; border-radius: 4px; background: rgba(0,0,0,.55); color: #fff; text-decoration: none; letter-spacing: .01em; }
+.credit:hover { background: rgba(0,0,0,.75); text-decoration: underline; }
+
+/* ============ BOARD ============ */
+.board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
+.card { background: var(--card); border-radius: 10px; overflow: hidden; box-shadow: 0 1px 0 var(--line), 0 24px 48px -36px rgba(0,0,0,.55); display: flex; flex-direction: column; transition: transform .35s var(--ease), box-shadow .35s var(--ease), opacity .5s var(--ease); transition-delay: 0s, 0s, var(--delay, 0s); }
+.card.enter { opacity: 0; transform: translateY(12px); }
+.card:hover { transform: translateY(-3px); box-shadow: 0 1px 0 var(--line), 0 30px 56px -34px rgba(0,0,0,.6); }
+.card.active { outline: 3px solid var(--accent); outline-offset: 2px; }
+.card-img { position: relative; display: block; width: 100%; border: 0; padding: 0; cursor: pointer; background: var(--bg-2); text-align: left; }
+.card-img .frame { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.card-img .frame svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.card-img .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .8s var(--ease), transform .6s var(--ease); }
+.card-img .frame img.loaded { opacity: 1; }
+.card-img:hover .frame img { transform: scale(1.04); }
+.card-img .chip-credit { position: absolute; left: 10px; bottom: 10px; }
+.card-img .badge { position: absolute; right: 10px; top: 10px; background: var(--accent); color: var(--accent-ink); border-radius: 8px; padding: 6px 10px; font-family: var(--font-display); line-height: 1; }
+.card-img .badge b { font-size: 1.45rem; font-weight: 500; } .card-img .badge small { font-family: var(--font-body); font-size: .7rem; margin-left: 2px; opacity: .85; }
+.card-img .rank { position: absolute; left: 10px; top: 10px; font-family: var(--font-display); font-size: 1.1rem; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+.card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.card-body h3 { font-size: 1.35rem; line-height: 1.1; }
+.card-body .place { color: var(--ink-3); font-size: .9rem; margin: -6px 0 0; }
+.card-body .tag { font-size: .95rem; color: var(--ink-2); margin: 0; flex: 1; }
+.card-body .actions { display: flex; gap: 8px; align-items: center; justify-content: space-between; margin-top: 6px; }
+.btn { border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 10px 18px; cursor: pointer; font-size: .95rem; }
+.btn.small { padding: 8px 14px; font-size: .88rem; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.cmp { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; background: transparent; cursor: pointer; font-size: .85rem; color: var(--ink-2); white-space: nowrap; }
+.cmp[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+@media (max-width: 1100px) { .board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .board { grid-template-columns: 1fr; } }
+
+/* ============ GALLERY ============ */
+.gal { position: relative; }
+.gal-main { position: relative; aspect-ratio: 3 / 2; border-radius: 10px; overflow: hidden; background: var(--bg-2); }
+.gal.compact .gal-main { aspect-ratio: 4 / 3; border-radius: 6px; }
+.gal-main > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.gal-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s var(--ease); }
+.gal-img.loaded { opacity: 1; }
+.gal-btn { z-index: 2; position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(0,0,0,.5); color: #fff; font-size: 26px; line-height: 1; cursor: pointer; display: grid; place-items: center; transition: background .2s; }
+.gal-btn:hover { background: rgba(0,0,0,.75); }
+.gal-btn.prev { left: 10px; } .gal-btn.next { right: 10px; }
+.gal.compact .gal-btn { width: 32px; height: 32px; font-size: 20px; }
+.gal-count { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,.55); color: #fff; font-size: .75rem; padding: 4px 8px; border-radius: 4px; }
+.gal-cap { pointer-events: none; position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 12px 10px; background: linear-gradient(180deg, transparent, rgba(0,0,0,.7)); color: #fff; display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; font-size: .88rem; }
+.gal.compact .gal-cap { font-size: .78rem; padding: 22px 8px 8px; flex-direction: column; align-items: flex-start; gap: 4px; }
+.gal.compact .gal-text { display: block; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gal.compact .credit { max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gal-cap .credit { flex: none; pointer-events: auto; }
+.gal-strip { display: flex; gap: 6px; overflow-x: auto; padding: 8px 2px 4px; scrollbar-width: thin; scroll-snap-type: x proximity; }
+.gal-th { flex: 0 0 auto; width: 84px; aspect-ratio: 4 / 3; border-radius: 5px; overflow: hidden; border: 2px solid transparent; padding: 0; background: var(--bg-2); cursor: pointer; scroll-snap-align: center; opacity: .75; transition: opacity .2s, border-color .2s; }
+.gal-th img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .4s; }
+.gal-th img.loaded { opacity: 1; }
+.gal-th.on, .gal-th:hover { opacity: 1; border-color: var(--accent); }
+
+/* ============ DETAIL ============ */
+.detail { margin-top: clamp(24px, 3vw, 40px); background: var(--card); border-radius: 12px; padding: clamp(18px, 2.4vw, 32px); box-shadow: 0 1px 0 var(--line), 0 30px 60px -40px rgba(0,0,0,.5); border-top: 4px solid var(--accent); }
+.detail-head { display: grid; grid-template-columns: minmax(0, 1fr) auto 44px; gap: 18px; align-items: start; margin-bottom: 20px; }
+.detail-head .eyebrow { font-size: .85rem; color: var(--accent); font-weight: 600; letter-spacing: .02em; }
+.detail-head h3 { font-size: clamp(28px, 3vw, 40px); margin-top: 4px; }
+.detail-head .place { color: var(--ink-3); margin: 4px 0 0; }
+.detail-score { text-align: right; } .detail-score b { font-family: var(--font-display); font-size: clamp(36px, 4vw, 56px); font-weight: 400; line-height: 1; display: block; } .detail-score small { color: var(--ink-3); font-size: .8rem; }
+.close { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: transparent; font-size: 26px; line-height: 1; cursor: pointer; color: var(--ink-2); }
+.close:hover { background: var(--bg-2); }
+.detail-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(20px, 3vw, 40px); align-items: start; }
+.detail-data h4 { font-family: var(--font-body); font-weight: 700; font-size: .92rem; margin: 18px 0 6px; color: var(--ink); text-transform: uppercase; letter-spacing: .04em; }
+.detail-data p { font-size: .95rem; color: var(--ink-2); margin-bottom: 8px; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.fact { background: var(--bg-2); border-radius: 8px; padding: 10px 12px; min-width: 0; }
+.fact.wide { grid-column: 1 / -1; }
+.fact span { display: block; font-size: .74rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 3px; }
+.fact b { font-weight: 600; font-size: .95rem; line-height: 1.3; }
+.mini { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 16px 0 4px; }
+.mini div { position: relative; text-align: center; font-size: .72rem; color: var(--ink-3); padding-bottom: 8px; }
+.mini b { display: block; font-family: var(--font-display); font-size: 1.2rem; font-weight: 500; color: var(--ink); }
+.mini i { position: absolute; left: 0; bottom: 0; height: 4px; background: var(--accent); border-radius: 2px; }
+.rules { margin: 0; padding-left: 0; list-style: none; }
+.rules li { font-size: .92rem; color: var(--ink-2); padding: 7px 0; border-bottom: 1px dashed var(--line); }
+@media (max-width: 900px) { .detail-grid { grid-template-columns: 1fr; } .detail-head { grid-template-columns: minmax(0, 1fr) 44px; } .detail-score { grid-column: 1 / -1; text-align: left; } }
+
+/* ============ COMPARE ============ */
+.compare { margin-top: clamp(24px, 3vw, 40px); background: var(--card); border-radius: 12px; padding: clamp(14px, 2vw, 24px); box-shadow: 0 1px 0 var(--line), 0 30px 60px -40px rgba(0,0,0,.5); border-top: 4px solid var(--rock); }
+.compare-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.compare-head h3 { font-size: 1.5rem; }
+.compare-scroll { overflow-x: auto; }
+.compare table { width: 100%; border-collapse: collapse; min-width: 700px; table-layout: fixed; }
+.compare th, .compare td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line); font-size: .92rem; }
+.compare thead th { font-family: var(--font-display); font-weight: 500; font-size: 1.25rem; line-height: 1.1; }
+.compare thead th small { display: block; font-family: var(--font-body); font-size: .8rem; color: var(--ink-3); margin-top: 3px; }
+.compare tbody th { color: var(--ink-2); font-weight: 500; width: 150px; }
+.compare tbody th small { color: var(--ink-3); }
+.compare td .big { font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; }
+.compare .bar { display: inline-block; width: 70px; height: 6px; vertical-align: middle; margin-right: 8px; background: color-mix(in srgb, var(--ink) 12%, transparent); border-radius: 3px; overflow: hidden; }
+.compare .bar i { display: block; height: 100%; background: var(--accent); }
+.compare .photo-row td { padding-right: 12px; }
+@media (max-width: 700px) { .compare tbody th { width: 110px; } }
+
+/* ============ CUT / ALSO CONSIDERED ============ */
+.cut { margin-top: 44px; border-top: 1px solid var(--line); padding-top: 20px; }
+.cut h3 { font-size: 1.25rem; margin-bottom: 10px; }
+.cut-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; }
+.cut-list div { font-size: .95rem; color: var(--ink-2); border-bottom: 1px dashed var(--line); padding: 10px 0; }
+.cut-list b { color: var(--ink); font-weight: 600; }
+@media (max-width: 760px) { .cut-list { grid-template-columns: 1fr; } }
+
+/* ============ COLORADO ============ */
+.co-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(24px, 4vw, 56px); }
+.co-table { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.co-row { background: var(--card); border-radius: 10px; padding: 16px; box-shadow: 0 1px 0 var(--line); }
+.co-row b { font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; display: block; margin-bottom: 8px; }
+.co-row ul { margin: 0; padding-left: 18px; font-size: .9rem; color: var(--ink-2); }
+.co-row li { margin-bottom: 5px; }
+@media (max-width: 900px) { .co-grid { grid-template-columns: 1fr; } .co-table { grid-template-columns: 1fr; } }
+
+/* ============ ROUTES ============ */
+.routes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px); }
+.route { background: var(--card); border-radius: 10px; overflow: hidden; box-shadow: 0 1px 0 var(--line), 0 24px 48px -36px rgba(0,0,0,.5); padding-bottom: 16px; }
+.route-photo { position: relative; aspect-ratio: 8 / 3; overflow: hidden; }
+.route-photo svg, .route-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.route-photo img { opacity: 0; transition: opacity .8s; } .route-photo img.loaded { opacity: 1; }
+.route-photo h3 { position: absolute; left: 16px; bottom: 12px; color: #fff; font-size: 1.5rem; text-shadow: 0 2px 12px rgba(0,0,0,.7); }
+.route-photo .chip-credit { position: absolute; right: 10px; bottom: 12px; }
+.route .meta { color: var(--ink-2); font-size: .9rem; margin: 12px 16px 4px; }
+.route svg.strip { width: calc(100% - 32px); height: auto; display: block; margin: 6px 16px 10px; overflow: visible; }
+.route ol { margin: 0 16px; padding: 0; list-style: none; counter-reset: leg; }
+.route li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: .93rem; }
+.route li::before { counter-increment: leg; content: counter(leg); font-family: var(--font-display); color: var(--ink-3); font-size: 1.05rem; }
+.route li b { font-weight: 600; }
+.route li .n { color: var(--accent); font-weight: 600; margin-left: 6px; font-size: .85rem; }
+.route li span.note { display: block; color: var(--ink-2); font-size: .9rem; }
+.route p.small { margin: 10px 16px 0; }
+@media (max-width: 860px) { .routes { grid-template-columns: 1fr; } }
+
+/* ============ MISC ============ */
+h3.sub { font-size: 1.3rem; margin-bottom: 12px; }
+.compare-tray { position: sticky; bottom: 0; z-index: 40; background: var(--card); border-top: 1px solid var(--line); box-shadow: 0 -10px 30px rgba(0,0,0,.08); transform: translateY(100%); visibility: hidden; transition: transform .4s var(--ease), visibility 0s .4s; }
+.compare-tray.show { transform: translateY(0); visibility: visible; transition: transform .4s var(--ease), visibility 0s; }
+.compare-tray .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; flex-wrap: wrap; }
+footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-top: 1px solid var(--line); }
+
 /* ============ MOTION ============ */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
   .hero h1 .w > span { transform: none; }
-  .reveal { opacity: 1; transform: none; }
-  .bar i { transition: none; }
+  .reveal, .card.enter { opacity: 1; transform: none; }
 }
 
 </style>
@@ -339,7 +358,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <a class="brand" href="#top">Khush <span>× Dallas</span><em> · 2027</em></a>
     <nav class="nav-links" aria-label="Sections">
-      <a href="#verdict-sec">Verdict</a><a href="#shortlist">Shortlist</a><a href="#alberta">Alberta test</a><a href="#colorado">Colorado</a><a href="#routes-sec">Routes</a><a href="#getting-there">Getting there</a><a href="#camping-sec">Camping</a><a href="#final-sec">Decision</a>
+      <a href="#board-sec">The board</a><a href="#alberta">Alberta test</a><a href="#colorado">Colorado</a><a href="#routes-sec">Routes</a><a href="#getting-there">Getting there</a><a href="#camping-sec">Camping</a><a href="#verify">Verify</a>
     </nav>
     <div class="dial" role="group" aria-label="Choose the travel window">
       <span class="thumb" aria-hidden="true"></span>
@@ -352,42 +371,36 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
 <main id="top">
 <header class="hero">
   <div class="hero-scene" id="heroScene" aria-hidden="true"></div>
-  <div class="wrap hero-copy">
-    <p class="kicker">Edmonton to America. Two friends, two windows, one decision.</p>
-    <h1><span class="w"><span>Khush,</span></span> <span class="w"><span>pick</span></span> <span class="w"><span>your</span></span> <span class="w"><span>American</span></span> <span class="w"><span>wilderness.</span></span></h1>
-    <div class="hero-sub">
-      <p>You fly from YEG, I come from Dallas, and we have limited vacation time. This is where the evidence points for <span class="season-label">May 2027</span> — scored against the one benchmark that matters for you: what Alberta already gives you for free.</p>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="kicker">Edmonton and Dallas · two travel windows · every option, side by side</p>
+      <h1><span class="w"><span>Khush,</span></span> <span class="w"><span>pick</span></span> <span class="w"><span>your</span></span> <span class="w"><span>American</span></span> <span class="w"><span>wilderness.</span></span></h1>
+      <p class="lede"><b class="count-label">6</b> trips scored on the same seven weights, <b class="photo-count">80</b> photographs, every date and rule linked to its official source. Nothing here is a recommendation — it is the board you decide from.</p>
       <div class="hero-choice">
-        <span class="lbl">Switch the window and everything below re-ranks</span>
         <div class="dial" role="group" aria-label="Choose the travel window">
           <span class="thumb" aria-hidden="true"></span>
           <button type="button" data-season="may" aria-pressed="true">May 2027</button>
           <button type="button" data-season="dec" aria-pressed="false">December 2027</button>
         </div>
+        <span class="lbl season-window">May 15–31, 2027</span>
       </div>
     </div>
-    <a class="scroll-cue" href="#verdict-sec"><i></i>See the verdict</a>
+    <div class="mosaic" id="mosaic" aria-label="Photographs of the top-scoring options"></div>
   </div>
 </header>
 
 <div id="dynamic">
-<section class="verdict" id="verdict-sec" aria-labelledby="verdict-h">
-  <div class="wrap">
-    <h2 id="verdict-h" class="sr-only">Top recommendation</h2>
-    <div id="verdict"></div>
-  </div>
-</section>
-
-<section id="shortlist" aria-labelledby="shortlist-h">
+<section id="board-sec" aria-labelledby="board-h">
   <div class="wrap">
     <div class="section-head">
-      <h2 id="shortlist-h">The shortlist, re-ranked for <span class="season-label">May 2027</span></h2>
-      <p>Every option is scored the same way: 25% scenic wow, 20% novelty against Alberta, 20% season fit, 15% camping, 10% travel efficiency, 5% variety, 5% crowd-and-access calm. Fly-in and drive-from-Dallas routes compete on the same scale. Open a row for the reasoning; pick two or three to compare side by side.</p>
+      <h2 id="board-h">The board — <span class="season-label">May 2027</span></h2>
+      <p>Ranked by the weighted score (weights at the bottom of the page). Fly-in and drive-from-Dallas routes sit on the same scale. Open a card for its photo gallery and the facts; pick two or three to compare side by side with photo sliders.</p>
     </div>
-    <div class="rank-list" id="rankList"></div>
+    <div class="board" id="board"></div>
+    <div id="detail" aria-live="polite"></div>
     <div id="compareOut" aria-live="polite"></div>
     <div class="cut">
-      <h3>Considered and cut</h3>
+      <h3>Also considered</h3>
       <div class="cut-list" id="cutList"></div>
     </div>
   </div>
@@ -396,8 +409,8 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
 <section id="alberta" aria-labelledby="alberta-h">
   <div class="wrap">
     <div class="section-head">
-      <h2 id="alberta-h">Worth leaving Alberta for?</h2>
-      <p>The Canadian Rockies are the benchmark precisely because they are world class. Every destination is placed by how much of it you <em>cannot</em> get within a day of Edmonton. Mountains alone earn nothing here; deserts, canyons, coasts, geysers, volcanoes and dunes earn a lot.</p>
+      <h2 id="alberta-h">How different from Alberta?</h2>
+      <p>The novelty score places each option by how much of its landscape cannot be found within a day of Edmonton. Jasper and Banff are the zero point; mountains alone score low, deserts, canyons, coasts, geysers, volcanoes and dunes score high.</p>
     </div>
     <div class="axis-wrap" id="axis"></div>
     <div class="axis-note" id="axisNotes"></div>
@@ -408,8 +421,8 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="co-grid">
       <div>
-        <h2 id="colorado-h">The Denver question, answered honestly</h2>
-        <div id="coIntro" style="margin-top:18px"></div>
+        <h2 id="colorado-h">Colorado, in facts</h2>
+        <p class="muted" style="margin-top:14px">Denver came up as the obvious meeting point, so here is what the three ways of doing Colorado actually involve in <span class="season-label">May 2027</span>.</p>
       </div>
       <div class="co-table" id="coTable"></div>
     </div>
@@ -420,7 +433,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="section-head">
       <h2 id="routes-h">Route cards</h2>
-      <p>Nights and drive structure for the leading options in <span class="season-label">May 2027</span>. Numbered stops, highlighted circles are where we sleep. Drive-from-Dallas routes are drawn dashed.</p>
+      <p>Nights and drive structure for the leading options in <span class="season-label">May 2027</span>. Highlighted circles are where the tent goes up. Drive-from-Dallas routes are drawn dashed.</p>
     </div>
     <div class="routes" id="routes"></div>
   </div>
@@ -430,25 +443,25 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="section-head">
       <h2 id="getting-h">Getting there: from YEG, from Dallas</h2>
-      <p>Two ways to meet. <strong>Fly to the destination</strong>: we both fly to a rendezvous airport and rent a car. <strong>Fly to Dallas and drive</strong>: you take the one-stop to DFW, clear US customs in Edmonton before you board, and we leave from my place with my car and my gear. No airfares are shown — they move too fast — only the burden.</p>
+      <p><strong>Fly to the destination:</strong> both fly to a rendezvous airport and rent a car. <strong>Fly to Dallas and drive:</strong> Khush takes the one-stop to DFW (US customs cleared in Edmonton), then the Honda HR-V with the gear already packed. Airfares are not shown — they move too fast; flight burden is.</p>
     </div>
     <div class="logi">
       <div>
-        <h3 style="margin-bottom:12px">Nonstops from Edmonton (as of August 2026)</h3>
+        <h3 class="sub">Nonstops from Edmonton (as of August 2026)</h3>
         <div class="flight-table" id="flightTable"></div>
         <p class="small muted" style="margin-top:12px" id="dfwNote"></p>
       </div>
       <div>
         <div class="modes">
           <div class="mode-card"><h3>Fly to the destination</h3>
-            <dl><dt>Flights</dt><dd>2 tickets each way (one each)</dd><dt>Rental car</dt><dd>Yes, 5–8 days</dd><dt>Gear</dt><dd>Fly with tents and stoves; no fuel canisters</dd><dt>Days in transit</dt><dd><span class="big">1.5–2</span></dd><dt>Best for</dt><dd>Anything west of Texas; anything with a shared nonstop</dd></dl>
+            <dl><dt>Flights</dt><dd>2 tickets each way (one each)</dd><dt>Rental car</dt><dd>Yes, 5–8 days</dd><dt>Gear</dt><dd>Fly with tents and stoves; no fuel canisters</dd><dt>Days in transit</dt><dd><span class="big">1.5–2</span></dd></dl>
           </div>
           <div class="mode-card"><h3>Fly to Dallas and drive</h3>
-            <dl><dt>Flights</dt><dd>1 ticket each way (Khush only)</dd><dt>Rental car</dt><dd>None — the HR-V</dd><dt>Gear</dt><dd>Already in Dallas, including the power station and solar</dd><dt>Days in transit</dt><dd><span class="big">3</span></dd><dt>Best for</dt><dd>Big Bend, the desert trio, the Gulf, the Colorado loop</dd></dl>
+            <dl><dt>Flights</dt><dd>1 ticket each way (Khush only)</dd><dt>Rental car</dt><dd>None — the HR-V</dd><dt>Gear</dt><dd>Already in Dallas, including the power station and solar</dd><dt>Days in transit</dt><dd><span class="big">3</span></dd></dl>
           </div>
         </div>
         <div class="burden" id="burden"></div>
-        <p class="small muted" style="margin-top:12px">Khush's flight burden: Low = nonstop under 5 h; Medium = one stop or a long nonstop; High = two stops. Drive legs are the sum of every leg listed in the route card (a loop, not one way), approximate.</p>
+        <p class="small muted" style="margin-top:12px">Drive legs are the sum of every leg on the route card (a loop, not one way), approximate.</p>
       </div>
     </div>
   </div>
@@ -458,7 +471,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="section-head">
       <h2 id="camping-h">Camping reality</h2>
-      <p>Neither of us owns technical winter kit, so every finalist is graded honestly: casual car camping, cold-weather camping you can do with a good bag and layers, or true winter camping where a cabin night is the sensible call.</p>
+      <p>Neither traveller owns technical winter kit, so every option is graded: casual car camping, cold-weather camping (good bag and layers), or true winter camping where a cabin night is the fallback.</p>
     </div>
     <div class="legend"><span><i style="background:var(--status-ok)"></i>Casual</span><span><i style="background:var(--accent)"></i>Cold-weather</span><span><i style="background:var(--snow);border:1px solid var(--ink-3)"></i>True winter</span></div>
     <div class="camp-grid" id="campGrid"></div>
@@ -470,32 +483,27 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="section-head">
       <h2 id="verify-h">Verify before booking</h2>
-      <p>What is actually published for 2027, what is a 2026 rule that may roll forward, what is only a historical pattern, and what nobody knows yet. Last researched <span class="researched"></span>.</p>
+      <p>What is published for 2027, what is a 2026 rule that may roll forward, what is only a historical pattern, and what nobody knows yet. Last researched <span class="researched"></span>.</p>
     </div>
     <div class="ledger-key"><span><span class="status confirmed">Confirmed</span> published for 2027 or a completed event</span><span><span class="status rule2026">2026 rule</span> in force now, re-check for 2027</span><span><span class="status typical">Typical pattern</span> historical, not a promise</span><span><span class="status tbd">TBD</span> unknowable until closer to travel</span></div>
     <div class="ledger" id="ledger"></div>
-    <p class="small muted" style="margin-top:18px">Nonresident surcharge parks under the 2026 rule: <span id="surchargeParks"></span>. Your $250 Non-Resident Annual Pass covers everyone in our vehicle; my resident pass does not cover you.</p>
-  </div>
-</section>
-
-<section class="final" id="final-sec" aria-labelledby="final-h">
-  <div class="wrap">
-    <h2 id="final-h" style="margin-bottom:28px">The decision for <span class="season-label">May 2027</span></h2>
-    <div id="final"></div>
+    <p class="small muted" style="margin-top:18px">Nonresident surcharge parks under the 2026 rule: <span id="surchargeParks"></span>. A $250 Non-Resident Annual Pass covers everyone in one vehicle; a resident's pass does not cover a nonresident passenger.</p>
   </div>
 </section>
 
 <section class="sources" id="sources" aria-labelledby="sources-h">
   <div class="wrap">
     <div class="section-head">
-      <h2 id="sources-h">Method and sources</h2>
-      <p>Scores are judgement calls informed by official sources, not measurements. The weights below are the ones I would defend to you over a beer; change them in the data file and the whole site re-ranks.</p>
+      <h2 id="sources-h">Method, sources and photo credits</h2>
+      <p>Scores are judgement calls informed by official sources, not measurements; change the weights in the data file and everything re-ranks. Every photograph is from Wikimedia Commons under public-domain or Creative Commons terms — the source chip on each image links to the file page with full attribution.</p>
     </div>
     <div class="weights" id="weights"></div>
-    <h3 style="font-size:1.3rem;margin-bottom:10px">Bolt-on weekends when you land in Dallas</h3>
+    <h3 class="sub">Bolt-on weekends when Khush lands in Dallas</h3>
     <div class="cut-list" id="boltOns" style="margin-bottom:36px"></div>
-    <h3 style="font-size:1.3rem;margin-bottom:14px">Sources</h3>
+    <h3 class="sub">Sources</h3>
     <div class="src-cols" id="srcList"></div>
+    <h3 class="sub" style="margin-top:36px">Photo credits</h3>
+    <div class="src-cols" id="photoCredits"></div>
   </div>
 </section>
 </main>
@@ -507,7 +515,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   </div>
 </div>
 
-<footer><div class="wrap">Built for Khush and a Dallas friend, September 2026. Photographs come from Wikimedia Commons (credits in Sources); the coloured landscapes are illustrations. Weather figures are approximate historical averages; every date and rule links to its official source above and should be re-checked before money changes hands.</div></footer>
+<footer><div class="wrap">Built for Khush and a Dallas friend, September 2026. Photographs: Wikimedia Commons contributors and the US National Park Service (credits above). Coloured landscapes are illustrations. Weather figures are approximate historical averages; every date and rule links to its official source and should be re-checked before money changes hands.</div></footer>
 
 <script>
 /* ===========================================================
@@ -561,7 +569,7 @@ const DESTINATIONS = [
   {
     id: 'zion-bryce', name: 'Zion + Bryce Canyon', place: 'Southern Utah', mode: 'fly', seasons: ['may'],
     tagline: 'Red sandstone canyons and a forest of hoodoos, two and a half hours from an airport you both reach nonstop.',
-    photo: { file: 'Along the Virgin, Zion NP 5-14 (24398251212).jpg', caption: 'Zion Canyon along the Virgin River in May — cottonwoods leafing out under the sandstone', credit: 'Wikimedia Commons / Flickr (CC)' },
+    climate: { may: { day: '80s°F Zion · 60s Bryce', night: 'low 50s · ~30°F' } },
     art: 'canyon',
     hub: { code: 'LAS', yeg: 'Nonstop (WestJet)', dfw: 'Nonstop (American)', drive: 'LAS → Zion 2.5 h; Zion → Bryce 1.75 h; Bryce → LAS 4 h' },
     trip: { days: '6–7 days', nights: '5–6 nights camping' },
@@ -594,7 +602,7 @@ const DESTINATIONS = [
   {
     id: 'yosemite', name: 'Yosemite', place: 'Sierra Nevada, California', mode: 'fly', seasons: ['may'],
     tagline: 'The single most spectacular valley on the list, at the exact moment its waterfalls peak.',
-    photo: { file: 'Yosemite Falls from trail, Yosemite NP, CA, US - Diliff.jpg', caption: 'Yosemite Falls at full spring flow, photographed May 30', credit: 'Diliff, CC BY-SA 3.0' },
+    climate: { may: { day: '70s°F', night: 'mid-40s' } },
     art: 'granite',
     hub: { code: 'SFO', yeg: 'Air Canada seasonal nonstop — confirm May 2027 dates; otherwise one stop', dfw: 'Nonstop (American)', drive: 'SFO → Yosemite Valley ≈ 4 h' },
     trip: { days: '5–6 days', nights: '4–5 nights camping' },
@@ -625,7 +633,7 @@ const DESTINATIONS = [
   {
     id: 'olympic', name: 'Olympic', place: 'Olympic Peninsula, Washington', mode: 'fly', seasons: ['may'],
     tagline: 'Rainforest, sea stacks and a glacier-capped range in one loop — and no nonresident surcharge.',
-    photo: { file: 'Hall of Mosses, Hoh Rainforest, Olympic National Park, Washington (2015).jpg', caption: 'Hall of Mosses, Hoh Rain Forest — green all year, greenest after the spring rains', credit: 'Wikimedia Commons, CC BY 4.0' },
+    climate: { may: { day: '55–62°F', night: 'low 40s' } },
     art: 'coast',
     hub: { code: 'SEA', yeg: 'Nonstop (Alaska)', dfw: 'Nonstop (American, Alaska)', drive: 'SEA → Port Angeles 2.5–3 h (ferry or via Tacoma); Hoh Rain Forest another 2 h' },
     trip: { days: '6–7 days', nights: '5–6 nights camping' },
@@ -657,7 +665,7 @@ const DESTINATIONS = [
   {
     id: 'yellowstone', name: 'Yellowstone + Grand Teton', place: 'Wyoming', mode: 'fly', seasons: ['may'],
     tagline: 'Geysers, bison calves and grizzlies with cubs — late May is the wildlife month, if you can stand the nights.',
-    photo: { file: 'Bison and calves in Lamar Valley (54663648481).jpg', caption: 'Bison with new calves in Lamar Valley — the late-May scene', credit: 'NPS / Yellowstone, public domain' },
+    climate: { may: { day: '55–65°F', night: '~30°F' } },
     art: 'geyser',
     hub: { code: 'SLC / BZN', yeg: 'One stop to Bozeman or Jackson (via DEN); WestJet\'s Salt Lake nonstop is seasonal — confirm', dfw: 'Nonstop to SLC; Bozeman and Jackson nonstops are summer-seasonal — check May start dates', drive: 'SLC → West Yellowstone ≈ 5 h; BZN → West Yellowstone ≈ 1.75 h' },
     trip: { days: '7–8 days', nights: '6 nights, some cold' },
@@ -687,13 +695,13 @@ const DESTINATIONS = [
   },
   {
     id: 'colorado-fly', name: 'Great Sand Dunes + Rocky Mountain', place: 'Colorado', mode: 'fly', seasons: ['may'],
-    tagline: 'The Denver trip, fixed: give the dunes the headline and let Rocky Mountain be the encore.',
-    photo: { file: 'Fresh Snow on Star Dune and Crestone Peaks (46463888385).jpg', caption: 'Snow on the Crestone Peaks above Star Dune — the Sangre de Cristos stay white into late May', credit: 'NPS / Great Sand Dunes, public domain' },
+    tagline: 'Colorado\'s two national parks in one loop: North America\'s tallest dunes and the Front Range high country.',
+    climate: { may: { day: '~70°F', night: 'high 30s' } },
     art: 'dunes',
     hub: { code: 'DEN', yeg: 'Nonstop (United)', dfw: 'Nonstop (American, Southwest, United)', drive: 'DEN → Great Sand Dunes ≈ 4 h; Dunes → Estes Park ≈ 4.5 h; Estes → DEN ≈ 1.5 h' },
     trip: { days: '6–7 days', nights: '5 nights' },
     scores: { may: { wow: 8.5, novelty: 7.5, season: 7.5, camping: 7.5, travel: 8.5, variety: 7.5, crowd: 6.5 } },
-    novelty: { has: 'Rocky Mountain National Park is, honestly, a smaller Jasper with more people. Khush has this at home.', lacks: 'A 750-foot dune field against snowy 13,000-foot peaks, with a creek that pulses in waves across the sand, exists nowhere else on the continent.' },
+    novelty: { has: 'Rocky Mountain National Park\'s alpine lakes and peaks are the closest thing on this list to what Alberta already has.', lacks: 'A 750-foot dune field against snowy 13,000-foot peaks, with a creek that pulses in waves across the sand, exists nowhere else on the continent.' },
     weather: { may: 'Dunes roughly 70°F days / high 30s nights, windy afternoons, sand hot by noon. Medano Creek typically peaks late May to early June but ran nearly dry in 2026\'s low-snow year — never promise it. Trail Ridge Road opened May 29 in 2026 and May 30 in 2025: a coin flip for your window.' },
     drawback: 'Two four-hour drives inside the trip, and the Rocky Mountain half is the least novel thing on the list for someone from Edmonton. Timed entry starts in late May (May 22 in 2026).',
     surcharge: 100,
@@ -722,7 +730,7 @@ const DESTINATIONS = [
   {
     id: 'b3-panhandle-dunes', name: 'Panhandle canyons → Great Sand Dunes', place: 'Texas → New Mexico → Colorado, from Dallas', mode: 'drive', seasons: ['may'], pair: 'colorado-fly',
     tagline: 'Bison walking through your campsite, then the tallest dunes in North America — no rental car, one flight, zero park surcharges.',
-    photo: { file: 'Bison Caprock Canyons SP Texas 2023.jpg', caption: 'The Texas State Bison Herd at Caprock Canyons, the first night of the Panhandle route', credit: 'Wikimedia Commons (CC)' },
+    climate: { may: { day: '85–90°F Panhandle · 70 dunes', night: '60s · high 30s' } },
     art: 'dunes',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h; US preclearance in Edmonton', dfw: 'Home. Own car, own gear', drive: 'Dallas → Caprock Canyons 5 h → Taos 5 h → Great Sand Dunes 2.5 h → Santa Fe 3 h → Dallas 10 h' },
     trip: { days: '8–9 days', nights: '6–7 nights' },
@@ -737,7 +745,7 @@ const DESTINATIONS = [
       { status: 'typical', text: 'Texas State Parks campsites generally open ~5 months ahead; some cabins further out. Verify per park.', url: 'https://tpwd.texas.gov/state-parks/' },
       { status: 'typical', text: 'Medano Pass Primitive Road requires high-clearance 4WD — off-limits to the HR-V.', url: 'https://www.nps.gov/grsa/planyourvisit/conditions.htm' }
     ],
-    route: { title: 'Route B3 — the honest Colorado answer', legs: [
+    route: { title: 'Route B3 — Panhandle to the dunes', legs: [
       { at: 'Dallas', note: 'Khush lands the evening before; leave at dawn' },
       { at: 'Caprock Canyons SP (or Palo Duro)', nights: 1, note: 'Bison at dusk, red canyon walls, dark sky.' },
       { at: 'Taos / Rio Grande Gorge', nights: 1, note: 'Gorge Bridge, Taos Pueblo if open to visitors.' },
@@ -756,12 +764,12 @@ const DESTINATIONS = [
   {
     id: 'deathvalley-jt', name: 'Death Valley + Joshua Tree', place: 'California desert', mode: 'fly', seasons: ['dec'],
     tagline: 'Salt flats below sea level, badlands, dunes and a forest of Joshua trees, in the one month the desert is kind.',
-    photo: { file: 'Zabriskie Point, Death Valley (5464224780).jpg', caption: 'Zabriskie Point in low winter light, Death Valley', credit: 'Wikimedia Commons / Flickr, CC BY-SA 2.0' },
+    climate: { dec: { day: '~65°F', night: 'high 30s' } },
     art: 'saltflat',
     hub: { code: 'LAS (or PSP)', yeg: 'Nonstop to Las Vegas year-round; Palm Springs nonstop in winter', dfw: 'Nonstop to both', drive: 'LAS → Furnace Creek 2 h; Furnace Creek → Joshua Tree 4 h; Joshua Tree → LAS 3.5 h or → PSP 1 h' },
     trip: { days: '6–7 days', nights: '5–6 nights' },
     scores: { dec: { wow: 9.5, novelty: 10, season: 9.5, camping: 8.5, travel: 9.5, variety: 8, crowd: 7 } },
-    novelty: { has: 'Nothing. Alberta in December is −20°C and white.', lacks: 'Badwater Basin, Zabriskie Point at dawn, Mesquite Flat dunes, Artist\'s Palette and Joshua trees at 60°F is the least Alberta-like week on this site.' },
+    novelty: { has: 'Alberta in December is −20°C and white.', lacks: 'Badwater Basin, Zabriskie Point at dawn, Mesquite Flat dunes, Artist\'s Palette and Joshua trees at 60°F is the least Alberta-like week on this site.' },
     weather: { dec: 'Furnace Creek roughly 65°F days / high 30s nights, almost no rain, 10 hours of daylight. Joshua Tree roughly 60°F / mid-30s, windy some nights. Snow is possible only at Dante\'s View and Telescope Peak.' },
     drawback: 'Christmas-to-New-Year is Death Valley\'s busiest fortnight; Furnace Creek must be booked six months out and the first-come campgrounds fill by early afternoon. Emigrant Campground has been closed since 2025 flood damage.',
     surcharge: 0,
@@ -786,14 +794,14 @@ const DESTINATIONS = [
   {
     id: 'bigbend-fly', name: 'Big Bend', place: 'West Texas', mode: 'fly', seasons: ['dec'], pair: 'bigbend-drive',
     tagline: 'Chihuahuan Desert, a mountain island and the Rio Grande cutting through 1,500-foot canyon walls, under the darkest skies in Texas.',
-    photo: { file: 'Casa Grande from Basin Campground.JPG', caption: 'Casa Grande from the Chisos Basin Campground — the view from your tent', credit: 'Fredlyfish4, CC BY-SA 3.0' },
+    climate: { dec: { day: '61–74°F', night: '29–41°F' } },
     art: 'desertmtn',
     hub: { code: 'MAF / ELP', yeg: 'Two stops to Midland, one stop to El Paso — the worst flight on the December list', dfw: 'Nonstop to both', drive: 'MAF → Panther Junction 3.5 h; ELP → 4.5 h' },
     trip: { days: '6–7 days', nights: '5 nights' },
     scores: { dec: { wow: 9, novelty: 9.5, season: 9.5, camping: 8.5, travel: 5, variety: 8, crowd: 6.5 } },
     novelty: { has: 'Mountains and rivers, yes.', lacks: 'Not a desert mountain range rising 5,000 feet out of creosote flats, not a river canyon you paddle on the Mexican border, not a Bortle-1 sky.' },
     weather: { dec: 'Chisos Basin roughly 61°F days / low 40s nights; Panther Junction 65/37; Rio Grande Village 74/29. Frost is normal, hard freezes happen, days are dry and clear.' },
-    drawback: 'Flying in makes little sense for Khush — this is the trip to drive from Dallas (see the paired route). Holiday weeks fill every campground.',
+    drawback: 'Khush has no nonstop to Midland or El Paso (one or two connections); the paired drive-from-Dallas version avoids that. Holiday weeks fill every campground.',
     surcharge: 0,
     camping: { type: 'cold', typeLabel: 'Cold nights, ideal days', reservation: 'hard', detail: 'Chisos Basin (5,400 ft), Rio Grande Village and Cottonwood are all reservable on Recreation.gov 6 months ahead and sell out for the holidays. The Chisos Basin closure planned for May 2026 was cancelled on April 1, 2026 — the basin, campground and trails stay open; a smaller water-system project may follow later.', backup: 'Chisos Mountains Lodge (limited), Terlingua and Study Butte lodging, Marathon.' },
     access: [
@@ -816,7 +824,7 @@ const DESTINATIONS = [
   {
     id: 'maui', name: 'Maui: Haleakalā + the Hāna coast', place: 'Hawaiʻi', mode: 'fly', seasons: ['dec'],
     tagline: 'Camp on the rim of a 10,000-foot volcano, then at a black-sand beach — and you both get there nonstop in winter.',
-    photo: { file: 'Haleakalā Crater from Pohaku Palaha.jpg', caption: 'Haleakalā crater from Pōhaku Pālaha — Hōlua and Palikū wilderness sites are down there', credit: 'Wikimedia Commons (CC)' },
+    climate: { dec: { day: '80°F coast · 45 summit', night: '65 · ~32°F' } },
     art: 'volcano',
     hub: { code: 'OGG', yeg: 'Nonstop (WestJet, Nov–Apr) — 7.5 h', dfw: 'Nonstop (American, up to twice daily in peak season)', drive: 'OGG → Hosmer Grove 1.25 h; OGG → Hāna 2.5 h on the Hāna Highway' },
     trip: { days: '7–8 days', nights: '4–5 nights camping + 2 nights indoors' },
@@ -847,16 +855,16 @@ const DESTINATIONS = [
   {
     id: 'zion-winter', name: 'Zion + Bryce in snow', place: 'Southern Utah', mode: 'fly', seasons: ['dec'],
     tagline: 'The same red rock with white on top and a fraction of the people — but Bryce at 8,000 feet in December is winter camping, full stop.',
-    photo: { file: 'Bryce Canyon After Snow (Unsplash).jpg', caption: 'Bryce Canyon after a snowfall — the December colour combination Alberta cannot produce', credit: 'Unsplash licence, via Wikimedia Commons' },
+    climate: { dec: { day: '53°F Zion · 37 Bryce', night: '30 · 14°F' } },
     art: 'canyon',
     hub: { code: 'LAS', yeg: 'Nonstop (WestJet)', dfw: 'Nonstop (American)', drive: 'LAS → Valley of Fire 1 h → Zion 2 h → Bryce 1.75 h → LAS 4 h' },
     trip: { days: '6 days', nights: '3 nights camping + 2 nights cabin' },
     scores: { dec: { wow: 9, novelty: 9.5, season: 7, camping: 6, travel: 9.5, variety: 7.5, crowd: 8.5 } },
-    novelty: { has: 'Snow. Khush is not impressed by snow.', lacks: 'Snow on orange sandstone and pink hoodoos is a colour combination that does not exist north of the 49th.' },
+    novelty: { has: 'Snow, in quantity.', lacks: 'Snow on orange sandstone and pink hoodoos is a colour combination that does not exist north of the 49th.' },
     weather: { dec: 'Zion Canyon roughly 53°F days / 30°F nights; Bryce roughly 37°F / 14°F with snow on the ground. Trails ice over; microspikes required. Shuttles stop, so you drive the canyon yourself.' },
     drawback: 'Bryce nights in a tent at 14°F are true winter camping; Angels Landing chains ice up; short days. Two surcharge parks for Khush ($200 or the pass).',
     surcharge: 200,
-    camping: { type: 'winter', typeLabel: 'Winter camping at Bryce, cold camping at Zion', reservation: 'easy', detail: 'Watchman stays open and usually has space outside the holiday week; Bryce\'s North Campground keeps a loop open year-round. Neither is comfortable in a three-season bag.', backup: 'Book Bryce Canyon Lodge-area cabins or Ruby\'s Inn for the Bryce nights and camp only at Zion — this is the version I would actually do.' },
+    camping: { type: 'winter', typeLabel: 'Winter camping at Bryce, cold camping at Zion', reservation: 'easy', detail: 'Watchman stays open and usually has space outside the holiday week; Bryce\'s North Campground keeps a loop open year-round. Neither is comfortable in a three-season bag.', backup: 'Bryce Canyon Lodge-area cabins or Ruby\'s Inn for the Bryce nights, tent only at Zion.' },
     access: [
       { status: 'rule2026', text: 'Angels Landing permits required year-round via lottery.', url: 'https://www.nps.gov/zion/planyourvisit/angels-landing-hiking-permits.htm' },
       { status: 'rule2026', text: '$100 nonresident fee at Zion and Bryce.', url: 'https://www.nps.gov/planyourvisit/passes.htm' },
@@ -877,12 +885,12 @@ const DESTINATIONS = [
   {
     id: 'arizona', name: 'Grand Canyon South Rim + Sedona', place: 'Northern Arizona', mode: 'fly', seasons: ['dec'],
     tagline: 'The canyon with snow on the rim and Sedona\'s red rock at 60°F, from an airport with year-round nonstops for both of you.',
-    photo: { file: 'Grand Canyon Winter Sunset at Mather Point D2543 (4667239826).jpg', caption: 'Winter sunset from Mather Point, South Rim', credit: 'NPS / Grand Canyon, public domain' },
+    climate: { dec: { day: '43°F rim · 57 Sedona', night: '18 · 31°F' } },
     art: 'strata',
     hub: { code: 'PHX', yeg: 'Nonstop (WestJet year-round)', dfw: 'Nonstop (American, Southwest)', drive: 'PHX → Sedona 2 h; Sedona → South Rim 2 h; South Rim → PHX 3.5 h' },
     trip: { days: '5–6 days', nights: '3 nights camping + 1–2 indoors' },
     scores: { dec: { wow: 9.5, novelty: 9, season: 6.5, camping: 6, travel: 9, variety: 8, crowd: 7.5 } },
-    novelty: { has: 'Alberta has big canyons? No. Nothing on this scale exists in Canada.', lacks: 'A mile-deep canyon with snow dusting the rim and warm light on the buttes below.' },
+    novelty: { has: 'Nothing on this scale exists in Canada.', lacks: 'A mile-deep canyon with snow dusting the rim and warm light on the buttes below.' },
     weather: { dec: 'South Rim (7,000 ft) roughly 43°F days / 18°F nights with snow and icy trails; Sedona roughly 57°F / 31°F. North Rim is closed for winter and, after the 2025 Dragon Bravo Fire, ran a limited recovery season in 2026.' },
     drawback: 'Rim camping at 18°F is real winter camping. The North Rim is off the table. $100 surcharge for Khush at Grand Canyon.',
     surcharge: 100,
@@ -906,7 +914,7 @@ const DESTINATIONS = [
   {
     id: 'whitesands-fly', name: 'White Sands + Guadalupe + Carlsbad', place: 'New Mexico and West Texas', mode: 'fly', seasons: ['dec'], pair: 'b2-desert-trio',
     tagline: 'Gypsum dunes, the highest point in Texas and a cavern the size of a stadium — three landscapes Alberta cannot imitate.',
-    photo: { file: 'Sierra Blanca at sunset (fe80e1af-155d-451f-67c8-18f9dfdba3db).jpg', caption: 'White Sands at sunset with snow on Sierra Blanca — a winter evening in the dune field', credit: 'NPS / White Sands, public domain' },
+    climate: { dec: { day: '~58°F', night: '~22°F' } },
     art: 'gypsum',
     hub: { code: 'ELP', yeg: 'One stop (via DEN or IAH)', dfw: 'Nonstop (American, Southwest)', drive: 'ELP → White Sands 1.5 h; White Sands → Carlsbad 3 h; Carlsbad → Guadalupe 0.75 h; Guadalupe → ELP 1.75 h' },
     trip: { days: '6 days', nights: '4–5 nights' },
@@ -937,7 +945,7 @@ const DESTINATIONS = [
   {
     id: 'everglades', name: 'Everglades + Florida Keys', place: 'South Florida', mode: 'fly', seasons: ['dec'],
     tagline: 'Mangroves, alligators, roseate spoonbills and warm-water camping in the dry season — the opposite of Edmonton, at the cost of mountains.',
-    photo: { file: 'Everglades Anhinga Trail Pond.jpg', caption: 'Anhinga Trail in the dry season (November) — low water concentrates the wildlife', credit: 'Domob, CC BY-SA 3.0' },
+    climate: { dec: { day: '~77°F', night: '~57°F' } },
     art: 'wetland',
     hub: { code: 'MIA (or MCO)', yeg: 'One stop to Miami; WestJet has a seasonal Orlando nonstop (4 h drive)', dfw: 'Nonstop (American)', drive: 'MIA → Flamingo 1.75 h; Flamingo → Key West ≈ 4 h' },
     trip: { days: '6–7 days', nights: '4–5 nights' },
@@ -966,7 +974,7 @@ const DESTINATIONS = [
   {
     id: 'bigbend-drive', name: 'West Texas desert & dark-sky loop', place: 'Big Bend + Davis Mountains, from Dallas', mode: 'drive', seasons: ['dec'], pair: 'bigbend-fly',
     tagline: 'Route B1. Big Bend for three nights, then a McDonald Observatory Star Party — with your own gear, your own car and one flight between you.',
-    photo: { file: 'Casa Grande from Basin Campground.JPG', caption: 'Casa Grande from the Chisos Basin Campground — the view from your tent', credit: 'Fredlyfish4, CC BY-SA 3.0' },
+    climate: { dec: { day: '61–74°F', night: '29–41°F' } },
     art: 'desertmtn',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h; US preclearance in Edmonton', dfw: 'Home. Own car, own gear', drive: 'Dallas → Monahans 5 h → Chisos Basin 4 h → Fort Davis 2.5 h → Dallas 7.5 h' },
     trip: { days: '7–9 days', nights: '6–7 nights' },
@@ -981,7 +989,7 @@ const DESTINATIONS = [
       { status: 'typical', text: 'McDonald Observatory Star Parties typically run several evenings a week and sell out — book on the observatory site.', url: 'https://mcdonaldobservatory.org/' },
       { status: 'typical', text: 'Texas State Parks reservations (Davis Mountains, Monahans, Balmorhea) via the TPWD system; check burn bans.', url: 'https://tpwd.texas.gov/state-parks/' }
     ],
-    route: { title: 'Route B1 — strongest drive-from-Dallas option', legs: [
+    route: { title: 'Route B1 — West Texas loop', legs: [
       { at: 'Dallas', note: 'Khush lands the evening before' },
       { at: 'Monahans Sandhills SP', nights: 1, note: 'Camp among live dunes; break the drive.' },
       { at: 'Big Bend (Chisos Basin)', nights: 3, note: 'Lost Mine, the Window, Santa Elena Canyon, Boquillas hot spring, night skies.' },
@@ -997,7 +1005,7 @@ const DESTINATIONS = [
   {
     id: 'b2-desert-trio', name: 'Three-park desert trio, by road', place: 'Guadalupe → Carlsbad → White Sands, from Dallas', mode: 'drive', seasons: ['dec'], pair: 'whitesands-fly',
     tagline: 'Route B2. The same three landscapes as the El Paso fly-in, reached from Dallas with the gear already in the trunk.',
-    photo: { file: 'Sierra Blanca at sunset (fe80e1af-155d-451f-67c8-18f9dfdba3db).jpg', caption: 'White Sands at sunset with snow on Sierra Blanca — a winter evening in the dune field', credit: 'NPS / White Sands, public domain' },
+    climate: { dec: { day: '~58°F', night: '~22°F' } },
     art: 'gypsum',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h', dfw: 'Home. Own car, own gear', drive: 'Dallas → Guadalupe 8 h → Carlsbad 0.75 h → White Sands 3 h → Dallas 10 h (Roswell / Lubbock)' },
     trip: { days: '7–8 days', nights: '5–6 nights' },
@@ -1026,8 +1034,8 @@ const DESTINATIONS = [
   },
   {
     id: 'b4-padre', name: 'Gulf Coast winter beach', place: 'Padre Island + Aransas, from Dallas', mode: 'drive', seasons: ['dec'],
-    tagline: 'Route B4. Tent on a Gulf beach in December, and whooping cranes that spent the summer in northern Alberta.',
-    photo: { file: 'Padre Island National Seashore, beach, Kleberg Co, TX; 1 Nov 2022.jpg', caption: 'The Gulf beach at Padre Island National Seashore in November — empty, mild, camp anywhere', credit: 'William L. Farr, CC BY-SA 4.0' },
+    tagline: 'Route B4. Tent on a Gulf beach in December, and whooping cranes that spend the summer in northern Alberta.',
+    climate: { dec: { day: '65–70°F', night: 'low 50s' } },
     art: 'beach',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h', dfw: 'Home. Own car, own gear', drive: 'Dallas → Padre Island NS ≈ 6.5–7 h; → Aransas NWR ≈ 2 h; → Dallas ≈ 5.5 h' },
     trip: { days: '5–6 days', nights: '3–4 nights' },
@@ -1060,12 +1068,12 @@ const CUT = {
     { name: 'Glacier, Montana', why: 'Going-to-the-Sun Road opened June 22 in 2026 and June 16 in 2025 — never in May. It is also the most Canadian-Rockies-like park in the US, and a surcharge park.', url: 'https://www.nps.gov/glac/learn/news/going-to-the-sun-road-projected-to-open-monday-june-22.htm' },
     { name: 'Big Bend in May', why: 'NPS averages put Rio Grande Village at 102°F in May and Panther Junction at 90°F. Save it for December.', url: 'https://www.nps.gov/bibe/planyourvisit/weather.htm' },
     { name: 'Redwood National and State Parks', why: 'Extraordinary and novel, but 5–6 hours north of the Bay Area on top of the flights; only worth it as a 10-day California combination.', url: 'https://www.nps.gov/redw/' },
-    { name: 'Denver + Rocky Mountain only', why: 'Beautiful, but it is the one trip on this list Khush could roughly replicate from Edmonton in a weekend. Great Sand Dunes is what makes Colorado worth the flight.', url: 'https://www.nps.gov/romo/' }
+    { name: 'Denver + Rocky Mountain only', why: 'Beautiful, but it is the one trip on this list Khush could roughly replicate from Edmonton in a weekend. Great Sand Dunes is the part of Colorado with no Alberta equivalent.', url: 'https://www.nps.gov/romo/' }
   ],
   dec: [
-    { name: 'Denver + Rocky Mountain in winter', why: 'A superb ski-and-hot-springs holiday, a poor tent-camping trip: sub-zero nights, no in-park camping at Great Sand Dunes Nov–Mar, and scenery closest to home. Wins only if the trip becomes skiing.', url: 'https://home.nps.gov/grsa/planyourvisit/hours.htm' },
-    { name: 'Hawaiʻi Island (Volcanoes) instead of Maui', why: 'Equally strong on novelty, with Kīlauea and Mauna Kea, but Khush needs a connection to Kona while Maui is nonstop for both of you. A fine swap if fares favour it.', url: 'https://www.nps.gov/havo/' },
-    { name: 'Kauaʻi', why: 'Wettest island in December on the north shore; Nāpali permits are scarce; no nonstop for either of you. Beautiful, impractical here.', url: 'https://www.nps.gov/havo/' },
+    { name: 'Denver + Rocky Mountain in winter', why: 'A superb ski-and-hot-springs holiday, a poor tent-camping trip: sub-zero nights, no in-park camping at Great Sand Dunes Nov–Mar, and scenery closest to home. Works as a ski or hot-springs holiday rather than a camping trip.', url: 'https://home.nps.gov/grsa/planyourvisit/hours.htm' },
+    { name: 'Hawaiʻi Island (Volcanoes) instead of Maui', why: 'Equally strong on novelty, with Kīlauea and Mauna Kea, but Khush needs a connection to Kona while Maui is nonstop for both of you. A swap if fares favour it.', url: 'https://www.nps.gov/havo/' },
+    { name: 'Kauaʻi', why: 'Wettest island in December on the north shore; Nāpali permits are scarce; no nonstop for either of you. Beautiful; the logistics are the obstacle.', url: 'https://www.nps.gov/havo/' },
     { name: 'Saguaro / Organ Pipe / Sedona as the headline', why: 'Good Sonoran Desert camping, but the Grand Canyon + Sedona pairing from Phoenix delivers more per day; Saguaro is a fine add-on if you have a spare day.', url: 'https://www.nps.gov/sagu/' }
   ]
 };
@@ -1076,59 +1084,16 @@ const BOLT_ONS = [
   { name: 'Wichita Mountains Wildlife Refuge', hours: '~3–3.5 h north', why: 'Free-roaming bison, elk and longhorn on ancient granite; Doris Campground on Recreation.gov, open year-round.', url: 'https://www.fws.gov/refuge/wichita-mountains' }
 ];
 
-/* Colorado reality check table. */
+/* Colorado facts table. */
 const COLORADO = {
   may: [
-    { option: 'Denver + Rocky Mountain only', verdict: 'Skip', why: 'Timed entry from late May, Trail Ridge Road a coin flip, and scenery Khush already has. Novelty 4/10.' },
-    { option: 'Great Sand Dunes + Rocky Mountain (fly to Denver)', verdict: 'Respectable', why: 'The dunes carry it. Scores 7.8 — behind Utah, Yosemite and Olympic, ahead of nothing dramatic but genuinely worth a flight.' },
-    { option: 'Panhandle canyons → Great Sand Dunes (drive from Dallas)', verdict: 'Best Colorado answer', why: 'Skips Rocky Mountain entirely, adds bison and Taos, pays no surcharge and needs no rental. Scores 7.9. Costs two full driving days.' }
+    { option: 'Denver + Rocky Mountain only', facts: ['Timed entry required from May 22 (2026 dates)', 'Trail Ridge Road opened May 29, 2026 and May 30, 2025', 'Moraine Park open; Timber Creek closed through 2027', 'Novelty vs Alberta scored 4/10 — alpine lakes and peaks, same kind as home', '$100 nonresident fee for Khush'] },
+    { option: 'Great Sand Dunes + Rocky Mountain (fly to Denver)', facts: ['Nonstops to Denver for both travellers', 'Piñon Flats reservation-only, 3-month rolling window in 2026', 'Medano Creek peak usually late May–early June; nearly dry in 2026', 'Two ~4-hour drives inside the trip', 'Weighted score 7.8'] },
+    { option: 'Panhandle canyons → Great Sand Dunes (drive from Dallas)', facts: ['One flight (Khush to DFW), no rental car, own gear', 'About 25 hours of driving over 8–9 days', 'Adds Caprock/Palo Duro bison and canyons, Taos, Santa Fe', 'No nonresident fees anywhere on the route', 'Weighted score 7.9'] }
   ],
   dec: [
-    { option: 'Denver + Rocky Mountain in December', verdict: 'Not for camping', why: 'Sub-zero tent nights, Trail Ridge closed, and no in-park camping at Great Sand Dunes Nov–Mar. Wins only if you swap tents for skis and hot springs.' }
+    { option: 'Denver + Rocky Mountain in December', facts: ['Trail Ridge Road closed for the season', 'No car camping at Great Sand Dunes November–March', 'Front Range tent nights routinely well below freezing', 'Strong ski, snowshoe and hot-springs options instead', 'Not scored as a camping trip'] }
   ]
-};
-
-/* Category winners per season (ids reference DESTINATIONS). */
-const CATEGORIES = {
-  may: [
-    { label: 'Best overall', id: 'zion-bryce' },
-    { label: 'Best pure scenery', id: 'yosemite' },
-    { label: 'Most different from Canada', id: 'zion-bryce' },
-    { label: 'Best camping', id: 'olympic' },
-    { label: 'Best value and logistics', id: 'olympic', note: 'No surcharge, cheap Seattle fares, reservable coastal campgrounds' },
-    { label: 'Best if you want Colorado', id: 'b3-panhandle-dunes' }
-  ],
-  dec: [
-    { label: 'Best overall', id: 'deathvalley-jt' },
-    { label: 'Best pure scenery', id: 'arizona' },
-    { label: 'Most different from Canada', id: 'maui' },
-    { label: 'Best camping', id: 'bigbend-drive' },
-    { label: 'Best value and logistics', id: 'bigbend-drive', note: 'One flight, no rental, no surcharge, your gear' },
-    { label: 'Best December escape', id: 'maui' },
-    { label: 'Best if you want Colorado', id: null, note: 'Not as a camping trip — see the reality check' }
-  ]
-};
-
-/* Final recommendation copy. */
-const VERDICT = {
-  may: {
-    headline: 'May: Zion and Bryce, from Las Vegas.',
-    body: 'It is the least Canadian landscape you can reach with a nonstop from both cities and a two-hour drive, in its best weather month, with real campgrounds. Yosemite is the more spectacular valley and Olympic the easier, cheaper, surcharge-free trip — pick either if Utah\'s crowds or the $200 surcharge bother you. If Colorado is the itch, drive it from Dallas via Caprock and Taos rather than flying to Denver.',
-    alternates: [
-      { id: 'yosemite', why: 'if scenery outranks everything' },
-      { id: 'olympic', why: 'if you want the calmest logistics and no surcharge' },
-      { id: 'b3-panhandle-dunes', why: 'if it has to be Colorado' }
-    ]
-  },
-  dec: {
-    headline: 'December: Death Valley and Joshua Tree, from Las Vegas or Palm Springs.',
-    body: 'Sixty-five degree days, dark skies, no surcharge, both of you on nonstops, and the most alien week the US can offer an Albertan in winter. The strong alternate is the drive from Dallas to Big Bend and the Davis Mountains — one flight, our gear, our car, the best camping of the whole exercise — and if the budget stretches, Maui is the escape that no other option can match.',
-    alternates: [
-      { id: 'bigbend-drive', why: 'if you would rather drive than rent' },
-      { id: 'maui', why: 'if budget allows and you want warm' },
-      { id: 'arizona', why: 'if the Grand Canyon is a life-list item' }
-    ]
-  }
 };
 
 /* Uncertainty ledger. */
@@ -1150,50 +1115,246 @@ const LEDGER = [
 
 </script>
 <script>
-/* ============ helpers ============ */
-const $ = (s, r = document) => r.querySelector(s);
-const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const byId = id => DESTINATIONS.find(d => d.id === id);
-const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-let season = 'may';
-let compareIds = [];
+/* ===========================================================
+   PHOTO GALLERIES — every file is an exact Wikimedia Commons filename
+   (public domain NPS uploads or Creative Commons). The first entry in each
+   list is the default shown in comparisons. Credits: NPS Flickr-stream and
+   GUID-named files are US National Park Service (public domain); others are
+   Commons contributors under CC licences — the credit chip on each image
+   links to the file page with full attribution.
+   =========================================================== */
+const GALLERIES = {
+  'zion-bryce': [
+    { file: 'Along the Virgin, Zion NP 5-14 (24398251212).jpg', cap: 'Zion Canyon along the Virgin River, May 2014' },
+    { file: 'First Light along Virgin River, Zion 5-14a (19227644890).jpg', cap: 'First light on the Virgin River, May 2014' },
+    { file: 'Along the Virgin River, Zion, UT 5-14 (16333129958).jpg', cap: 'Virgin River in May' },
+    { file: "Along the Virgin, Zion NP, Angel's Landing Trail 5-1-14q (14383897942).jpg", cap: 'Angels Landing trail above the river, May 1' },
+    { file: 'Altar of Sacrifice Sunrise, Zion NP, West End 5-2-14d (14473082352).jpg', cap: 'Altar of Sacrifice at sunrise, early May' },
+    { file: 'Towers of the Virgin, Zion Canyon, Zion National Park, Utah (1026055670).jpg', cap: 'Towers of the Virgin from the visitor center' },
+    { file: 'Temple of Sinawava, Zion Canyon, Zion National Park, Utah (1025402971).jpg', cap: 'Temple of Sinawava, start of the Narrows' },
+    { file: 'North Fork Virgin River, Zion Canyon, Zion National Park, Utah (1025001933).jpg', cap: 'North Fork of the Virgin River' },
+    { file: 'Blake Richard Verdoorn 2015-04-22 (Unsplash).jpg', cap: 'Zion Canyon in late April', credit: 'Blake Richard Verdoorn, Unsplash licence' },
+    { file: 'Blue Hour at the Towers (40658062645).jpg', cap: 'Blue hour on the Towers of the Virgin' },
+    { file: 'Hoodoos in the Bryce Canyon National Park.jpg', cap: 'Bryce Amphitheater hoodoos', credit: 'Michael Gäbler, CC BY 3.0' },
+    { file: 'Bryce Canyon Amphitheater Hoodoos Panorama.jpg', cap: 'Bryce Amphitheater panorama', credit: 'CC BY-SA 2.5' },
+    { file: 'Bryce Canyon Hoodoos.jpg', cap: 'Hoodoos at sunset, Bryce Canyon', credit: 'Jonathan Zander, CC BY-SA 2.5' },
+    { file: 'Bryce Canyon Parc national (5).jpg', cap: 'Bryce Canyon' },
+    { file: 'Bryce Canyon Parc national (19).jpg', cap: 'Bryce Canyon rim' }
+  ],
+  'yosemite': [
+    { file: 'Yosemite Falls from trail, Yosemite NP, CA, US - Diliff.jpg', cap: 'Yosemite Falls at full flow, photographed May 30', credit: 'Diliff, CC BY-SA 3.0' },
+    { file: 'Yosemite Falls, May 2014.jpg', cap: 'Yosemite Falls, May 2014' },
+    { file: 'Yosemite Falls Trail May 2011 017.jpg', cap: 'Yosemite Falls Trail, May 2011' },
+    { file: 'Yosemite National Park, Upper and Lower Yosemite Fall.jpg', cap: 'Upper and Lower Yosemite Fall', credit: 'CC BY-SA 2.0' },
+    { file: 'Yosemite National Park, Lower Yosemite Fall.jpg', cap: 'Lower Yosemite Fall', credit: 'CC BY-SA 2.0' },
+    { file: 'Yosemite National Park (CA, USA), Yosemite Valley, Lower Yosemite Falls -- 2022 -- 2850.jpg', cap: 'Lower Yosemite Fall, 2022', credit: 'Dietmar Rabich, CC BY-SA 4.0' },
+    { file: 'Yosemite Falls, seen from the valley 01.jpg', cap: 'Yosemite Falls from the valley floor' },
+    { file: 'Yosemite Falls, seen from the valley 02.jpg', cap: 'Yosemite Falls from the valley floor' },
+    { file: 'Yosemite Falls, CA (11856460993).jpg', cap: 'Yosemite Falls' },
+    { file: 'On the Way to Yosemite Falls (5710968681).jpg', cap: 'On the way to Yosemite Falls' },
+    { file: 'Yosemite Lower Falls - panoramio - Andrew Burnham (1).jpg', cap: 'Lower Falls', credit: 'Andrew Burnham (Panoramio), CC BY-SA 3.0' },
+    { file: 'The Base of Yosemite Falls Trail.jpg', cap: 'Base of the Yosemite Falls Trail' },
+    { file: 'Yosemite-07 (49260763823).jpg', cap: 'Yosemite Valley' }
+  ],
+  'olympic': [
+    { file: 'Hall of Mosses, Hoh Rainforest, Olympic National Park, Washington (2015).jpg', cap: 'Hall of Mosses, Hoh Rain Forest', credit: 'CC BY 4.0' },
+    { file: 'Hoh Rainforest - Olympic National Park - Washington State (9780666884) (2).jpg', cap: 'Hoh Rain Forest' },
+    { file: 'Hoh rainforest hall of mosses 0096 (22656775187).jpg', cap: 'Hall of Mosses' },
+    { file: 'Moss covered tree, Hall of Mosses Trail, Hoh Rainforest.jpg', cap: 'Moss-covered maple, Hall of Mosses' },
+    { file: 'Hall of Mosses (38882640114).jpg', cap: 'Hall of Mosses' },
+    { file: 'Hoh Hall of Mosses 20060831.jpg', cap: 'Hall of Mosses' },
+    { file: 'Hoh Hall of Mosses 20060901.jpg', cap: 'Hall of Mosses' },
+    { file: 'Hoh hanging moss lichen rainforest NPS Photo (17116425149).jpg', cap: 'Hanging moss and lichen', credit: 'NPS, public domain' },
+    { file: 'Hoh lichen moss tree cbubar (17114997338).jpg', cap: 'Hoh valley big-leaf maple', credit: 'NPS / C. Bubar, public domain' },
+    { file: 'Olympic National Park - Hoh Valley - Hall of Mosses Trail - Flickr - rachel thecat.jpg', cap: 'Hall of Mosses Trail', credit: 'rachel thecat (Flickr), CC BY-SA 2.0' },
+    { file: 'Hoh Rain Forest, Olympic National Park, Washington State, 1992.JPG', cap: 'Hoh Rain Forest' },
+    { file: 'Hoh Rainforest - Olympic National Park - Washington State (9779944142).jpg', cap: 'Hoh Rain Forest' },
+    { file: 'Foggy path trees forest coast green d archuleta 2015 (22451266244).jpg', cap: 'Foggy coastal forest path', credit: 'NPS / D. Archuleta, public domain' },
+    { file: 'Fog mist forest trees pzaidel credit required (22655678928).jpg', cap: 'Fog in the forest', credit: 'NPS / P. Zaidel' },
+    { file: 'Geology rock beach Zaidel 2013 credit required (23109778071).jpg', cap: 'Olympic coast', credit: 'NPS / P. Zaidel' },
+    { file: 'Fresh Snow on Hurricane Ridge (86c60e61-1dd8-b71b-0b08-579a36ec3374).jpg', cap: 'Fresh snow on Hurricane Ridge', credit: 'NPS, public domain' }
+  ],
+  'yellowstone': [
+    { file: 'Bison and calves in Lamar Valley (54663648481).jpg', cap: 'Bison and calves, Lamar Valley — the late-May scene', credit: 'NPS / Yellowstone, public domain' },
+    { file: 'Bison and calves in Lamar Valley (54663981865).jpg', cap: 'Bison calves, Lamar Valley', credit: 'NPS / Yellowstone, public domain' },
+    { file: 'Spring Old Faithful eruption from Observation Point.jpg', cap: 'Spring eruption of Old Faithful from Observation Point', credit: 'NPS / Yellowstone, public domain' },
+    { file: 'Grand Prismatic Spring (aerial) (9951906d-3887-48a1-a230-096a47152b23).jpg', cap: 'Grand Prismatic Spring from the air', credit: 'NPS, public domain' },
+    { file: 'Hikers on the Boardwalk Through the Steam at Grand Prismatic Spring (31492230931).jpg', cap: 'Boardwalk through the steam, Grand Prismatic', credit: 'NPS / Yellowstone, public domain' },
+    { file: 'People viewing Grand Prismatic Spring from the boardwalks and overlook (48678894622).jpg', cap: 'Grand Prismatic overlook', credit: 'NPS / Yellowstone, public domain' },
+    { file: 'Steam from Midway Geyser Basin reflecting over Whiskey Flats (34757451981).jpg', cap: 'Midway Geyser Basin steam', credit: 'NPS / Yellowstone, public domain' },
+    { file: 'Yellowstone National Park (WY, USA), Grand Prismatic Spring -- 2022 -- 2519.jpg', cap: 'Grand Prismatic Spring', credit: 'Dietmar Rabich, CC BY-SA 4.0' },
+    { file: 'Yellowstone National Park (WY, USA), Old Faithful Geyser -- 2022 -- 2599.jpg', cap: 'Old Faithful erupting', credit: 'Dietmar Rabich, CC BY-SA 4.0' },
+    { file: 'Photographing Old Faithful at Sunset (af950f73-1d31-4e7e-a123-86eb8ae487fe).jpg', cap: 'Old Faithful at sunset', credit: 'NPS, public domain' },
+    { file: 'Bison on the move, Lamar Valley (8bca3765-4314-4c67-a237-191f485698d9).jpg', cap: 'Bison on the move, Lamar Valley', credit: 'NPS, public domain' },
+    { file: 'Backpackers in Lamar Valley with bison (51485125034).jpg', cap: 'Backpackers and bison, Lamar Valley', credit: 'NPS / Yellowstone, public domain' },
+    { file: 'Beaver pond, Lamar Valley (33640720162).jpg', cap: 'Beaver pond, Lamar Valley', credit: 'NPS / Yellowstone, public domain' },
+    { file: 'Wildlife watching in Lamar Valley (36498892121).jpg', cap: 'Wildlife watching at dawn', credit: 'NPS / Yellowstone, public domain' },
+    { file: 'Bison in Snow - Flickr - YellowstoneNPS.jpg', cap: 'Bison in snow', credit: 'NPS / Yellowstone, public domain' },
+    { file: 'Image-American bison rests at hot spring in yellowstone national park 1.jpg', cap: 'Bison resting at a hot spring' }
+  ],
+  'colorado-fly': [
+    { file: 'Fresh Snow on Star Dune and Crestone Peaks (46463888385).jpg', cap: 'Snow on the Crestones above Star Dune', credit: 'NPS / Great Sand Dunes, public domain' },
+    { file: 'Fresh Snow on Cleveland Peak above Dunes (29624879951).jpg', cap: 'Cleveland Peak above the dunes', credit: 'NPS / Great Sand Dunes, public domain' },
+    { file: 'Fresh Snow Above Dunes on Mount Zwischen (28020799508).jpg', cap: 'Mount Zwischen above the dunes', credit: 'NPS / Great Sand Dunes, public domain' },
+    { file: 'Boy at Medano Creek (53790636422).jpg', cap: 'Medano Creek at the foot of the dunes', credit: 'NPS / Great Sand Dunes, public domain' },
+    { file: 'Fog Rising From Dunes (32277402635).jpg', cap: 'Fog rising from the dunes', credit: 'NPS / Great Sand Dunes, public domain' },
+    { file: 'Flock of Sandhill Cranes in front of the Sangre de Cristo Mountains (53570019349).jpg', cap: 'Sandhill cranes, San Luis Valley', credit: 'NPS / Great Sand Dunes, public domain' },
+    { file: 'Fresh Snow on Crestone Peaks Above Star Dune, August 2016 (28969914192).jpg', cap: 'Crestone Peaks above Star Dune', credit: 'NPS / Great Sand Dunes, public domain' },
+    { file: 'Full Moon over Great Sand Dunes and Medano Creek.jpg', cap: 'Full moon over the dunes and Medano Creek' },
+    { file: 'Great Sand Dunes NP 1.JPG', cap: 'Great Sand Dunes', credit: 'Preiselbeere, CC BY-SA 3.0' },
+    { file: 'Bear Lake - Rocky Mountain National Park (50443179007).jpg', cap: 'Bear Lake, Rocky Mountain' },
+    { file: 'Bear Lake with Hallet Peak.jpg', cap: 'Bear Lake and Hallett Peak' },
+    { file: 'Bear Lake at Sunrise (51177254758).jpg', cap: 'Bear Lake at sunrise' },
+    { file: 'Bear Lake Trailhead, Estes Park, United States (Unsplash).jpg', cap: 'Bear Lake', credit: 'Unsplash licence' },
+    { file: 'Bear Lake to Dream Lake (12867422064).jpg', cap: 'Trail from Bear Lake to Dream Lake' },
+    { file: 'Rocky Mountain National Park ROMO9081.jpg', cap: 'Rocky Mountain National Park' }
+  ],
+  'b3-panhandle-dunes': [
+    { file: 'Bison Caprock Canyons SP Texas 2023.jpg', cap: 'Texas State Bison Herd, Caprock Canyons' },
+    { file: 'North Prong Spur Caprock Canyons State Park Texas 2023.jpg', cap: 'North Prong Spur, Caprock Canyons' },
+    { file: 'Upper South Prong Trail Caprock Canyons SP Texas 2023.jpg', cap: 'Upper South Prong Trail' },
+    { file: 'Slot canyon Caprock Canyons.JPG', cap: 'Slot canyon, Caprock Canyons' },
+    { file: 'Lighthouse at Palo Duro Canyon State Park.jpg', cap: 'The Lighthouse, Palo Duro Canyon', credit: 'CC BY-SA 4.0' },
+    { file: 'Palo Duro lighthouse.jpg', cap: 'Lighthouse formation, Palo Duro' },
+    { file: 'CCC Cabin "Lighthouse", Palo Duro Canyon.jpg', cap: 'CCC cabin on the rim, Palo Duro' },
+    { file: 'CCC Cabin "Lighthouse", Palo Duro Canyon, II.jpg', cap: 'Rim cabin view, Palo Duro' },
+    { file: 'Fresh Snow on Star Dune and Crestone Peaks (46463888385).jpg', cap: 'Great Sand Dunes — the destination', credit: 'NPS / Great Sand Dunes, public domain' },
+    { file: 'Boy at Medano Creek (53790636422).jpg', cap: 'Medano Creek', credit: 'NPS / Great Sand Dunes, public domain' },
+    { file: 'Fog Rising From Dunes (32277402635).jpg', cap: 'Fog on the dunes', credit: 'NPS / Great Sand Dunes, public domain' },
+    { file: 'Fresh Snow on Cleveland Peak above Dunes (29624879951).jpg', cap: 'Cleveland Peak above the dunes', credit: 'NPS / Great Sand Dunes, public domain' }
+  ],
+  'deathvalley-jt': [
+    { file: 'Zabriskie Point, Death Valley (5464224780).jpg', cap: 'Zabriskie Point in winter light', credit: 'CC BY-SA 2.0' },
+    { file: 'Zabriskie Point at sunrise in Death Valley NP.JPG', cap: 'Zabriskie Point at sunrise' },
+    { file: 'Death Valley Winter (24200897113).jpg', cap: 'Death Valley in winter', credit: 'CC BY-SA 2.0' },
+    { file: 'Death Valley Zabriskie Morning NP.jpg', cap: 'Zabriskie Point, morning' },
+    { file: 'Death Valley view from Zabriskie Point 2013 03.jpg', cap: 'Badlands from Zabriskie Point' },
+    { file: 'Zabriskie Point Death Valley.jpg', cap: 'Manly Beacon from Zabriskie Point' },
+    { file: 'Death Valley, Zabriskie Point, CLI.jpg', cap: 'Zabriskie Point badlands', credit: 'CC BY-SA 3.0' },
+    { file: 'Cholla Cactus Garden at night (29644063711).jpg', cap: 'Cholla Cactus Garden at night, Joshua Tree', credit: 'NPS / Joshua Tree, public domain' },
+    { file: 'Hidden Valley (Joshua Tree National Park) (52615968083).jpg', cap: 'Hidden Valley, Joshua Tree', credit: 'NPS / Joshua Tree, public domain' },
+    { file: 'Backlit Joshua tree along Park Blvd. (16198672227).jpg', cap: 'Backlit Joshua tree', credit: 'NPS / Joshua Tree, public domain' },
+    { file: 'Boulders near Jumbo Rocks campground (15681646514).jpg', cap: 'Boulders at Jumbo Rocks Campground', credit: 'NPS / Joshua Tree, public domain' },
+    { file: 'Evening at Hidden Valley Campground (9d54b6f6-2471-485c-aebe-d64353a2a3dc).jpg', cap: 'Evening at Hidden Valley Campground', credit: 'NPS, public domain' },
+    { file: 'Hiker on the Skull Rock Trail (26212340168).jpg', cap: 'Skull Rock Trail', credit: 'NPS / Joshua Tree, public domain' },
+    { file: 'Boulders Glow with Clouds in the Distance (16647946902).jpg', cap: 'Boulders at dusk', credit: 'NPS / Joshua Tree, public domain' },
+    { file: 'Barker Dam Nature Trail, Joshua Tree National Park (25249436432).jpg', cap: 'Barker Dam Nature Trail', credit: 'NPS / Joshua Tree, public domain' },
+    { file: 'Boulder field at Rattlesnake Canyon and Indian Cove campground (16582098631).jpg', cap: 'Indian Cove Campground boulders', credit: 'NPS / Joshua Tree, public domain' }
+  ],
+  'bigbend': [
+    { file: 'Casa Grande from Basin Campground.JPG', cap: 'Casa Grande from the Chisos Basin Campground', credit: 'Fredlyfish4, CC BY-SA 3.0' },
+    { file: 'DAWN OVER THE CHISOS MOUNTAINS - NARA - 545860.jpg', cap: 'Dawn over the Chisos Mountains', credit: 'US National Archives, public domain' },
+    { file: 'Crown Mountain from Lost Mine Trail.jpg', cap: 'Crown Mountain from the Lost Mine Trail' },
+    { file: 'Emory Peak Chisos Mountains Big Bend DSC 5438 ed ad.jpg', cap: 'Emory Peak, Chisos Mountains' },
+    { file: 'Chisos Mountains, Texas.jpeg', cap: 'Chisos Mountains' },
+    { file: 'Chisos-mountains-roman.jpg', cap: 'Chisos Mountains' },
+    { file: 'Gfp-texas-big-bend-national-park-closer-look-at-the-basin.jpg', cap: 'The Chisos Basin', credit: 'Yinan Chen, public domain' },
+    { file: 'Gfp-texas-big-bend-national-park-sky-and-horizon-in-the-chisos-mountains.jpg', cap: 'Sky and horizon, Chisos Mountains', credit: 'Yinan Chen, public domain' },
+    { file: 'Gfp-texas-big-bend-national-park-standing-at-the-summit.jpg', cap: 'On a Chisos summit', credit: 'Yinan Chen, public domain' },
+    { file: 'Chisos Mountains viewed from the Mule Ears Trail in Big Bend National Park.jpg', cap: 'Chisos from the Mule Ears Trail' },
+    { file: 'Big Bend National Park PB112598.jpg', cap: 'Big Bend in November' },
+    { file: 'Eastern edge of the Chisos Mountains (30461a9e-abd6-46af-8d98-846a83cad94b).JPG', cap: 'Eastern edge of the Chisos', credit: 'NPS, public domain' },
+    { file: 'Companions (39991799152).jpg', cap: 'Chisos Mountains' },
+    { file: 'Basin from Emory Peak.JPG', cap: 'The Basin from Emory Peak' }
+  ],
+  'maui': [
+    { file: 'Haleakalā Crater from Pohaku Palaha.jpg', cap: 'Haleakalā crater from Pōhaku Pālaha' },
+    { file: 'Haleakala Observatory above clouds sunrise Maui.jpg', cap: 'Sunrise above the clouds, Haleakalā summit' },
+    { file: 'Sunset above cloud layer Haleakala Maui.jpg', cap: 'Sunset above the cloud layer' },
+    { file: 'Haleakala Observatory above sunset clouds (Unsplash).jpg', cap: 'Summit at sunset', credit: 'Unsplash licence' },
+    { file: 'Haleakala crater (1).jpg', cap: 'Inside Haleakalā crater' },
+    { file: 'Haleakala Observatory 2017.jpg', cap: 'Summit ridge, 2017' },
+    { file: 'Haleakala Observatories, Kula - panoramio.jpg', cap: 'Summit from Kula', credit: 'Panoramio, CC BY-SA 3.0' },
+    { file: 'Haleakala Crater Telescopes - Flickr - Joe Parks.jpg', cap: 'Summit at dusk', credit: 'Joe Parks (Flickr), CC BY 2.0' },
+    { file: 'Haleakala Observatorium Maui Hawaii (45740821981).jpg', cap: 'Haleakalā summit' },
+    { file: 'Waianapanapa black sand beach Maui Hawaii Road to Hana (43923399650).jpg', cap: 'Black-sand beach, Waiʻānapanapa State Park', credit: 'dronepicr, CC BY 2.0' },
+    { file: 'Starr-140222-0445-Casuarina equisetifolia-panoram view islets-Waianapanapa-Maui (25214545906).jpg', cap: 'Islets off Waiʻānapanapa', credit: 'Forest & Kim Starr, CC BY 3.0' }
+  ],
+  'zion-winter': [
+    { file: 'Bryce Canyon After Snow (Unsplash).jpg', cap: 'Bryce Canyon after snow', credit: 'Unsplash licence' },
+    { file: 'Hoodoos in the Bryce Canyon National Park.jpg', cap: 'Bryce Amphitheater', credit: 'Michael Gäbler, CC BY 3.0' },
+    { file: 'Bryce Canyon Hoodoos.jpg', cap: 'Hoodoos at sunset', credit: 'Jonathan Zander, CC BY-SA 2.5' },
+    { file: 'Bryce Canyon Amphitheater Hoodoos Panorama.jpg', cap: 'Bryce Amphitheater panorama', credit: 'CC BY-SA 2.5' },
+    { file: 'Bryce Canyon Parc national (1).jpg', cap: 'Bryce Canyon' },
+    { file: 'Bryce Canyon Parc national (29).jpg', cap: 'Bryce Canyon' },
+    { file: 'Bryce Canyon Parc national (5).jpg', cap: 'Bryce Canyon' },
+    { file: 'Towers of the Virgin, Zion Canyon, Zion National Park, Utah (1026055670).jpg', cap: 'Towers of the Virgin, Zion' },
+    { file: 'Temple of Sinawava, Zion Canyon, Zion National Park, Utah (1025422715).jpg', cap: 'Temple of Sinawava, Zion' },
+    { file: 'Zion National Park, Utah (9179239137).jpg', cap: 'Zion Canyon' },
+    { file: 'Virgin River, Zion National Park, Utah (2146735771).jpg', cap: 'Virgin River, Zion' },
+    { file: 'Blue Hour at the Towers (40658062645).jpg', cap: 'Blue hour, Zion' }
+  ],
+  'arizona': [
+    { file: 'Grand Canyon Winter Sunset at Mather Point D2543 (4667239826).jpg', cap: 'Winter sunset, Mather Point', credit: 'NPS / Grand Canyon, public domain' },
+    { file: 'Grand Canyon, First December Snow Storm 2012, Mather Point - Flickr - Grand Canyon NPS.jpg', cap: 'First December snow, Mather Point, 2012', credit: 'NPS / Grand Canyon, public domain' },
+    { file: 'Grand Canyon with Snow 4.JPG', cap: 'Grand Canyon with snow' },
+    { file: 'Grand Canyon National Park Visitor Center in Winter (16264866421).jpg', cap: 'South Rim in winter', credit: 'NPS / Grand Canyon, public domain' },
+    { file: 'Grand Cayon Mather Point February 12, 2011 - 4 47 p.m. (5439729761).jpg', cap: 'Mather Point, February afternoon', credit: 'NPS / Grand Canyon, public domain' },
+    { file: 'Grand Canyon South Rim at Sunset.jpg', cap: 'South Rim at sunset from Mather Point' },
+    { file: 'View from Mather Point, Grand Canyon.jpg', cap: 'View from Mather Point', credit: 'CC BY-SA 4.0' },
+    { file: 'Grand Canyon, from Mohave Point (7907929560).jpg', cap: 'Grand Canyon from Mohave Point' },
+    { file: 'Dawn on the S rim of the Grand Canyon (8644080497).jpg', cap: 'Dawn on the South Rim' },
+    { file: 'Nightime at Mather Point (50472647391).jpg', cap: 'Night at Mather Point', credit: 'NPS / Grand Canyon, public domain' },
+    { file: 'Cathedral Rock - Sedona AZ-1.jpg', cap: 'Cathedral Rock, Sedona', credit: 'CC BY-SA 3.0' },
+    { file: 'Cathedral rock sedona arizona 2.jpg', cap: 'Cathedral Rock', credit: 'CC BY-SA 3.0' },
+    { file: 'Cathedral Rock Sunset-27527-1.jpg', cap: 'Cathedral Rock at sunset' },
+    { file: 'Red Rocks of Sedona with San Francisco Peaks (3879586862).jpg', cap: 'Red rocks of Sedona with the snowy San Francisco Peaks' },
+    { file: 'Red Rocks from Schnebly Hill (5009965702).jpg', cap: 'Red rocks from Schnebly Hill' },
+    { file: 'Sedona landscape. Arizona. (51419313414).jpg', cap: 'Sedona landscape' }
+  ],
+  'whitesands': [
+    { file: 'Sierra Blanca at sunset (fe80e1af-155d-451f-67c8-18f9dfdba3db).jpg', cap: 'Snow-capped Sierra Blanca over White Sands at sunset', credit: 'NPS / White Sands, public domain' },
+    { file: 'Sunset over an interdunal area (fc947575-155d-451f-67bd-cd7fbd10c9ce).JPG', cap: 'Sunset over an interdunal flat', credit: 'NPS / White Sands, public domain' },
+    { file: 'Fiery Sunset (fc23769a-155d-451f-6730-d0c4f7a8fd04).JPG', cap: 'Fiery sunset on the dunes', credit: 'NPS / White Sands, public domain' },
+    { file: 'Golden dunes (fc880478-155d-451f-67d2-fc539b8fd5de).JPG', cap: 'Golden light on the gypsum', credit: 'NPS / White Sands, public domain' },
+    { file: 'Sky and sand (feba8dd7-155d-451f-67be-1a0b9c3e03ba).JPG', cap: 'Sky and sand', credit: 'NPS / White Sands, public domain' },
+    { file: 'Hazy day in the dune field (fe918074-155d-451f-67c3-9ae106cb2164).JPG', cap: 'Hazy day in the dune field', credit: 'NPS / White Sands, public domain' },
+    { file: 'Fall colors in the dunes (fca24380-155d-451f-6754-c9c3c7e1cc50).JPG', cap: 'Cottonwoods in the dunes', credit: 'NPS / White Sands, public domain' },
+    { file: 'White Sands Sunset.jpg', cap: 'White Sands sunset' },
+    { file: 'White Sands New Mexico USA.jpg', cap: 'Dunes of White Sands', credit: 'CC BY 2.0' },
+    { file: 'USA - New Mexico - White Sands National Park - 50515352996.jpg', cap: 'White Sands dune field' },
+    { file: 'USA - New Mexico - White Sands National Park - 50515518782.jpg', cap: 'White Sands' },
+    { file: 'View of the Pinery Trail (8110759354).jpg', cap: 'Pinery Trail, Guadalupe Mountains' },
+    { file: 'ViewWestFromGuadalupePeak13October2012.JPG', cap: 'View west from Guadalupe Peak' },
+    { file: 'Indian Rains on the Guadalupe Mountains P1012733mod.jpg', cap: 'Rain over the Guadalupe Mountains' },
+    { file: 'View from Visitors Center, Carlsbad Caverns National Park, Near Carlsbad, New Mexico.jpg', cap: 'Carlsbad Caverns visitor center view' },
+    { file: 'Ladder at Carlsbad Caverns.jpg', cap: 'Inside Carlsbad Cavern' }
+  ],
+  'everglades': [
+    { file: 'Everglades Anhinga Trail Pond.jpg', cap: 'Anhinga Trail in the dry season (November)', credit: 'Domob, CC BY-SA 3.0' },
+    { file: 'Anhinga Trail, Everglades National Park, Florida (51130273576).jpg', cap: 'Anhinga Trail boardwalk' },
+    { file: 'Anhinga Trail (6884811047).jpg', cap: 'Anhinga Trail' },
+    { file: 'Anhinga Trail (6884811877).jpg', cap: 'Anhinga Trail slough' },
+    { file: 'Anhinga Trail, NPSPhoto, R. Cammauf (9101559812).jpg', cap: 'Anhinga Trail', credit: 'NPS / R. Cammauf, public domain' },
+    { file: 'Anhinga drying up (9146916865).jpg', cap: 'Anhinga drying its wings' },
+    { file: 'Anhinga feeding her young along the Anhinga Trail, Everglades National Park (9099299989).jpg', cap: 'Anhinga feeding young' },
+    { file: 'Anhinga male drying up (8504514466).jpg', cap: 'Male anhinga' },
+    { file: 'Anhinga nest (8503410925).jpg', cap: 'Anhinga nest' },
+    { file: 'Great Blue Heron - Ardea herodias (8505801070).jpg', cap: 'Great blue heron' },
+    { file: 'Green heron, Anhinga Trail, Everglades National Park (17738491305).jpg', cap: 'Green heron, Anhinga Trail' },
+    { file: 'Anhingatrail.jpg', cap: 'Anhinga Trail boardwalk', credit: 'Marc Averette, public domain' }
+  ],
+  'b4-padre': [
+    { file: 'Padre Island National Seashore, beach, Kleberg Co, TX; 1 Nov 2022.jpg', cap: 'The Gulf beach in November', credit: 'William L. Farr, CC BY-SA 4.0' },
+    { file: 'Padre Island National Seashore, interior island dunes, Kleberg Co. TX; 2 Nov 2022.jpg', cap: 'Interior dunes in November', credit: 'William L. Farr, CC BY-SA 4.0' },
+    { file: 'Padre Island National Seashore, Kleberg County, Texas, USA (26 November 2011).jpg', cap: 'Padre Island, late November' },
+    { file: 'Padre Island Ntl Seashore (10) (14497471598).jpg', cap: 'Padre Island National Seashore' },
+    { file: 'Padre Island Ntl Seashore (11) (14680918671).jpg', cap: 'Gulf beach' },
+    { file: 'Padre Island Ntl Seashore (12) (14680910511).jpg', cap: 'Beach and dunes' },
+    { file: 'Padre Island Ntl Seashore (13) (14497446918).jpg', cap: 'Padre Island' },
+    { file: 'Padre Island Ntl Seashore (14) (14681704424).jpg', cap: 'Padre Island shoreline' },
+    { file: 'Padre Island Ntl Seashore (15) (14683771782).jpg', cap: 'Padre Island' },
+    { file: 'Padre Island Ntl Seashore (2) (14680992621).jpg', cap: 'Padre Island' },
+    { file: 'Padre Island National Seashore - sand dunes3.jpg', cap: 'Sand dunes' },
+    { file: 'Aerial View Of Part Of The Padre Island National Seashore.jpg', cap: 'Aerial view of the seashore' }
+  ]
+};
+/* Paired fly/drive versions share a gallery. */
+GALLERIES['bigbend-fly'] = GALLERIES['bigbend']; GALLERIES['bigbend-drive'] = GALLERIES['bigbend'];
+GALLERIES['whitesands-fly'] = GALLERIES['whitesands']; GALLERIES['b2-desert-trio'] = GALLERIES['whitesands'];
 
-function score(d, s) {
-  const sc = d.scores[s]; if (!sc) return null;
-  return WEIGHTS.reduce((t, w) => t + (sc[w.key] * w.w) / 100, 0);
-}
-const fmt = n => n.toFixed(1);
-function ranked(s) { return DESTINATIONS.filter(d => d.seasons.includes(s)).map(d => ({ d, total: score(d, s) })).sort((a, b) => b.total - a.total); }
-function statusLabel(k) { return { confirmed: 'Confirmed', rule2026: '2026 rule', typical: 'Typical pattern', tbd: 'TBD' }[k]; }
-function flightBurden(d) {
-  const y = d.hub.yeg.toLowerCase();
-  if (d.mode === 'drive') return 'Medium';
-  if (y.startsWith('nonstop')) return y.includes('7.5 h') ? 'Medium' : 'Low';
-  if (y.includes('two stops')) return 'High';
-  if (y.includes('one stop') || y.includes('seasonal')) return 'Medium';
-  return 'Medium';
-}
-function driveHours(d) {
-  const nums = (d.hub.drive.match(/(\d+(?:\.\d+)?)\s*h/g) || []).map(x => parseFloat(x));
-  if (!nums.length) return '—';
-  const total = nums.reduce((a, b) => a + b, 0);
-  return `${Math.round(total)} h`;
-}
-
-/* ============ photos (Wikimedia Commons) ============ */
-const photoURL = (file, w) => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=${w}`;
-const photoPage = file => `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file)}`;
-/* Illustration underneath, photograph on top; if the photo fails to load the illustration simply stays. */
-function photoFig(d, s, w, cls = '', seed = 5) {
-  const p = d.photo; if (!p) return `<div class="photo ${cls}"><div class="frame">${landscape(d.art, s, { w: 1200, h: 900, seed, label: 'Illustration of ' + d.name })}</div></div>`;
-  return `<figure class="photo ${cls}"><div class="frame">${landscape(d.art, s, { w: 1200, h: 900, seed, label: 'Illustration of ' + d.name })}<img src="${photoURL(p.file, w)}" alt="${esc(p.caption)}" loading="${cls.includes('eager') ? 'eager' : 'lazy'}" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()"></div><figcaption><span>${esc(p.caption)}</span><a href="${photoPage(p.file)}" target="_blank" rel="noopener">Photo: ${esc(p.credit)}</a></figcaption></figure>`;
-}
-function thumb(d, s) {
-  const p = d.photo;
-  return `<span class="thumb" aria-hidden="true">${landscape(d.art, s, { w: 400, h: 300, seed: 21 })}${p ? `<img src="${photoURL(p.file, 320)}" alt="" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()">` : ''}</span>`;
-}
-
+</script>
+<script>
 /* ============ procedural landscapes ============ */
 function rng(seed) { let x = seed * 9301 + 49297; return () => { x = (x * 233280 + 12345) % 2147483647; return (x % 10000) / 10000; }; }
 function ridge(r, w, h, yBase, amp, n, jag = .5) {
@@ -1338,134 +1499,17 @@ function landscape(kind, s, opts = {}) {
   return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(opts.label || 'Illustrated landscape')}">${sky}${g}</svg>`;
 }
 
-/* ============ hero ============ */
-function renderHero() {
-  const scene = $('#heroScene');
-  scene.innerHTML = landscape('granite', 'may', { w: 1600, h: 900, seed: 1, label: 'Illustration: granite walls and a waterfall under a spring sky' })
-    + landscape('saltflat', 'dec', { w: 1600, h: 900, seed: 2, label: 'Illustration: desert badlands and a salt flat under a starry dusk' });
-  const svgs = $$('svg', scene);
-  svgs[0].dataset.s = 'may'; svgs[1].dataset.s = 'dec';
-  svgs[season === 'may' ? 0 : 1].classList.add('on');
-  if (!reduced) {
-    let ticking = false;
-    addEventListener('scroll', () => {
-      if (ticking) return; ticking = true;
-      requestAnimationFrame(() => {
-        const y = Math.min(scrollY, 900);
-        $$('.layer', scene).forEach(l => { l.style.transform = `translateY(${(y * parseFloat(l.dataset.p) * 0.6).toFixed(1)}px)`; });
-        ticking = false;
-      });
-    }, { passive: true });
-  }
+function routeSVG(d) {
+  const legs = d.route.legs, W = 560, H = 90, pad = 24, step = (W - pad * 2) / (legs.length - 1);
+  let s = `<line x1="${pad}" y1="46" x2="${W - pad}" y2="46" stroke="var(--ink-3)" stroke-width="1.5" stroke-dasharray="${d.mode === 'drive' ? '6 5' : '0'}"/>`;
+  legs.forEach((l, i) => {
+    const x = pad + step * i, n = l.nights || 0;
+    s += `<circle cx="${x}" cy="46" r="${n ? 9 : 5}" fill="${n ? 'var(--accent)' : 'var(--ink-3)'}"/>`;
+    if (n) s += `<text x="${x}" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="var(--accent-ink)">${n}</text>`;
+    s += `<text x="${x}" y="${i % 2 ? 78 : 22}" text-anchor="middle" font-size="11" fill="var(--ink-2)">${esc(l.at.split(' (')[0].split(' / ')[0].split(':')[0].slice(0, 22))}</text>`;
+  });
+  return `<svg class="strip" viewBox="0 0 ${W} ${H}" aria-hidden="true">${s}</svg>`;
 }
-
-/* ============ verdict ============ */
-function renderVerdict() {
-  const list = ranked(season);
-  const win = list[0], d = win.d, sc = d.scores[season];
-  const surch = d.surcharge ? `$${d.surcharge}` : 'None';
-  $('#verdict').innerHTML = `
-    <div class="verdict-grid">
-      <div class="verdict-copy reveal">
-        <p class="who">Khush, this is the one I'd fly for in ${SEASONS[season].label.split(' ')[0]}.</p>
-        <h2>${esc(d.name)}</h2>
-        <p class="place">${esc(d.place)}${d.mode === 'drive' ? ' · driving from Dallas' : ` · meet at ${esc(d.hub.code)}`}</p>
-        <p>${esc(d.tagline)}</p>
-        <p>${esc(d.novelty.lacks)}</p>
-        <div class="verdict-facts">
-          <div class="fact"><b>${esc(d.trip.days)}</b><span>ideal trip length</span></div>
-          <div class="fact"><b>${esc(d.hub.code)}</b><span>${d.mode === 'drive' ? 'Khush flies here; we drive' : 'rendezvous airport'}</span></div>
-          <div class="fact"><b>${surch}</b><span>nonresident park surcharge for Khush (2026 rule)</span></div>
-        </div>
-        <div class="drawback"><b>Biggest drawback.</b> ${esc(d.drawback)}</div>
-      </div>
-      <div class="reveal">
-        <div class="verdict-art">${photoFig(d, season, 1400, 'eager', 11)}</div>
-        <div class="scores" data-animate>
-          ${WEIGHTS.map(w => `<div class="score-row"><div class="lab">${esc(w.label)}<small>weight ${w.w}%</small></div><div class="bar ${w.key === 'crowd' ? 'rock' : ''}"><i data-w="${sc[w.key] * 10}"></i></div><div class="num">${sc[w.key]}</div></div>`).join('')}
-          <div class="total"><b>${fmt(win.total)}</b><span>weighted score out of 10 — next best: ${esc(list[1].d.name)} at ${fmt(list[1].total)}</span></div>
-        </div>
-      </div>
-    </div>`;
-}
-
-/* ============ ranking ============ */
-function miniScores(sc) {
-  return `<div class="mini">${WEIGHTS.map(w => `<div title="${esc(w.label)}"><b>${sc[w.key]}</b>${esc(w.label.split(' ')[0].replace('/', ''))}<span class="m" style="width:${sc[w.key] * 10}%"></span></div>`).join('')}</div>`;
-}
-function renderRanking() {
-  const list = ranked(season);
-  compareIds = []; updateTray();
-  $('#rankList').innerHTML = list.map((x, i) => {
-    const d = x.d, sc = d.scores[season], pair = d.pair ? byId(d.pair) : null;
-    return `<div class="rank-row enter" data-id="${d.id}">
-      <button class="rank-head" aria-expanded="false" aria-controls="body-${d.id}">
-        <span class="pos">${String(i + 1).padStart(2, '0')}</span>
-        ${thumb(d, season)}
-        <span class="name-cell"><span class="name">${esc(d.name)}</span><span class="place">${esc(d.place)}</span><span class="mode-pill ${d.mode}">${d.mode === 'drive' ? 'Drive from Dallas' : 'Fly to ' + esc(d.hub.code)}</span></span>
-        <span class="tag">${esc(d.tagline)}</span>
-        <span class="score">${fmt(x.total)}<small>of 10</small></span>
-        <span class="cmp-cell"><span class="cmp" role="button" tabindex="0" aria-pressed="false" data-cmp="${d.id}">Compare</span></span>
-      </button>
-      <div class="rank-body" id="body-${d.id}">
-        ${photoFig(d, season, 1000, 'wide', 7)}
-        ${miniScores(sc)}
-        <div class="cols">
-          <div>
-            <h4>Worth leaving Alberta for?</h4>
-            <p><span class="muted">What you already have:</span> ${esc(d.novelty.has)}<br><span class="muted">What you don't:</span> ${esc(d.novelty.lacks)}</p>
-            <h4>Biggest reason not to</h4><p>${esc(d.drawback)}</p>
-            ${pair ? `<p class="small">Same place, another way: <a href="#" data-jump="${pair.id}">${esc(pair.name)}</a> (${fmt(score(pair, season))}).</p>` : ''}
-          </div>
-          <div>
-            <h4>Weather in ${esc(SEASONS[season].label)}</h4><p>${esc(d.weather[season])}</p>
-            <h4>Access and rules</h4>
-            <ul>${d.access.map(a => `<li><span class="status ${a.status}">${statusLabel(a.status)}</span>${esc(a.text)} <a href="${a.url}" target="_blank" rel="noopener">source</a></li>`).join('')}</ul>
-          </div>
-          <div>
-            <h4>Camping: ${esc(d.camping.typeLabel)}</h4><p>${esc(d.camping.detail)}</p>
-            <h4>Getting there</h4><p><span class="muted">Khush:</span> ${esc(d.hub.yeg)}<br><span class="muted">Dallas:</span> ${esc(d.hub.dfw)}<br><span class="muted">Driving:</span> ${esc(d.hub.drive)}</p>
-            <h4>Backup if the tent plan fails</h4><p>${esc(d.camping.backup)}</p>
-          </div>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-  requestAnimationFrame(() => $$('.rank-row.enter').forEach((r, i) => setTimeout(() => r.classList.remove('enter'), 40 * i)));
-  $('#cutList').innerHTML = CUT[season].map(c => `<div><b>${esc(c.name)}</b> — ${esc(c.why)} <a href="${c.url}" target="_blank" rel="noopener">source</a></div>`).join('');
-  $('#compareOut').innerHTML = '';
-}
-function toggleRow(row, open) {
-  const head = $('.rank-head', row); const isOpen = open ?? !row.classList.contains('open');
-  row.classList.toggle('open', isOpen); head.setAttribute('aria-expanded', String(isOpen));
-}
-function updateTray() {
-  const tray = $('#tray'); tray.classList.toggle('show', compareIds.length > 0);
-  $('#trayChips').innerHTML = compareIds.map(id => `<span class="chip">${esc(byId(id).name)}</span>`).join('');
-  $('#trayGo').disabled = compareIds.length < 2;
-  $('#trayGo').textContent = compareIds.length < 2 ? 'Pick one more to compare' : `Compare ${compareIds.length}`;
-  $$('[data-cmp]').forEach(b => b.setAttribute('aria-pressed', String(compareIds.includes(b.dataset.cmp))));
-}
-function renderCompare() {
-  const ds = compareIds.map(byId);
-  const row = (lab, fn) => `<tr><td class="lab">${lab}</td>${ds.map(d => `<td>${fn(d)}</td>`).join('')}</tr>`;
-  $('#compareOut').innerHTML = `<div class="compare-table"><table>
-    <thead><tr><th></th>${ds.map(d => `<th>${esc(d.name)}</th>`).join('')}</tr></thead>
-    <tbody>
-      ${row('Weighted score', d => `<b>${fmt(score(d, season))}</b>`)}
-      ${WEIGHTS.map(w => row(w.label, d => d.scores[season][w.key])).join('')}
-      ${row('Trip length', d => esc(d.trip.days))}
-      ${row('How you meet', d => d.mode === 'drive' ? 'Khush flies to Dallas; we drive' : 'Both fly to ' + esc(d.hub.code))}
-      ${row('Khush\'s flight', d => esc(d.hub.yeg))}
-      ${row('Driving', d => esc(d.hub.drive))}
-      ${row('Camping', d => esc(d.camping.typeLabel) + ' · booking: ' + esc(d.camping.reservation))}
-      ${row('Weather', d => esc(d.weather[season]))}
-      ${row('Nonresident surcharge', d => d.surcharge ? '$' + d.surcharge + ' (or $250 pass)' : 'None')}
-      ${row('Key caution', d => esc(d.drawback))}
-    </tbody></table></div>`;
-  $('#compareOut').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
-}
-
 /* ============ novelty axis ============ */
 let lastAxisMode = null;
 function axisMode() { return innerWidth < 760 ? 'vertical' : 'horizontal'; }
@@ -1493,7 +1537,7 @@ function renderAxis() {
       <defs><linearGradient id="axg" x1="0" x2="1"><stop offset="0" stop-color="var(--far)"/><stop offset="1" stop-color="var(--accent)"/></linearGradient></defs>
       <rect x="${pad}" y="${y0 - 3}" width="${W - pad * 2}" height="6" rx="3" fill="url(#axg)" opacity=".7"/>
       <rect x="${pad - 8}" y="${y0 - 26}" width="16" height="52" rx="3" fill="var(--ink-3)"/>
-      <text class="bench" x="${pad}" y="${y0 + 150}" text-anchor="start" font-size="14">Jasper &amp; Banff — the benchmark Khush already has (a Denver-only trip sits here too)</text>
+      <text class="bench" x="${pad}" y="${y0 + 150}" text-anchor="start" font-size="14">Jasper &amp; Banff — the zero point (a Denver-only trip scores about 4)</text>
       <text class="bench" x="${W - pad}" y="${y0 + 175}" text-anchor="end" font-size="14">least like Alberta →</text>
       ${marks}</svg>`;
   } else {
@@ -1512,81 +1556,244 @@ function renderAxis() {
       <text class="bench" x="${x0 - 8}" y="${top - 20}" font-size="12">least like Alberta ↑</text>
       <rect x="${x0 - 3}" y="${top}" width="6" height="${axisBottom - top}" rx="3" fill="url(#axgv)" opacity=".7"/>
       <rect x="${x0 - 22}" y="${axisBottom + 10}" width="44" height="14" rx="3" fill="var(--ink-3)"/>
-      <text class="bench" x="${x0 - 22}" y="${axisBottom + 44}" font-size="12">Jasper &amp; Banff — the benchmark Khush already has</text>
+      <text class="bench" x="${x0 - 22}" y="${axisBottom + 44}" font-size="12">Jasper &amp; Banff — the zero point</text>
       ${marks}</svg>`;
   }
   $('#axis').innerHTML = svg;
   $('#axisNotes').innerHTML = items.slice().reverse().map(x => `<div><b>${esc(x.d.name)} · ${x.v}</b><em>${esc(x.d.novelty.has)}</em> ${esc(x.d.novelty.lacks)}</div>`).join('');
 }
 
+/* ============ helpers ============ */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const byId = id => DESTINATIONS.find(d => d.id === id);
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let season = 'may';
+let compareIds = [];
+let openId = null;
+
+function score(d, s) { const sc = d.scores[s]; if (!sc) return null; return WEIGHTS.reduce((t, w) => t + (sc[w.key] * w.w) / 100, 0); }
+const fmt = n => n.toFixed(1);
+function ranked(s) { return DESTINATIONS.filter(d => d.seasons.includes(s)).map(d => ({ d, total: score(d, s) })).sort((a, b) => b.total - a.total); }
+function statusLabel(k) { return { confirmed: 'Confirmed', rule2026: '2026 rule', typical: 'Typical pattern', tbd: 'TBD' }[k]; }
+function flightBurden(d) {
+  const y = d.hub.yeg.toLowerCase();
+  if (d.mode === 'drive') return 'One stop to DFW';
+  if (y.startsWith('nonstop')) return y.includes('7.5 h') ? 'Nonstop, 7.5 h' : 'Nonstop';
+  if (y.includes('two stops')) return 'Two stops';
+  return 'One stop / seasonal';
+}
+function driveHours(d) { const n = (d.hub.drive.match(/(\d+(?:\.\d+)?)\s*h/g) || []).map(parseFloat); return n.length ? `${Math.round(n.reduce((a, b) => a + b, 0))} h` : '—'; }
+const campLabel = { casual: 'Casual camping', cold: 'Cold-weather camping', winter: 'True winter camping' };
+
+/* ============ photos ============ */
+const photoURL = (file, w) => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=${w}`;
+const photoPage = file => `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file)}`;
+function creditFor(p) {
+  if (p.credit) return p.credit;
+  const f = p.file;
+  if (/\([0-9a-f]{8}-[0-9a-f]{4}-/.test(f) || /NPS/i.test(f)) return 'NPS, public domain';
+  if (/Unsplash/i.test(f)) return 'Unsplash licence';
+  if (/panoramio/i.test(f)) return 'Panoramio, CC BY-SA 3.0';
+  return 'Wikimedia Commons, CC licence';
+}
+function gallery(id) { return GALLERIES[id] || []; }
+function imgTag(p, w, cls = '', eager = false) {
+  return `<img class="${cls}" src="${photoURL(p.file, w)}" alt="${esc(p.cap)}" loading="${eager ? 'eager' : 'lazy'}" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()">`;
+}
+const creditChip = p => `<a class="credit" href="${photoPage(p.file)}" target="_blank" rel="noopener" title="Source and licence on Wikimedia Commons">Source: ${esc(creditFor(p))}</a>`;
+
+/* Reusable gallery: main image, arrows, caption, credit, counter, thumbnail strip. */
+function galleryHTML(d, w = 1000, opts = {}) {
+  const list = gallery(d.id); if (!list.length) return '';
+  const start = opts.start || 0, p = list[start];
+  return `<div class="gal ${opts.cls || ''}" data-gal="${d.id}" data-i="${start}" data-w="${w}">
+    <div class="gal-main">
+      ${landscape(d.art, season, { w: 1200, h: 800, seed: 3 + start, label: 'Illustration of ' + d.name })}
+      ${imgTag(p, w, 'gal-img', !!opts.eager)}
+      <button class="gal-btn prev" type="button" aria-label="Previous photo">&#8249;</button>
+      <button class="gal-btn next" type="button" aria-label="Next photo">&#8250;</button>
+      <span class="gal-count">${start + 1} / ${list.length}</span>
+      <div class="gal-cap"><span class="gal-text">${esc(p.cap)}</span>${creditChip(p)}</div>
+    </div>
+    ${opts.strip === false ? '' : `<div class="gal-strip" role="list">${list.map((q, i) => `<button type="button" class="gal-th ${i === start ? 'on' : ''}" data-th="${i}" aria-label="Photo ${i + 1}: ${esc(q.cap)}"><img src="${photoURL(q.file, 240)}" alt="" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()"></button>`).join('')}</div>`}
+  </div>`;
+}
+function galGo(gal, i) {
+  const id = gal.dataset.gal, list = gallery(id), w = gal.dataset.w || 1000;
+  i = (i + list.length) % list.length; gal.dataset.i = i;
+  const p = list[i], main = $('.gal-main', gal), old = $('.gal-img', main);
+  if (old) old.remove();
+  const img = document.createElement('img'); img.className = 'gal-img'; img.alt = p.cap; img.decoding = 'async';
+  img.onload = () => img.classList.add('loaded'); img.onerror = () => img.remove(); img.src = photoURL(p.file, w);
+  main.insertBefore(img, $('.gal-btn.prev', main));
+  $('.gal-text', main).textContent = p.cap; $('.gal-cap .credit', main).outerHTML = creditChip(p);
+  $('.gal-count', main).textContent = `${i + 1} / ${list.length}`;
+  $$('.gal-th', gal).forEach((t, k) => t.classList.toggle('on', k === i));
+  const th = $$('.gal-th', gal)[i]; if (th) th.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduced ? 'auto' : 'smooth' });
+  const nxt = list[(i + 1) % list.length]; const pre = new Image(); pre.src = photoURL(nxt.file, w);
+}
+
+/* ============ hero ============ */
+function renderHero() {
+  const scene = $('#heroScene');
+  scene.innerHTML = landscape('granite', 'may', { w: 1600, h: 900, seed: 1, label: 'Illustration: granite walls and a waterfall under a spring sky' })
+    + landscape('saltflat', 'dec', { w: 1600, h: 900, seed: 2, label: 'Illustration: desert badlands and a salt flat under a starry dusk' });
+  const svgs = $$('svg', scene); svgs[0].dataset.s = 'may'; svgs[1].dataset.s = 'dec';
+  svgs[season === 'may' ? 0 : 1].classList.add('on');
+}
+function renderMosaic() {
+  const picks = ranked(season).filter(x => gallery(x.d.id).length).slice(0, 6);
+  $('#mosaic').innerHTML = picks.map((x, i) => { const p = gallery(x.d.id)[0]; return `<button type="button" class="tile" data-open="${x.d.id}" aria-label="Open ${esc(x.d.name)}">${imgTag(p, 700, '', i < 3)}<span class="tile-lab"><b>${esc(x.d.name)}</b><span>${fmt(x.total)}</span></span></button>`; }).join('');
+}
+
+/* ============ board ============ */
+function chips(d) {
+  const c = d.climate && d.climate[season];
+  return [
+    `<span class="chip mode ${d.mode}">${d.mode === 'drive' ? 'Drive from Dallas' : 'Fly to ' + esc(d.hub.code)}</span>`,
+    `<span class="chip">${esc(d.trip.days)}</span>`,
+    c ? `<span class="chip">☼ ${esc(c.day)} · ☾ ${esc(c.night)}</span>` : '',
+    `<span class="chip camp-${d.camping.type}">${campLabel[d.camping.type]}</span>`,
+    `<span class="chip">${d.surcharge ? '$' + d.surcharge + ' nonresident fee' : 'No nonresident fee'}</span>`
+  ].join('');
+}
+function renderBoard() {
+  const list = ranked(season);
+  compareIds = []; updateTray();
+  $('#board').innerHTML = list.map((x, i) => { const d = x.d, p = gallery(d.id)[0];
+    return `<article class="card enter" data-id="${d.id}" style="--delay:${i * 45}ms">
+      <button type="button" class="card-img" data-open="${d.id}" aria-label="Photos and details: ${esc(d.name)}">
+        <div class="frame">${landscape(d.art, season, { w: 800, h: 600, seed: 13 + i })}${p ? imgTag(p, 800, '', i < 3) : ''}</div>
+        ${p ? `<span class="chip-credit">Source: ${esc(creditFor(p))}</span>` : ''}
+        <span class="badge"><b>${fmt(x.total)}</b><small>/10</small></span>
+        <span class="rank">${String(i + 1).padStart(2, '0')}</span>
+      </button>
+      <div class="card-body">
+        <h3>${esc(d.name)}</h3><p class="place">${esc(d.place)}</p>
+        <div class="chips">${chips(d)}</div>
+        <p class="tag">${esc(d.tagline)}</p>
+        <div class="actions"><button type="button" class="btn small" data-open="${d.id}">${gallery(d.id).length} photos &amp; details</button><button type="button" class="cmp" aria-pressed="false" data-cmp="${d.id}">Compare</button></div>
+      </div>
+    </article>`; }).join('');
+  requestAnimationFrame(() => $$('.card.enter').forEach(c => c.classList.remove('enter')));
+  $('#cutList').innerHTML = CUT[season].map(c => `<div><b>${esc(c.name)}</b> — ${esc(c.why)} <a href="${c.url}" target="_blank" rel="noopener">source</a></div>`).join('');
+  $('#detail').innerHTML = ''; openId = null; $('#compareOut').innerHTML = '';
+}
+
+/* ============ detail ============ */
+function miniScores(sc) {
+  return `<div class="mini">${WEIGHTS.map(w => `<div title="${esc(w.label)} (weight ${w.w}%)"><b>${sc[w.key]}</b><span>${esc(w.label.split(' ')[0].replace('/', ''))}</span><i style="width:${sc[w.key] * 10}%"></i></div>`).join('')}</div>`;
+}
+function openDetail(id) {
+  const d = byId(id); if (!d || !d.seasons.includes(season)) return;
+  openId = id; const sc = d.scores[season], c = d.climate && d.climate[season], pair = d.pair ? byId(d.pair) : null;
+  $$('.card').forEach(el => el.classList.toggle('active', el.dataset.id === id));
+  $('#detail').innerHTML = `<div class="detail" id="detail-panel">
+    <div class="detail-head">
+      <div><span class="eyebrow">${esc(SEASONS[season].label)} · ${d.mode === 'drive' ? 'drive from Dallas' : 'fly to ' + esc(d.hub.code)}</span><h3>${esc(d.name)}</h3><p class="place">${esc(d.place)}</p></div>
+      <div class="detail-score"><b>${fmt(score(d, season))}</b><small>weighted /10</small></div>
+      <button type="button" class="close" id="closeDetail" aria-label="Close details">×</button>
+    </div>
+    <div class="detail-grid">
+      <div>${galleryHTML(d, 1200, { eager: true })}</div>
+      <div class="detail-data">
+        <div class="facts">
+          ${c ? `<div class="fact"><span>Days</span><b>${esc(c.day)}</b></div><div class="fact"><span>Nights</span><b>${esc(c.night)}</b></div>` : ''}
+          <div class="fact"><span>Trip length</span><b>${esc(d.trip.days)}</b></div>
+          <div class="fact"><span>Camping nights</span><b>${esc(d.trip.nights)}</b></div>
+          <div class="fact"><span>Khush flies</span><b>${esc(d.hub.yeg)}</b></div>
+          <div class="fact"><span>Dallas</span><b>${esc(d.hub.dfw)}</b></div>
+          <div class="fact wide"><span>Driving</span><b>${esc(d.hub.drive)}</b></div>
+          <div class="fact"><span>Camping</span><b>${campLabel[d.camping.type]} · booking ${esc(d.camping.reservation)}</b></div>
+          <div class="fact"><span>Nonresident fee (2026 rule)</span><b>${d.surcharge ? '$' + d.surcharge + ' for Khush, or the $250 pass' : 'None'}</b></div>
+        </div>
+        ${miniScores(sc)}
+        <h4>Weather in ${esc(SEASONS[season].label)}</h4><p>${esc(d.weather[season])}</p>
+        <h4>Rules and access</h4>
+        <ul class="rules">${d.access.map(a => `<li><span class="status ${a.status}">${statusLabel(a.status)}</span>${esc(a.text)} <a href="${a.url}" target="_blank" rel="noopener">source</a></li>`).join('')}</ul>
+        <h4>Watch out for</h4><p>${esc(d.drawback)}</p>
+        <h4>Camping</h4><p>${esc(d.camping.detail)}</p><p><span class="muted">If the tent plan fails:</span> ${esc(d.camping.backup)}</p>
+        <h4>Compared with Alberta</h4><p><span class="muted">Already at home:</span> ${esc(d.novelty.has)}<br><span class="muted">Not at home:</span> ${esc(d.novelty.lacks)}</p>
+        ${pair ? `<p class="small">Same place, another way: <a href="#" data-open="${pair.id}">${esc(pair.name)}</a> — ${fmt(score(pair, season))}.</p>` : ''}
+      </div>
+    </div>
+  </div>`;
+  $('#detail-panel').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+}
+function closeDetail() { $('#detail').innerHTML = ''; openId = null; $$('.card.active').forEach(c => c.classList.remove('active')); $('#board').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); }
+
+/* ============ compare ============ */
+function updateTray() {
+  const tray = $('#tray'); tray.classList.toggle('show', compareIds.length > 0);
+  $('#trayChips').innerHTML = compareIds.map(id => `<span class="pill">${esc(byId(id).name)}</span>`).join('');
+  $('#trayGo').disabled = compareIds.length < 2;
+  $('#trayGo').textContent = compareIds.length < 2 ? 'Pick one more to compare' : `Compare ${compareIds.length}`;
+  $$('[data-cmp]').forEach(b => b.setAttribute('aria-pressed', String(compareIds.includes(b.dataset.cmp))));
+}
+function renderCompare() {
+  const ds = compareIds.map(byId);
+  const row = (lab, fn, cls = '') => `<tr class="${cls}"><th scope="row">${lab}</th>${ds.map(d => `<td>${fn(d)}</td>`).join('')}</tr>`;
+  $('#compareOut').innerHTML = `<div class="compare" id="comparePanel"><div class="compare-head"><h3>Side by side</h3><button type="button" class="btn ghost small" id="compareClose">Close</button></div>
+  <div class="compare-scroll"><table>
+    <thead><tr><th></th>${ds.map(d => `<th scope="col">${esc(d.name)}<small>${esc(d.place)}</small></th>`).join('')}</tr></thead>
+    <tbody>
+      ${row('Photos', d => galleryHTML(d, 800, { cls: 'compact', strip: false, eager: true }), 'photo-row')}
+      ${row('Weighted score', d => `<b class="big">${fmt(score(d, season))}</b>`)}
+      ${WEIGHTS.map(w => row(`${w.label} <small>${w.w}%</small>`, d => `<span class="bar"><i style="width:${d.scores[season][w.key] * 10}%"></i></span>${d.scores[season][w.key]}`)).join('')}
+      ${row('Weather', d => { const c = d.climate && d.climate[season]; return c ? `☼ ${esc(c.day)}<br>☾ ${esc(c.night)}` : esc(d.weather[season]); })}
+      ${row('Trip length', d => esc(d.trip.days) + '<br><small>' + esc(d.trip.nights) + '</small>')}
+      ${row('How you meet', d => d.mode === 'drive' ? 'Khush flies to Dallas; drive together' : 'Both fly to ' + esc(d.hub.code))}
+      ${row("Khush's flight", d => esc(d.hub.yeg))}
+      ${row('Dallas flight', d => esc(d.hub.dfw))}
+      ${row('Driving', d => esc(d.hub.drive))}
+      ${row('Camping', d => campLabel[d.camping.type] + '<br><small>booking: ' + esc(d.camping.reservation) + '</small>')}
+      ${row('Nonresident fee', d => d.surcharge ? '$' + d.surcharge + ' (or $250 pass)' : 'None')}
+      ${row('Watch out for', d => esc(d.drawback))}
+    </tbody></table></div></div>`;
+  $('#comparePanel').scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+}
+
 /* ============ colorado ============ */
 function renderColorado() {
-  const rows = COLORADO[season];
-  $('#coTable').innerHTML = rows.map(r => `<div class="co-row"><b>${esc(r.option)}</b><span class="v ${r.verdict === 'Skip' || r.verdict.startsWith('Not') ? 'skip' : r.verdict.startsWith('Best') ? 'best' : 'ok'}">${esc(r.verdict)}</span><span>${esc(r.why)}</span></div>`).join('');
-  $('#coIntro').innerHTML = season === 'may'
-    ? `<p>You asked about Denver, so here is the straight answer. Rocky Mountain National Park is magnificent and, for someone who can drive to Jasper on a long weekend, the least novel thing on this list. Late May adds timed-entry permits and a Trail Ridge Road that opened May 29 in 2026 and May 30 in 2025.</p><p>Colorado becomes worth the flight the moment Great Sand Dunes is the headline. Better still, it becomes worth the <em>drive</em>: from Dallas via Caprock Canyons and Taos you reach the dunes with bison, a gorge and Santa Fe on the way, no rental car and no park surcharge.</p>`
-    : `<p>In December, Colorado is a superb winter holiday and a poor camping trip. Trail Ridge Road is closed, Great Sand Dunes allows no car camping November through March, and tent nights in the Front Range routinely drop well below freezing.</p><p>If the trip changes shape — skiing, snowshoeing, hot springs, a mountain-town Christmas — Denver wins outright. As a camping-and-novel-landscape trip, it does not make the December shortlist.</p>`;
+  $('#coTable').innerHTML = COLORADO[season].map(r => `<div class="co-row"><b>${esc(r.option)}</b><ul>${r.facts.map(f => `<li>${esc(f)}</li>`).join('')}</ul></div>`).join('');
 }
 
 /* ============ routes ============ */
-function routeSVG(d) {
-  const legs = d.route.legs, W = 560, H = 90, pad = 24, step = (W - pad * 2) / (legs.length - 1);
-  let s = `<line x1="${pad}" y1="46" x2="${W - pad}" y2="46" stroke="var(--ink-3)" stroke-width="1.5" stroke-dasharray="${d.mode === 'drive' ? '6 5' : '0'}"/>`;
-  legs.forEach((l, i) => {
-    const x = pad + step * i, n = l.nights || 0;
-    s += `<circle cx="${x}" cy="46" r="${n ? 9 : 5}" fill="${n ? 'var(--accent)' : 'var(--ink-3)'}"/>`;
-    if (n) s += `<text x="${x}" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="var(--accent-ink)">${n}</text>`;
-    s += `<text x="${x}" y="${i % 2 ? 78 : 22}" text-anchor="middle" font-size="11" fill="var(--ink-2)">${esc(l.at.split(' (')[0].split(' / ')[0].split(':')[0].slice(0, 22))}</text>`;
-  });
-  return `<svg viewBox="0 0 ${W} ${H}" aria-hidden="true">${s}</svg>`;
-}
 function renderRoutes() {
-  const list = ranked(season);
-  const shown = new Set(); const picks = [];
+  const list = ranked(season), shown = new Set(), picks = [];
   for (const x of list) { if (picks.length >= 6) break; if (x.d.pair && shown.has(x.d.pair)) continue; picks.push(x.d); shown.add(x.d.id); }
   for (const x of list) if (x.d.mode === 'drive' && !shown.has(x.d.id)) { picks.push(x.d); shown.add(x.d.id); }
-  $('#routes').innerHTML = picks.map(d => `<article class="route reveal">
-    <h3>${esc(d.name)}</h3>
+  $('#routes').innerHTML = picks.map((d, i) => { const p = gallery(d.id)[Math.min(1, gallery(d.id).length - 1)]; return `<article class="route reveal">
+    <div class="route-photo">${landscape(d.art, season, { w: 800, h: 300, seed: 31 + i })}${p ? imgTag(p, 800) : ''}${p ? `<span class="chip-credit">Source: ${esc(creditFor(p))}</span>` : ''}<h3>${esc(d.name)}</h3></div>
     <div class="meta">${esc(d.route.title)} · ${esc(d.trip.days)} · ${esc(d.route.miles)} · driving: ${esc(d.route.drivingDays)}</div>
     ${routeSVG(d)}
     <ol>${d.route.legs.map(l => `<li><span><b>${esc(l.at)}</b>${l.nights ? `<span class="n">${l.nights} night${l.nights > 1 ? 's' : ''}</span>` : ''}<span class="note">${esc(l.note)}</span></span></li>`).join('')}</ol>
-    <p class="small muted" style="margin-top:10px">Drive legs: ${esc(d.hub.drive)}. All times approximate — verify with live routing.</p>
-  </article>`).join('');
+    <p class="small muted">Legs: ${esc(d.hub.drive)}. Approximate — verify with live routing.</p>
+  </article>`; }).join('');
 }
 
 /* ============ logistics ============ */
 function renderLogistics() {
-  $('#flightTable').innerHTML = FLIGHTS.yeg.map(f => {
-    const applies = f.season === 'both' || f.season.startsWith(season);
-    return `<div class="flight-row ${applies ? '' : 'dim'}"><b>${f.code}</b><span>${esc(f.city)}</span><span class="via">${esc(f.via)}${f.season.endsWith('?') ? ' — verify' : ''}</span></div>`;
-  }).join('');
-  const list = ranked(season);
+  $('#flightTable').innerHTML = FLIGHTS.yeg.map(f => { const applies = f.season === 'both' || f.season.startsWith(season);
+    return `<div class="flight-row ${applies ? '' : 'dim'}"><b>${f.code}</b><span>${esc(f.city)}</span><span class="via">${esc(f.via)}${f.season.endsWith('?') ? ' — verify' : ''}</span></div>`; }).join('');
   $('#burden').innerHTML = `<div class="burden-row h"><span>Destination</span><span>Khush's flight</span><span>Drive legs</span><span>Driving days</span></div>` +
-    list.map(x => `<div class="burden-row"><b>${esc(x.d.name)}</b><span>${flightBurden(x.d)}${x.d.mode === 'drive' ? ' (one stop)' : ''}</span><span class="${x.d.mode === 'drive' ? 'drv' : ''}">${driveHours(x.d)}</span><span>${esc(x.d.route.drivingDays)}</span></div>`).join('');
+    ranked(season).map(x => `<div class="burden-row"><b>${esc(x.d.name)}</b><span>${flightBurden(x.d)}</span><span class="${x.d.mode === 'drive' ? 'drv' : ''}">${driveHours(x.d)}</span><span>${esc(x.d.route.drivingDays)}</span></div>`).join('');
 }
 
 /* ============ camping ============ */
 function renderCamping() {
   $('#campGrid').innerHTML = ranked(season).map(x => { const d = x.d; return `<div class="camp">
     <h3>${esc(d.name)}</h3>
-    <div class="kind ${d.camping.type}"><i></i>${{ casual: 'Casual car camping', cold: 'Cold-weather camping', winter: 'True winter camping' }[d.camping.type]} — ${esc(d.camping.typeLabel)}</div>
+    <div class="kind ${d.camping.type}"><i></i>${campLabel[d.camping.type]} — ${esc(d.camping.typeLabel)}</div>
     <p>${esc(d.camping.detail)}</p>
-    <p class="res"><b>Booking difficulty:</b> ${esc(d.camping.reservation)} · <b>Backup:</b> ${esc(d.camping.backup)}</p>
-  </div>`; }).join('');
+    <p class="res"><b>Booking:</b> ${esc(d.camping.reservation)} · <b>Backup:</b> ${esc(d.camping.backup)}</p></div>`; }).join('');
 }
 
-/* ============ ledger, final, sources ============ */
+/* ============ ledger, sources ============ */
 function renderLedger() {
   $('#ledger').innerHTML = LEDGER.map(l => `<div class="ledger-row"><span class="status ${l.status}">${statusLabel(l.status)}</span><span>${esc(l.item)}</span>${l.url ? `<a href="${l.url}" target="_blank" rel="noopener">official source</a>` : '<span></span>'}</div>`).join('');
-}
-function renderFinal() {
-  const v = VERDICT[season], cats = CATEGORIES[season];
-  $('#final').innerHTML = `<div class="final-grid">
-    <div class="reveal"><h3>${esc(v.headline)}</h3><p>${esc(v.body)}</p>
-      <div class="alts">${v.alternates.map(a => `<div><b>${esc(byId(a.id).name)}</b><span>${esc(a.why)}</span></div>`).join('')}</div></div>
-    <div class="reveal"><div class="alts" style="margin-top:0">${cats.map(c => `<div><span>${esc(c.label)}</span><b>${c.id ? esc(byId(c.id).name) : '—'}${c.note ? `<br><span class="small muted">${esc(c.note)}</span>` : ''}</b></div>`).join('')}</div>
-      <p class="ask">Okay, Khush — which one are we booking?</p></div>
-  </div>`;
 }
 function renderSources() {
   $('#weights').innerHTML = WEIGHTS.map(w => `<div><b>${w.w}%</b>${esc(w.label)}<br><span class="small">${esc(w.why)}</span></div>`).join('');
@@ -1598,29 +1805,31 @@ function renderSources() {
     { label: 'FlightConnections — nonstop routes from Edmonton (Aug 2026)', url: 'https://www.flightconnections.com/flights-from-edmonton-yeg' },
     { label: 'Simple Flying — WestJet US network Aug 2026–Jun 2027', url: 'https://simpleflying.com/westjet-us-route-cuts/' }
   ];
-  const seen = new Set(), seenPhoto = new Set();
-  const photoList = DESTINATIONS.filter(d => d.photo && !seenPhoto.has(d.photo.file) && seenPhoto.add(d.photo.file)).map(d => `<a href="${photoPage(d.photo.file)}" target="_blank" rel="noopener">${esc(d.name)} — ${esc(d.photo.credit)}</a>`).join('');
-  $('#srcList').innerHTML = `<div><b>Photographs</b><span class="small muted" style="display:block;margin-bottom:4px">All from Wikimedia Commons under public-domain or Creative Commons terms; each link is the file page with full attribution. Landscape illustrations are original.</span>${photoList}</div><div><b>General</b>${general.map(s => `<a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join('')}</div>` +
-    DESTINATIONS.map(d => `<div><b>${esc(d.name)}</b>${d.sources.filter(s => { if (seen.has(s.url)) return false; seen.add(s.url); return true; }).map(s => `<a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join('')}</div>`).join('');
+  const seen = new Set();
+  const photoGroups = Object.keys(GALLERIES).filter(k => byId(k) && !k.startsWith('bigbend-') && !k.startsWith('whitesands-') && k !== 'b2-desert-trio').map(k => { const d = byId(k) || { name: k };
+    return `<div><b>${esc(d.name)} — ${GALLERIES[k].length} photos</b>${GALLERIES[k].map(p => `<a href="${photoPage(p.file)}" target="_blank" rel="noopener">${esc(p.cap)} · ${esc(creditFor(p))}</a>`).join('')}</div>`; }).join('');
+  $('#srcList').innerHTML = `<div><b>General</b>${general.map(s => `<a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join('')}</div>` +
+    DESTINATIONS.map(d => `<div><b>${esc(d.name)}</b>${d.sources.filter(s => !seen.has(s.url) && seen.add(s.url)).map(s => `<a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join('')}</div>`).join('');
+  $('#photoCredits').innerHTML = photoGroups;
   $('#boltOns').innerHTML = BOLT_ONS.map(b => `<div><b>${esc(b.name)}</b> (${esc(b.hours)}) — ${esc(b.why)} <a href="${b.url}" target="_blank" rel="noopener">site</a></div>`).join('');
 }
 
 /* ============ dial thumb ============ */
 function sizeDials() {
-  $$('.dial').forEach(d => {
-    const btn = $$('button', d).find(b => b.dataset.season === season); const th = $('.thumb', d); if (!btn || !th) return;
-    th.style.width = btn.offsetWidth + 'px'; th.style.transform = `translateX(${btn.offsetLeft - 3}px)`;
-  });
+  $$('.dial').forEach(d => { const btn = $$('button', d).find(b => b.dataset.season === season); const th = $('.thumb', d); if (!btn || !th) return;
+    th.style.width = btn.offsetWidth + 'px'; th.style.transform = `translateX(${btn.offsetLeft - 3}px)`; });
 }
 addEventListener('resize', () => { sizeDials(); if (axisMode() !== lastAxisMode) renderAxis(); });
 
 /* ============ season switch ============ */
 function renderSeason() {
-  renderVerdict(); renderRanking(); renderAxis(); renderColorado(); renderRoutes(); renderLogistics(); renderCamping(); renderFinal();
+  renderMosaic(); renderBoard(); renderAxis(); renderColorado(); renderRoutes(); renderLogistics(); renderCamping();
   $$('.season-label').forEach(e => e.textContent = SEASONS[season].label);
   $$('.season-window').forEach(e => e.textContent = SEASONS[season].window);
   $$('.season-mood').forEach(e => e.textContent = SEASONS[season].mood);
-  observeReveals(); observeBars();
+  $$('.count-label').forEach(e => e.textContent = ranked(season).length);
+  $$('.photo-count').forEach(e => e.textContent = ranked(season).reduce((t, x) => t + gallery(x.d.id).length, 0));
+  observeReveals();
 }
 function setSeason(s, fromUser) {
   if (s === season && fromUser) return;
@@ -1633,44 +1842,36 @@ function setSeason(s, fromUser) {
   else renderSeason();
   try { history.replaceState(null, '', '#' + s); } catch (e) { /* ignore */ }
 }
-
-/* ============ motion observers ============ */
-let ro, bo;
+let ro;
 function observeReveals() {
   if (ro) ro.disconnect();
   if (reduced) { $$('.reveal').forEach(e => e.classList.add('in')); return; }
   ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } }), { threshold: .12 });
   $$('.reveal').forEach(e => ro.observe(e));
 }
-function observeBars() {
-  if (bo) bo.disconnect();
-  const fill = el => $$('.bar i', el).forEach(i => i.style.width = i.dataset.w + '%');
-  if (reduced) { $$('[data-animate]').forEach(fill); return; }
-  bo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { fill(e.target); bo.unobserve(e.target); } }), { threshold: .3 });
-  $$('[data-animate]').forEach(e => bo.observe(e));
-}
 
 /* ============ events ============ */
 document.addEventListener('click', e => {
   const dial = e.target.closest('.dial button'); if (dial) { setSeason(dial.dataset.season, true); return; }
+  const gb = e.target.closest('.gal-btn'); if (gb) { const gal = gb.closest('.gal'); galGo(gal, (+gal.dataset.i) + (gb.classList.contains('next') ? 1 : -1)); return; }
+  const th = e.target.closest('.gal-th'); if (th) { galGo(th.closest('.gal'), +th.dataset.th); return; }
   const cmp = e.target.closest('[data-cmp]');
-  if (cmp) {
-    e.preventDefault(); e.stopPropagation();
-    const id = cmp.dataset.cmp;
-    if (compareIds.includes(id)) compareIds = compareIds.filter(x => x !== id);
-    else if (compareIds.length < 3) compareIds.push(id);
-    updateTray(); return;
-  }
-  const head = e.target.closest('.rank-head'); if (head) { toggleRow(head.parentElement); return; }
-  const jump = e.target.closest('[data-jump]');
-  if (jump) { e.preventDefault(); const row = $(`.rank-row[data-id="${jump.dataset.jump}"]`); if (row) { toggleRow(row, true); row.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); } return; }
+  if (cmp) { e.preventDefault(); const id = cmp.dataset.cmp; if (compareIds.includes(id)) compareIds = compareIds.filter(x => x !== id); else if (compareIds.length < 3) compareIds.push(id); updateTray(); return; }
+  const op = e.target.closest('[data-open]'); if (op) { e.preventDefault(); openDetail(op.dataset.open); return; }
+  if (e.target.closest('#closeDetail')) { closeDetail(); return; }
   if (e.target.closest('#trayGo')) { if (compareIds.length >= 2) renderCompare(); return; }
   if (e.target.closest('#trayClear')) { compareIds = []; updateTray(); $('#compareOut').innerHTML = ''; return; }
+  if (e.target.closest('#compareClose')) { $('#compareOut').innerHTML = ''; return; }
 });
 document.addEventListener('keydown', e => {
-  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-cmp]')) { e.preventDefault(); e.target.click(); }
   if (e.target.matches('.dial button') && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) { e.preventDefault(); setSeason(season === 'may' ? 'dec' : 'may', true); $$('.dial button').find(b => b.dataset.season === season)?.focus(); }
+  if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && e.target.closest('.gal')) { const gal = e.target.closest('.gal'); galGo(gal, (+gal.dataset.i) + (e.key === 'ArrowRight' ? 1 : -1)); }
+  if (e.key === 'Escape' && openId) closeDetail();
 });
+/* swipe on galleries */
+let tx = null;
+document.addEventListener('touchstart', e => { const g = e.target.closest('.gal-main'); tx = g ? { x: e.touches[0].clientX, gal: g.closest('.gal') } : null; }, { passive: true });
+document.addEventListener('touchend', e => { if (!tx) return; const dx = e.changedTouches[0].clientX - tx.x; if (Math.abs(dx) > 40) galGo(tx.gal, (+tx.gal.dataset.i) + (dx < 0 ? 1 : -1)); tx = null; }, { passive: true });
 
 /* ============ boot ============ */
 (function init() {

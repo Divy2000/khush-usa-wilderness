@@ -1,6 +1,6 @@
 # Khush, pick your American wilderness — May vs December 2027
 
-A single-file interactive site that compares US camping-and-landscape trips for Khush (Edmonton, YEG) and his Dallas friend, scores them for May 15–31, 2027 and December 2027, and compares flying to a rendezvous airport (Mode A) with Khush flying to Dallas and road-tripping in the HR-V (Mode B).
+A single-file photo-and-facts comparison board for US camping-and-landscape trips for Khush (Edmonton, YEG) and his Dallas friend: May 15–31, 2027 vs December 2027, flying to a rendezvous airport vs Khush flying to Dallas and road-tripping in the HR-V. It scores every option on the same seven weights and shows the data; it makes no recommendation.
 
 `index.html` is the whole site: HTML, CSS, data and logic inlined, no build step, no framework, no API keys. The only external request is Google Fonts (Fraunces and Alegreya Sans); if fonts are blocked the page falls back to system serif/sans.
 
@@ -37,14 +37,16 @@ To add a destination, copy an existing object, give it a unique `id`, set `mode`
 
 ## Photographs and illustrations
 
-Each destination carries a `photo` record — `{ file, caption, credit }` — pointing at a file on Wikimedia Commons (public domain or Creative Commons). The page requests it through `Special:FilePath/<file>?width=…`, so the URL is stable and Commons serves a resized copy. Photos were chosen to match the travel window where Commons had them: Zion in May, Yosemite Falls photographed May 30, bison calves in Lamar Valley, Bryce after snow, Zabriskie Point in winter light, the Everglades in the dry season, Padre Island in November. Every caption links to the file page, which carries the full attribution and licence.
+`GALLERIES` (in the `photos.js` block of `index.html`) holds 10–16 photographs per destination — exact Wikimedia Commons filenames, all public domain (US National Park Service uploads) or Creative Commons. The first entry of each gallery is the default image in comparisons. Images load through `Special:FilePath/<file>?width=…`; each carries a "Source" chip linking to its Commons file page with full attribution, and the Sources section lists every file. Underneath every image sits a procedurally drawn SVG keyed to the destination's `art` type, so a failed load leaves the illustration rather than a broken image.
 
-Underneath every photo sits a procedurally drawn SVG landscape keyed to the destination's `art` type and recoloured by the season palette. If a photo ever fails to load, the `onerror` handler removes the `<img>` and the illustration simply remains — no broken-image icons. To swap a photo, change `file` to another exact Commons filename and update `caption`/`credit`.
+Galleries are season-matched where Commons had them: Zion in May, Yosemite Falls photographed May 30, bison calves in Lamar Valley, snow on the Sangre de Cristos above the dunes, Bryce after snow, Zabriskie Point in winter light, Sierra Blanca snow-capped over White Sands, the Everglades in the dry season, Padre Island in November.
+
+Note for previewing: the Claude app's in-chat preview blocks external images, so photos only appear on the deployed site or when the file is opened in a normal browser.
 
 ## Verification done before publishing
 
 - Rendered and exercised with headless Chromium at 390×844 and 1366×860: season switch, row expansion, keyboard operation (arrow keys on the dial, Enter/Space on Compare), 2–3-way comparison, no horizontal overflow, `prefers-reduced-motion` honored.
-- 51 unique official/source URLs plus 14 Wikimedia Commons photo pages, all taken from pages retrieved during research on September 6, 2026 (NPS, Recreation.gov, Yellowstone National Park Lodges, TPWD, USFWS, New Mexico State Parks, Big Bend Sentinel, FlightConnections, Simple Flying, American Airlines).
+- 51 unique official/source URLs plus ~180 Wikimedia Commons photo pages, all taken from pages retrieved during research on September 6, 2026 (NPS, Recreation.gov, Yellowstone National Park Lodges, TPWD, USFWS, New Mexico State Parks, Big Bend Sentinel, FlightConnections, Simple Flying, American Airlines).
 
 ## What still needs a human before booking
 
