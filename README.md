@@ -35,14 +35,16 @@ Change a score or a weight and every ranking, bar, axis and table re-computes on
 
 To add a destination, copy an existing object, give it a unique `id`, set `mode` to `fly` or `drive`, list the `seasons` it competes in, and add a `scores.may` and/or `scores.dec` block. Optional `pair` links a fly-in and a drive-from-Dallas version of the same place.
 
-## Illustrations, not photographs
+## Photographs and illustrations
 
-Every landscape on the site is a procedurally drawn SVG keyed to the destination's `art` type (`canyon`, `granite`, `coast`, `geyser`, `dunes`, `saltflat`, `desertmtn`, `volcano`, `strata`, `gypsum`, `beach`, `wetland`) and recolored by the season palette. This guarantees no broken images and no licensing questions. If you want photography later, add a `photo: { src, alt, credit }` field to a destination and render it in `renderVerdict()` with the SVG as the `onerror` fallback; NPS-produced photos are public domain and Unsplash images are free under the Unsplash license.
+Each destination carries a `photo` record — `{ file, caption, credit }` — pointing at a file on Wikimedia Commons (public domain or Creative Commons). The page requests it through `Special:FilePath/<file>?width=…`, so the URL is stable and Commons serves a resized copy. Photos were chosen to match the travel window where Commons had them: Zion in May, Yosemite Falls photographed May 30, bison calves in Lamar Valley, Bryce after snow, Zabriskie Point in winter light, the Everglades in the dry season, Padre Island in November. Every caption links to the file page, which carries the full attribution and licence.
+
+Underneath every photo sits a procedurally drawn SVG landscape keyed to the destination's `art` type and recoloured by the season palette. If a photo ever fails to load, the `onerror` handler removes the `<img>` and the illustration simply remains — no broken-image icons. To swap a photo, change `file` to another exact Commons filename and update `caption`/`credit`.
 
 ## Verification done before publishing
 
 - Rendered and exercised with headless Chromium at 390×844 and 1366×860: season switch, row expansion, keyboard operation (arrow keys on the dial, Enter/Space on Compare), 2–3-way comparison, no horizontal overflow, `prefers-reduced-motion` honored.
-- 51 unique official/source URLs, all taken from pages retrieved during research on September 6, 2026 (NPS, Recreation.gov, Yellowstone National Park Lodges, TPWD, USFWS, New Mexico State Parks, Big Bend Sentinel, FlightConnections, Simple Flying, American Airlines).
+- 51 unique official/source URLs plus 14 Wikimedia Commons photo pages, all taken from pages retrieved during research on September 6, 2026 (NPS, Recreation.gov, Yellowstone National Park Lodges, TPWD, USFWS, New Mexico State Parks, Big Bend Sentinel, FlightConnections, Simple Flying, American Airlines).
 
 ## What still needs a human before booking
 

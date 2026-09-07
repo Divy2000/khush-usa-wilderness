@@ -20,18 +20,20 @@
   --ease: cubic-bezier(.22,.8,.26,1);
 }
 html[data-season="may"] {
-  --bg: #ECF0EB; --bg-2: #DDE5DC; --card: #F7F9F5; --line: rgba(20,35,29,.16);
-  --ink: #14231D; --ink-2: #3F5249; --ink-3: #6A7C73;
-  --accent: #2C6F8E; --accent-ink: #FFFFFF; --accent-2: #6C8A3A; --rock: #B4653A; --granite: #9AA4AB;
-  --sky-a: #BFD6E4; --sky-b: #E7EEE6; --far: #8FA6B5; --mid: #6E8B78; --near: #3E5A4C; --water: #4E8FB0; --snow: #FFFFFF;
-  --status-ok: #3E7A4A; --status-rule: #2C6F8E; --status-typ: #8A6A2E; --status-tbd: #A0522D;
+  --bg: #F4F6F0; --bg-2: #D9E7EC; --card: #FFFFFF; --line: rgba(16,35,27,.16);
+  --ink: #10231B; --ink-2: #3A4F46; --ink-3: #6B7F76;
+  --accent: #0F7A9C; --accent-ink: #FFFFFF; --accent-2: #5C8F2B; --rock: #C25A2C; --granite: #8E9CA8;
+  --sky-a: #5E9DCB; --sky-b: #E6F0F5; --far: #93ADC2; --mid: #4F8A5A; --near: #244634; --water: #2596C2; --snow: #FFFFFF; --sun: #F6C46A;
+  --display-weight: 500;
+  --status-ok: #2F7A45; --status-rule: #0F7A9C; --status-typ: #8A6A2E; --status-tbd: #B24A2E;
   color-scheme: light;
 }
 html[data-season="dec"] {
   --bg: #1B1622; --bg-2: #241D2D; --card: #26202F; --line: rgba(241,231,214,.16);
   --ink: #F1E7D6; --ink-2: #CDBFA9; --ink-3: #9C8E7D;
   --accent: #D9A441; --accent-ink: #1B1622; --accent-2: #8B6A9C; --rock: #B24A2E; --granite: #6F6577;
-  --sky-a: #241B3A; --sky-b: #6A3E52; --far: #4A3452; --mid: #7A3E36; --near: #2A1F2B; --water: #E9D9C0; --snow: #F1E7D6;
+  --sky-a: #241B3A; --sky-b: #6A3E52; --far: #4A3452; --mid: #7A3E36; --near: #2A1F2B; --water: #E9D9C0; --snow: #F1E7D6; --sun: #EAD7B8;
+  --display-weight: 400;
   --status-ok: #7BC67E; --status-rule: #E4B95E; --status-typ: #C9A27A; --status-tbd: #F08A6A;
   color-scheme: dark;
 }
@@ -98,7 +100,7 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
 .hero-copy > * { max-width: 52%; }
 .hero .kicker { font-size: 1rem; color: var(--ink-2); margin: 0 0 18px; }
 .hero h1 {
-  font-size: clamp(44px, 7.2vw, 108px); font-weight: 400; line-height: .94; letter-spacing: -.025em; max-width: 11ch;
+  font-size: clamp(44px, 7.2vw, 108px); font-weight: var(--display-weight); line-height: .94; letter-spacing: -.025em; max-width: 11ch;
   font-variation-settings: "SOFT" 60, "WONK" 1, "opsz" 144;
 }
 .hero h1 .w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .06em; }
@@ -123,13 +125,22 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
 }
 
 /* ============ VERDICT ============ */
-.verdict { background: var(--bg-2); transition: background-color var(--t) var(--ease); }
+.verdict { background: var(--bg-2); transition: background-color var(--t) var(--ease); border-top: 4px solid var(--accent); }
 .verdict-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+.verdict-grid > * { min-width: 0; }
 .verdict-copy .who { color: var(--ink-2); margin-bottom: 14px; font-size: 1.05rem; }
-.verdict-copy h2 { font-size: clamp(40px, 5.4vw, 74px); font-variation-settings: "SOFT" 40, "opsz" 96; margin-bottom: 18px; }
+.verdict-copy h2 { font-size: clamp(40px, 5.4vw, 74px); font-weight: var(--display-weight); font-variation-settings: "SOFT" 40, "opsz" 96; margin-bottom: 18px; }
 .verdict-copy .place { color: var(--ink-2); font-size: 1.1rem; margin-bottom: 22px; }
-.verdict-art { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 3; background: var(--bg); box-shadow: 0 1px 0 var(--line); }
-.verdict-art svg { width: 100%; height: 100%; display: block; }
+.verdict-art { margin: 0; }
+.photo { position: relative; margin: 0; }
+.photo .frame { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 3; background: var(--bg); box-shadow: 0 1px 0 var(--line), 0 18px 40px -24px rgba(0,0,0,.45); }
+.photo .frame svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.photo .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity .8s var(--ease); }
+.photo .frame img.loaded { opacity: 1; }
+.photo figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; font-size: .84rem; color: var(--ink-2); margin-top: 8px; min-width: 0; }
+.photo figcaption a { color: var(--ink-3); }
+.photo figcaption span { flex: 1 1 220px; }
+.photo.wide .frame { aspect-ratio: 16 / 9; }
 .verdict-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 26px 0 8px; }
 .fact { border-top: 1px solid var(--ink); padding-top: 10px; }
 .fact b { display: block; font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); font-weight: 500; line-height: 1; }
@@ -153,13 +164,18 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
 .rank-list { border-top: 1px solid var(--ink); }
 .rank-row { border-bottom: 1px solid var(--line); transition: opacity .4s var(--ease), transform .4s var(--ease); }
 .rank-row.enter { opacity: 0; transform: translateY(8px); }
-.rank-head { display: grid; grid-template-columns: 64px minmax(0, 5fr) minmax(0, 4fr) 92px 120px; gap: 18px; align-items: center; padding: 20px 0; cursor: pointer; width: 100%; background: none; border: 0; text-align: left; }
+.rank-head { display: grid; grid-template-columns: 56px 108px minmax(0, 5fr) minmax(0, 4fr) 92px 120px; gap: 18px; align-items: center; padding: 20px 0; cursor: pointer; width: 100%; background: none; border: 0; text-align: left; }
+.rank-head .thumb { display: block; width: 108px; aspect-ratio: 4 / 3; border-radius: 4px; overflow: hidden; position: relative; background: var(--bg-2); }
+.rank-head .thumb svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.rank-head .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s; }
+.rank-head .thumb img.loaded { opacity: 1; }
+.rank-body .photo { margin-bottom: 22px; max-width: 760px; }
 .rank-head:hover .name { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 .rank-head .pos { font-family: var(--font-display); font-size: clamp(28px, 3vw, 40px); font-weight: 400; color: var(--ink-3); }
 .rank-head .name { font-family: var(--font-display); font-size: clamp(20px, 2vw, 27px); font-weight: 500; display: block; }
 .rank-head .place { color: var(--ink-2); font-size: .92rem; display: block; margin-top: 2px; }
 .rank-head .tag { color: var(--ink-2); font-size: .92rem; }
-.mode-pill { display: inline-block; font-size: .78rem; padding: 3px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-2); margin-top: 6px; }
+.mode-pill { display: inline-block; font-size: .78rem; padding: 3px 9px; border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent); border-radius: 999px; color: var(--accent); margin-top: 6px; }
 .mode-pill.drive { border-color: color-mix(in srgb, var(--rock) 60%, transparent); color: var(--rock); }
 .rank-head .score { font-family: var(--font-display); font-size: clamp(26px, 2.6vw, 36px); text-align: right; }
 .rank-head .score small { display: block; font-family: var(--font-body); font-size: .75rem; color: var(--ink-3); }
@@ -183,6 +199,7 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
 .status.tbd { background: color-mix(in srgb, var(--status-tbd) 18%, transparent); color: var(--status-tbd); }
 @media (max-width: 900px) {
   .rank-head { grid-template-columns: 44px minmax(0, 1fr) 64px; grid-template-areas: "pos name score" "pos tag cmp"; row-gap: 8px; }
+  .rank-head .thumb { display: none; }
   .rank-head .pos { grid-area: pos; align-self: start; font-size: 24px; }
   .rank-head .name-cell { grid-area: name; } .rank-head .tag { grid-area: tag; } .rank-head .score { grid-area: score; } .rank-head .cmp-cell { grid-area: cmp; justify-self: end; }
   .rank-body { padding-left: 0; } .rank-body .cols { grid-template-columns: 1fr; gap: 18px; }
@@ -282,7 +299,7 @@ section { padding: clamp(64px, 9vw, 120px) 0; }
 @media (max-width: 700px) { .ledger-row { grid-template-columns: 1fr; gap: 6px; } }
 
 /* ============ FINAL ============ */
-.final { background: var(--bg-2); transition: background-color var(--t) var(--ease); }
+.final { background: var(--bg-2); transition: background-color var(--t) var(--ease); border-top: 4px solid var(--accent); }
 .final-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 5vw, 72px); }
 .final h3 { font-size: clamp(30px, 3.4vw, 46px); margin-bottom: 14px; font-variation-settings: "SOFT" 40; }
 .final .alts { margin-top: 18px; border-top: 1px solid var(--line); }
@@ -490,7 +507,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   </div>
 </div>
 
-<footer><div class="wrap">Built for Khush and a Dallas friend, September 2026. Landscapes are illustrations, not photographs. Weather figures are approximate historical averages; every date and rule links to its official source above and should be re-checked before money changes hands.</div></footer>
+<footer><div class="wrap">Built for Khush and a Dallas friend, September 2026. Photographs come from Wikimedia Commons (credits in Sources); the coloured landscapes are illustrations. Weather figures are approximate historical averages; every date and rule links to its official source above and should be re-checked before money changes hands.</div></footer>
 
 <script>
 /* ===========================================================
@@ -544,6 +561,7 @@ const DESTINATIONS = [
   {
     id: 'zion-bryce', name: 'Zion + Bryce Canyon', place: 'Southern Utah', mode: 'fly', seasons: ['may'],
     tagline: 'Red sandstone canyons and a forest of hoodoos, two and a half hours from an airport you both reach nonstop.',
+    photo: { file: 'Along the Virgin, Zion NP 5-14 (24398251212).jpg', caption: 'Zion Canyon along the Virgin River in May — cottonwoods leafing out under the sandstone', credit: 'Wikimedia Commons / Flickr (CC)' },
     art: 'canyon',
     hub: { code: 'LAS', yeg: 'Nonstop (WestJet)', dfw: 'Nonstop (American)', drive: 'LAS → Zion 2.5 h; Zion → Bryce 1.75 h; Bryce → LAS 4 h' },
     trip: { days: '6–7 days', nights: '5–6 nights camping' },
@@ -576,6 +594,7 @@ const DESTINATIONS = [
   {
     id: 'yosemite', name: 'Yosemite', place: 'Sierra Nevada, California', mode: 'fly', seasons: ['may'],
     tagline: 'The single most spectacular valley on the list, at the exact moment its waterfalls peak.',
+    photo: { file: 'Yosemite Falls from trail, Yosemite NP, CA, US - Diliff.jpg', caption: 'Yosemite Falls at full spring flow, photographed May 30', credit: 'Diliff, CC BY-SA 3.0' },
     art: 'granite',
     hub: { code: 'SFO', yeg: 'Air Canada seasonal nonstop — confirm May 2027 dates; otherwise one stop', dfw: 'Nonstop (American)', drive: 'SFO → Yosemite Valley ≈ 4 h' },
     trip: { days: '5–6 days', nights: '4–5 nights camping' },
@@ -606,6 +625,7 @@ const DESTINATIONS = [
   {
     id: 'olympic', name: 'Olympic', place: 'Olympic Peninsula, Washington', mode: 'fly', seasons: ['may'],
     tagline: 'Rainforest, sea stacks and a glacier-capped range in one loop — and no nonresident surcharge.',
+    photo: { file: 'Hall of Mosses, Hoh Rainforest, Olympic National Park, Washington (2015).jpg', caption: 'Hall of Mosses, Hoh Rain Forest — green all year, greenest after the spring rains', credit: 'Wikimedia Commons, CC BY 4.0' },
     art: 'coast',
     hub: { code: 'SEA', yeg: 'Nonstop (Alaska)', dfw: 'Nonstop (American, Alaska)', drive: 'SEA → Port Angeles 2.5–3 h (ferry or via Tacoma); Hoh Rain Forest another 2 h' },
     trip: { days: '6–7 days', nights: '5–6 nights camping' },
@@ -637,6 +657,7 @@ const DESTINATIONS = [
   {
     id: 'yellowstone', name: 'Yellowstone + Grand Teton', place: 'Wyoming', mode: 'fly', seasons: ['may'],
     tagline: 'Geysers, bison calves and grizzlies with cubs — late May is the wildlife month, if you can stand the nights.',
+    photo: { file: 'Bison and calves in Lamar Valley (54663648481).jpg', caption: 'Bison with new calves in Lamar Valley — the late-May scene', credit: 'NPS / Yellowstone, public domain' },
     art: 'geyser',
     hub: { code: 'SLC / BZN', yeg: 'One stop to Bozeman or Jackson (via DEN); WestJet\'s Salt Lake nonstop is seasonal — confirm', dfw: 'Nonstop to SLC; Bozeman and Jackson nonstops are summer-seasonal — check May start dates', drive: 'SLC → West Yellowstone ≈ 5 h; BZN → West Yellowstone ≈ 1.75 h' },
     trip: { days: '7–8 days', nights: '6 nights, some cold' },
@@ -667,6 +688,7 @@ const DESTINATIONS = [
   {
     id: 'colorado-fly', name: 'Great Sand Dunes + Rocky Mountain', place: 'Colorado', mode: 'fly', seasons: ['may'],
     tagline: 'The Denver trip, fixed: give the dunes the headline and let Rocky Mountain be the encore.',
+    photo: { file: 'Fresh Snow on Star Dune and Crestone Peaks (46463888385).jpg', caption: 'Snow on the Crestone Peaks above Star Dune — the Sangre de Cristos stay white into late May', credit: 'NPS / Great Sand Dunes, public domain' },
     art: 'dunes',
     hub: { code: 'DEN', yeg: 'Nonstop (United)', dfw: 'Nonstop (American, Southwest, United)', drive: 'DEN → Great Sand Dunes ≈ 4 h; Dunes → Estes Park ≈ 4.5 h; Estes → DEN ≈ 1.5 h' },
     trip: { days: '6–7 days', nights: '5 nights' },
@@ -700,6 +722,7 @@ const DESTINATIONS = [
   {
     id: 'b3-panhandle-dunes', name: 'Panhandle canyons → Great Sand Dunes', place: 'Texas → New Mexico → Colorado, from Dallas', mode: 'drive', seasons: ['may'], pair: 'colorado-fly',
     tagline: 'Bison walking through your campsite, then the tallest dunes in North America — no rental car, one flight, zero park surcharges.',
+    photo: { file: 'Bison Caprock Canyons SP Texas 2023.jpg', caption: 'The Texas State Bison Herd at Caprock Canyons, the first night of the Panhandle route', credit: 'Wikimedia Commons (CC)' },
     art: 'dunes',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h; US preclearance in Edmonton', dfw: 'Home. Own car, own gear', drive: 'Dallas → Caprock Canyons 5 h → Taos 5 h → Great Sand Dunes 2.5 h → Santa Fe 3 h → Dallas 10 h' },
     trip: { days: '8–9 days', nights: '6–7 nights' },
@@ -733,6 +756,7 @@ const DESTINATIONS = [
   {
     id: 'deathvalley-jt', name: 'Death Valley + Joshua Tree', place: 'California desert', mode: 'fly', seasons: ['dec'],
     tagline: 'Salt flats below sea level, badlands, dunes and a forest of Joshua trees, in the one month the desert is kind.',
+    photo: { file: 'Zabriskie Point, Death Valley (5464224780).jpg', caption: 'Zabriskie Point in low winter light, Death Valley', credit: 'Wikimedia Commons / Flickr, CC BY-SA 2.0' },
     art: 'saltflat',
     hub: { code: 'LAS (or PSP)', yeg: 'Nonstop to Las Vegas year-round; Palm Springs nonstop in winter', dfw: 'Nonstop to both', drive: 'LAS → Furnace Creek 2 h; Furnace Creek → Joshua Tree 4 h; Joshua Tree → LAS 3.5 h or → PSP 1 h' },
     trip: { days: '6–7 days', nights: '5–6 nights' },
@@ -762,6 +786,7 @@ const DESTINATIONS = [
   {
     id: 'bigbend-fly', name: 'Big Bend', place: 'West Texas', mode: 'fly', seasons: ['dec'], pair: 'bigbend-drive',
     tagline: 'Chihuahuan Desert, a mountain island and the Rio Grande cutting through 1,500-foot canyon walls, under the darkest skies in Texas.',
+    photo: { file: 'Casa Grande from Basin Campground.JPG', caption: 'Casa Grande from the Chisos Basin Campground — the view from your tent', credit: 'Fredlyfish4, CC BY-SA 3.0' },
     art: 'desertmtn',
     hub: { code: 'MAF / ELP', yeg: 'Two stops to Midland, one stop to El Paso — the worst flight on the December list', dfw: 'Nonstop to both', drive: 'MAF → Panther Junction 3.5 h; ELP → 4.5 h' },
     trip: { days: '6–7 days', nights: '5 nights' },
@@ -791,6 +816,7 @@ const DESTINATIONS = [
   {
     id: 'maui', name: 'Maui: Haleakalā + the Hāna coast', place: 'Hawaiʻi', mode: 'fly', seasons: ['dec'],
     tagline: 'Camp on the rim of a 10,000-foot volcano, then at a black-sand beach — and you both get there nonstop in winter.',
+    photo: { file: 'Haleakalā Crater from Pohaku Palaha.jpg', caption: 'Haleakalā crater from Pōhaku Pālaha — Hōlua and Palikū wilderness sites are down there', credit: 'Wikimedia Commons (CC)' },
     art: 'volcano',
     hub: { code: 'OGG', yeg: 'Nonstop (WestJet, Nov–Apr) — 7.5 h', dfw: 'Nonstop (American, up to twice daily in peak season)', drive: 'OGG → Hosmer Grove 1.25 h; OGG → Hāna 2.5 h on the Hāna Highway' },
     trip: { days: '7–8 days', nights: '4–5 nights camping + 2 nights indoors' },
@@ -821,6 +847,7 @@ const DESTINATIONS = [
   {
     id: 'zion-winter', name: 'Zion + Bryce in snow', place: 'Southern Utah', mode: 'fly', seasons: ['dec'],
     tagline: 'The same red rock with white on top and a fraction of the people — but Bryce at 8,000 feet in December is winter camping, full stop.',
+    photo: { file: 'Bryce Canyon After Snow (Unsplash).jpg', caption: 'Bryce Canyon after a snowfall — the December colour combination Alberta cannot produce', credit: 'Unsplash licence, via Wikimedia Commons' },
     art: 'canyon',
     hub: { code: 'LAS', yeg: 'Nonstop (WestJet)', dfw: 'Nonstop (American)', drive: 'LAS → Valley of Fire 1 h → Zion 2 h → Bryce 1.75 h → LAS 4 h' },
     trip: { days: '6 days', nights: '3 nights camping + 2 nights cabin' },
@@ -850,6 +877,7 @@ const DESTINATIONS = [
   {
     id: 'arizona', name: 'Grand Canyon South Rim + Sedona', place: 'Northern Arizona', mode: 'fly', seasons: ['dec'],
     tagline: 'The canyon with snow on the rim and Sedona\'s red rock at 60°F, from an airport with year-round nonstops for both of you.',
+    photo: { file: 'Grand Canyon Winter Sunset at Mather Point D2543 (4667239826).jpg', caption: 'Winter sunset from Mather Point, South Rim', credit: 'NPS / Grand Canyon, public domain' },
     art: 'strata',
     hub: { code: 'PHX', yeg: 'Nonstop (WestJet year-round)', dfw: 'Nonstop (American, Southwest)', drive: 'PHX → Sedona 2 h; Sedona → South Rim 2 h; South Rim → PHX 3.5 h' },
     trip: { days: '5–6 days', nights: '3 nights camping + 1–2 indoors' },
@@ -878,6 +906,7 @@ const DESTINATIONS = [
   {
     id: 'whitesands-fly', name: 'White Sands + Guadalupe + Carlsbad', place: 'New Mexico and West Texas', mode: 'fly', seasons: ['dec'], pair: 'b2-desert-trio',
     tagline: 'Gypsum dunes, the highest point in Texas and a cavern the size of a stadium — three landscapes Alberta cannot imitate.',
+    photo: { file: 'Sierra Blanca at sunset (fe80e1af-155d-451f-67c8-18f9dfdba3db).jpg', caption: 'White Sands at sunset with snow on Sierra Blanca — a winter evening in the dune field', credit: 'NPS / White Sands, public domain' },
     art: 'gypsum',
     hub: { code: 'ELP', yeg: 'One stop (via DEN or IAH)', dfw: 'Nonstop (American, Southwest)', drive: 'ELP → White Sands 1.5 h; White Sands → Carlsbad 3 h; Carlsbad → Guadalupe 0.75 h; Guadalupe → ELP 1.75 h' },
     trip: { days: '6 days', nights: '4–5 nights' },
@@ -908,6 +937,7 @@ const DESTINATIONS = [
   {
     id: 'everglades', name: 'Everglades + Florida Keys', place: 'South Florida', mode: 'fly', seasons: ['dec'],
     tagline: 'Mangroves, alligators, roseate spoonbills and warm-water camping in the dry season — the opposite of Edmonton, at the cost of mountains.',
+    photo: { file: 'Everglades Anhinga Trail Pond.jpg', caption: 'Anhinga Trail in the dry season (November) — low water concentrates the wildlife', credit: 'Domob, CC BY-SA 3.0' },
     art: 'wetland',
     hub: { code: 'MIA (or MCO)', yeg: 'One stop to Miami; WestJet has a seasonal Orlando nonstop (4 h drive)', dfw: 'Nonstop (American)', drive: 'MIA → Flamingo 1.75 h; Flamingo → Key West ≈ 4 h' },
     trip: { days: '6–7 days', nights: '4–5 nights' },
@@ -936,6 +966,7 @@ const DESTINATIONS = [
   {
     id: 'bigbend-drive', name: 'West Texas desert & dark-sky loop', place: 'Big Bend + Davis Mountains, from Dallas', mode: 'drive', seasons: ['dec'], pair: 'bigbend-fly',
     tagline: 'Route B1. Big Bend for three nights, then a McDonald Observatory Star Party — with your own gear, your own car and one flight between you.',
+    photo: { file: 'Casa Grande from Basin Campground.JPG', caption: 'Casa Grande from the Chisos Basin Campground — the view from your tent', credit: 'Fredlyfish4, CC BY-SA 3.0' },
     art: 'desertmtn',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h; US preclearance in Edmonton', dfw: 'Home. Own car, own gear', drive: 'Dallas → Monahans 5 h → Chisos Basin 4 h → Fort Davis 2.5 h → Dallas 7.5 h' },
     trip: { days: '7–9 days', nights: '6–7 nights' },
@@ -966,6 +997,7 @@ const DESTINATIONS = [
   {
     id: 'b2-desert-trio', name: 'Three-park desert trio, by road', place: 'Guadalupe → Carlsbad → White Sands, from Dallas', mode: 'drive', seasons: ['dec'], pair: 'whitesands-fly',
     tagline: 'Route B2. The same three landscapes as the El Paso fly-in, reached from Dallas with the gear already in the trunk.',
+    photo: { file: 'Sierra Blanca at sunset (fe80e1af-155d-451f-67c8-18f9dfdba3db).jpg', caption: 'White Sands at sunset with snow on Sierra Blanca — a winter evening in the dune field', credit: 'NPS / White Sands, public domain' },
     art: 'gypsum',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h', dfw: 'Home. Own car, own gear', drive: 'Dallas → Guadalupe 8 h → Carlsbad 0.75 h → White Sands 3 h → Dallas 10 h (Roswell / Lubbock)' },
     trip: { days: '7–8 days', nights: '5–6 nights' },
@@ -995,6 +1027,7 @@ const DESTINATIONS = [
   {
     id: 'b4-padre', name: 'Gulf Coast winter beach', place: 'Padre Island + Aransas, from Dallas', mode: 'drive', seasons: ['dec'],
     tagline: 'Route B4. Tent on a Gulf beach in December, and whooping cranes that spent the summer in northern Alberta.',
+    photo: { file: 'Padre Island National Seashore, beach, Kleberg Co, TX; 1 Nov 2022.jpg', caption: 'The Gulf beach at Padre Island National Seashore in November — empty, mild, camp anywhere', credit: 'William L. Farr, CC BY-SA 4.0' },
     art: 'beach',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h', dfw: 'Home. Own car, own gear', drive: 'Dallas → Padre Island NS ≈ 6.5–7 h; → Aransas NWR ≈ 2 h; → Dallas ≈ 5.5 h' },
     trip: { days: '5–6 days', nights: '3–4 nights' },
@@ -1148,6 +1181,19 @@ function driveHours(d) {
   return `${Math.round(total)} h`;
 }
 
+/* ============ photos (Wikimedia Commons) ============ */
+const photoURL = (file, w) => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(file)}?width=${w}`;
+const photoPage = file => `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(file)}`;
+/* Illustration underneath, photograph on top; if the photo fails to load the illustration simply stays. */
+function photoFig(d, s, w, cls = '', seed = 5) {
+  const p = d.photo; if (!p) return `<div class="photo ${cls}"><div class="frame">${landscape(d.art, s, { w: 1200, h: 900, seed, label: 'Illustration of ' + d.name })}</div></div>`;
+  return `<figure class="photo ${cls}"><div class="frame">${landscape(d.art, s, { w: 1200, h: 900, seed, label: 'Illustration of ' + d.name })}<img src="${photoURL(p.file, w)}" alt="${esc(p.caption)}" loading="${cls.includes('eager') ? 'eager' : 'lazy'}" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()"></div><figcaption><span>${esc(p.caption)}</span><a href="${photoPage(p.file)}" target="_blank" rel="noopener">Photo: ${esc(p.credit)}</a></figcaption></figure>`;
+}
+function thumb(d, s) {
+  const p = d.photo;
+  return `<span class="thumb" aria-hidden="true">${landscape(d.art, s, { w: 400, h: 300, seed: 21 })}${p ? `<img src="${photoURL(p.file, 320)}" alt="" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()">` : ''}</span>`;
+}
+
 /* ============ procedural landscapes ============ */
 function rng(seed) { let x = seed * 9301 + 49297; return () => { x = (x * 233280 + 12345) % 2147483647; return (x % 10000) / 10000; }; }
 function ridge(r, w, h, yBase, amp, n, jag = .5) {
@@ -1183,12 +1229,18 @@ function landscape(kind, s, opts = {}) {
   const sky = `<defs><linearGradient id="sky-${kind}-${s}-${opts.seed || 0}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sky-a)"/><stop offset="1" stop-color="var(--sky-b)"/></linearGradient></defs>`;
   let g = `<rect width="${w}" height="${h}" fill="url(#sky-${kind}-${s}-${opts.seed || 0})"/>`;
   if (night) g += `<g class="layer" data-p=".05">${stars(r, w, h, 140)}</g>`;
-  const sunX = w * (0.62 + r() * 0.2), sunY = h * (night ? 0.2 : 0.26), sunR = night ? 22 : 46;
-  g += `<g class="layer" data-p=".08"><circle cx="${sunX}" cy="${sunY}" r="${sunR}" fill="var(--water)" opacity="${night ? .9 : .55}"/></g>`;
+  const sunX = w * (0.62 + r() * 0.2), sunY = h * (night ? 0.2 : 0.24), sunR = night ? 22 : 40;
+  g += `<g class="layer" data-p=".08">${night ? '' : `<circle cx="${sunX}" cy="${sunY}" r="${sunR * 2.6}" fill="var(--sun)" opacity=".18"/>`}<circle cx="${sunX}" cy="${sunY}" r="${sunR}" fill="var(--sun)" opacity="${night ? .95 : .9}"/></g>`;
+  if (!night) {
+    let clouds = '';
+    for (let i = 0; i < 3; i++) { const cx = w * (0.1 + r() * 0.8), cy = h * (0.12 + r() * 0.16), rx = w * (0.05 + r() * 0.06); clouds += `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${rx * .22}" fill="var(--snow)" opacity=".38"/><ellipse cx="${cx + rx * .3}" cy="${cy - rx * .12}" rx="${rx * .55}" ry="${rx * .2}" fill="var(--snow)" opacity=".34"/>`; }
+    g += `<g class="layer" data-p=".1">${clouds}</g>`;
+  }
+  const snowcap = d => night ? `<path d="${d}" fill="var(--far)" opacity=".75"/>` : `<path d="${d}" fill="var(--snow)" opacity=".95"/><path d="${d}" transform="translate(0,16)" fill="var(--far)" opacity=".85"/>`;
   const far = `<g class="layer" data-p=".15">`, mid = `<g class="layer" data-p=".3">`, near = `<g class="layer" data-p=".5">`, end = '</g>';
   switch (kind) {
     case 'canyon': {
-      g += far + `<path d="${ridge(r, w, h, h * .58, h * .12, 14, .4)}" fill="var(--far)" opacity=".7"/>` + end;
+      g += far + snowcap(ridge(r, w, h, h * .58, h * .12, 14, .4)) + end;
       g += mid + `<path d="M0 ${h} L0 ${h * .18} Q${w * .08} ${h * .16} ${w * .13} ${h * .24} L${w * .2} ${h * .3} Q${w * .27} ${h * .34} ${w * .3} ${h * .52} L${w * .34} ${h} Z" fill="var(--rock)"/>`
         + `<path d="M${w} ${h} L${w} ${h * .12} Q${w * .9} ${h * .1} ${w * .86} ${h * .2} L${w * .8} ${h * .26} Q${w * .72} ${h * .3} ${w * .7} ${h * .5} L${w * .64} ${h} Z" fill="var(--rock)" opacity=".92"/>` + end;
       g += near + `<path d="M0 ${h} L0 ${h * .78} Q${w * .3} ${h * .7} ${w * .5} ${h * .8} Q${w * .75} ${h * .9} ${w} ${h * .8} L${w} ${h} Z" fill="var(--near)"/>`
@@ -1198,7 +1250,7 @@ function landscape(kind, s, opts = {}) {
       break;
     }
     case 'granite': {
-      g += far + `<path d="${ridge(r, w, h, h * .5, h * .16, 10, .9)}" fill="var(--far)" opacity=".75"/>` + end;
+      g += far + snowcap(ridge(r, w, h, h * .5, h * .16, 10, .9)) + end;
       g += mid + `<path d="M${w * .05} ${h} L${w * .05} ${h * .42} Q${w * .22} ${h * .1} ${w * .4} ${h * .3} L${w * .43} ${h} Z" fill="var(--granite)"/>`
         + `<path d="M${w * .58} ${h} L${w * .6} ${h * .36} Q${w * .74} ${h * .05} ${w * .9} ${h * .3} L${w * .95} ${h} Z" fill="var(--granite)" opacity=".9"/>`
         + `<path d="M${w * .12} ${h} L${w * .12} ${h * .45} Q${w * .24} ${h * .2} ${w * .36} ${h * .36} L${w * .38} ${h} Z" fill="var(--snow)" opacity=".12"/>`
@@ -1209,7 +1261,7 @@ function landscape(kind, s, opts = {}) {
       break;
     }
     case 'coast': {
-      g += far + `<path d="${ridge(r, w, h, h * .5, h * .14, 12, .5)}" fill="var(--far)" opacity=".6"/>` + end;
+      g += far + snowcap(ridge(r, w, h, h * .5, h * .14, 12, .5)) + end;
       g += mid + `<path d="${ridge(r, w, h, h * .6, h * .1, 16, .4)}" fill="var(--mid)" opacity=".85"/>` + end;
       g += near + `<rect x="0" y="${h * .74}" width="${w}" height="${h * .26}" fill="var(--water)" opacity=".8"/>`
         + `<path d="M${w * .2} ${h * .74} L${w * .22} ${h * .58} L${w * .27} ${h * .55} L${w * .3} ${h * .74} Z" fill="var(--near)"/>`
@@ -1218,7 +1270,7 @@ function landscape(kind, s, opts = {}) {
       break;
     }
     case 'geyser': {
-      g += far + `<path d="${ridge(r, w, h, h * .55, h * .14, 12, .8)}" fill="var(--far)" opacity=".7"/>` + end;
+      g += far + snowcap(ridge(r, w, h, h * .55, h * .14, 12, .8)) + end;
       g += mid + `<path d="${ridge(r, w, h, h * .72, h * .06, 20, .3)}" fill="var(--mid)" opacity=".8"/>`
         + `<path d="M${w * .5} ${h * .74} Q${w * .47} ${h * .45} ${w * .49} ${h * .18} Q${w * .5} ${h * .12} ${w * .52} ${h * .2} Q${w * .55} ${h * .45} ${w * .53} ${h * .74} Z" fill="var(--snow)" opacity=".85"/>` + end;
       g += near + `<path d="M0 ${h} L0 ${h * .86} Q${w * .5} ${h * .8} ${w} ${h * .86} L${w} ${h} Z" fill="var(--near)"/>`
@@ -1240,7 +1292,7 @@ function landscape(kind, s, opts = {}) {
       break;
     }
     case 'desertmtn': {
-      g += far + `<path d="${ridge(r, w, h, h * .55, h * .1, 16, .8)}" fill="var(--far)" opacity=".7"/>` + end;
+      g += far + snowcap(ridge(r, w, h, h * .55, h * .1, 16, .8)) + end;
       g += mid + `<path d="M0 ${h} L0 ${h * .6} L${w * .15} ${h * .5} L${w * .27} ${h * .3} L${w * .36} ${h * .38} L${w * .43} ${h * .46} L${w * .5} ${h * .5} L${w * .57} ${h * .44} L${w * .66} ${h * .26} L${w * .74} ${h * .4} L${w * .88} ${h * .52} L${w} ${h * .62} L${w} ${h} Z" fill="var(--mid)"/>` + end;
       let creosote = '';
       for (let i = 0; i < 40; i++) { const x = r() * w, y = h * .8 + r() * h * .18; creosote += `<circle cx="${x}" cy="${y}" r="${3 + r() * 6}" fill="var(--near)" opacity=".7"/>`; }
@@ -1328,7 +1380,7 @@ function renderVerdict() {
         <div class="drawback"><b>Biggest drawback.</b> ${esc(d.drawback)}</div>
       </div>
       <div class="reveal">
-        <div class="verdict-art">${landscape(d.art, season, { w: 1200, h: 900, seed: 11, label: 'Illustration of ' + d.name })}</div>
+        <div class="verdict-art">${photoFig(d, season, 1400, 'eager', 11)}</div>
         <div class="scores" data-animate>
           ${WEIGHTS.map(w => `<div class="score-row"><div class="lab">${esc(w.label)}<small>weight ${w.w}%</small></div><div class="bar ${w.key === 'crowd' ? 'rock' : ''}"><i data-w="${sc[w.key] * 10}"></i></div><div class="num">${sc[w.key]}</div></div>`).join('')}
           <div class="total"><b>${fmt(win.total)}</b><span>weighted score out of 10 — next best: ${esc(list[1].d.name)} at ${fmt(list[1].total)}</span></div>
@@ -1349,12 +1401,14 @@ function renderRanking() {
     return `<div class="rank-row enter" data-id="${d.id}">
       <button class="rank-head" aria-expanded="false" aria-controls="body-${d.id}">
         <span class="pos">${String(i + 1).padStart(2, '0')}</span>
+        ${thumb(d, season)}
         <span class="name-cell"><span class="name">${esc(d.name)}</span><span class="place">${esc(d.place)}</span><span class="mode-pill ${d.mode}">${d.mode === 'drive' ? 'Drive from Dallas' : 'Fly to ' + esc(d.hub.code)}</span></span>
         <span class="tag">${esc(d.tagline)}</span>
         <span class="score">${fmt(x.total)}<small>of 10</small></span>
         <span class="cmp-cell"><span class="cmp" role="button" tabindex="0" aria-pressed="false" data-cmp="${d.id}">Compare</span></span>
       </button>
       <div class="rank-body" id="body-${d.id}">
+        ${photoFig(d, season, 1000, 'wide', 7)}
         ${miniScores(sc)}
         <div class="cols">
           <div>
@@ -1544,8 +1598,9 @@ function renderSources() {
     { label: 'FlightConnections — nonstop routes from Edmonton (Aug 2026)', url: 'https://www.flightconnections.com/flights-from-edmonton-yeg' },
     { label: 'Simple Flying — WestJet US network Aug 2026–Jun 2027', url: 'https://simpleflying.com/westjet-us-route-cuts/' }
   ];
-  const seen = new Set();
-  $('#srcList').innerHTML = `<div><b>General</b>${general.map(s => `<a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join('')}</div>` +
+  const seen = new Set(), seenPhoto = new Set();
+  const photoList = DESTINATIONS.filter(d => d.photo && !seenPhoto.has(d.photo.file) && seenPhoto.add(d.photo.file)).map(d => `<a href="${photoPage(d.photo.file)}" target="_blank" rel="noopener">${esc(d.name)} — ${esc(d.photo.credit)}</a>`).join('');
+  $('#srcList').innerHTML = `<div><b>Photographs</b><span class="small muted" style="display:block;margin-bottom:4px">All from Wikimedia Commons under public-domain or Creative Commons terms; each link is the file page with full attribution. Landscape illustrations are original.</span>${photoList}</div><div><b>General</b>${general.map(s => `<a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join('')}</div>` +
     DESTINATIONS.map(d => `<div><b>${esc(d.name)}</b>${d.sources.filter(s => { if (seen.has(s.url)) return false; seen.add(s.url); return true; }).map(s => `<a href="${s.url}" target="_blank" rel="noopener">${esc(s.label)}</a>`).join('')}</div>`).join('');
   $('#boltOns').innerHTML = BOLT_ONS.map(b => `<div><b>${esc(b.name)}</b> (${esc(b.hours)}) — ${esc(b.why)} <a href="${b.url}" target="_blank" rel="noopener">site</a></div>`).join('');
 }
