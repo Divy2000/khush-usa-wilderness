@@ -192,6 +192,27 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
 .mosaic .tile:first-child .tile-lab b { font-size: 1.35rem; }
 @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .hero h1 { font-size: clamp(40px, 11vw, 60px); } .mosaic { grid-auto-rows: minmax(90px, 26vw); gap: 6px; } }
 
+/* ============ PHOTO LOADING STATE ============ */
+.ph { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1; display: inline-flex; align-items: center; gap: 8px; padding: 6px 11px; border-radius: 999px; background: rgba(0,0,0,.55); color: #fff; font-size: .78rem; white-space: nowrap; max-width: calc(100% - 16px); overflow: hidden; text-overflow: ellipsis; pointer-events: none; }
+.ph span { overflow: hidden; text-overflow: ellipsis; }
+.ph i { width: 11px; height: 11px; border-radius: 50%; border: 2px solid rgba(255,255,255,.35); border-top-color: #fff; animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.ph .ph-fail { display: none; }
+.has-img > .ph { display: none; }
+.no-img > .ph i, .no-img > .ph .ph-load { display: none; }
+.no-img > .ph .ph-fail { display: inline; }
+/* while the photo loads the illustration is dimmed and desaturated, so it never passes for the photo */
+.frame > svg, .gal-main > svg, .tile > svg, .route-photo > svg { filter: saturate(.25) brightness(.85); transition: filter .6s var(--ease); }
+.no-img > svg, .has-img > svg { filter: none; }
+.frame:not(.has-img):not(.no-img)::after, .gal-main:not(.has-img):not(.no-img)::after, .tile:not(.has-img):not(.no-img)::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.18) 50%, transparent 65%); background-size: 250% 100%; animation: shimmer 1.6s linear infinite; pointer-events: none; }
+@keyframes shimmer { from { background-position: 120% 0; } to { background-position: -30% 0; } }
+.gal-th:not(.has-img):not(.no-img) { background: linear-gradient(110deg, var(--bg-2) 35%, color-mix(in srgb, var(--ink) 10%, var(--bg-2)) 50%, var(--bg-2) 65%); background-size: 250% 100%; animation: shimmer 1.6s linear infinite; }
+.gal-th .ph { display: none; }
+.tile > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* no photo, no source claim */
+.frame.no-img + .chip-credit, .gal-main.no-img .gal-cap .credit, .route-photo.no-img .chip-credit { display: none; }
+@media (prefers-reduced-motion: reduce) { .ph i { animation: none; border-top-color: rgba(255,255,255,.35); } .frame::after, .gal-main::after, .tile::after, .gal-th { animation: none !important; } }
+
 /* ============ CHIPS / PILLS ============ */
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { display: inline-block; font-size: .78rem; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-2); background: color-mix(in srgb, var(--card) 70%, transparent); white-space: nowrap; }
@@ -385,9 +406,9 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="hero-scene" id="heroScene" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <p class="kicker">Edmonton and Dallas · two travel windows · every option, side by side</p>
+      <p class="kicker">Two of us, two travel windows, one page to compare from.</p>
       <h1><span class="w"><span>Khush,</span></span> <span class="w"><span>pick</span></span> <span class="w"><span>your</span></span> <span class="w"><span>American</span></span> <span class="w"><span>wilderness.</span></span></h1>
-      <p class="lede"><b class="count-label">6</b> trips scored on the same seven weights, <b class="photo-count">80</b> photographs, every date and rule linked to its official source. Nothing here is a recommendation — it is the board you decide from.</p>
+      <p class="lede"><b class="count-label">6</b> trips scored on the same seven weights, <b class="photo-count">80</b> photos, and every date and rule linked to where it came from. No recommendation here; the choice is ours to make from the board.</p>
       <div class="hero-choice">
         <div class="dial" role="group" aria-label="Choose the travel window">
           <span class="thumb" aria-hidden="true"></span>
@@ -406,7 +427,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="section-head">
       <h2 id="board-h">The board — <span class="season-label">May 2027</span></h2>
-      <p>Ranked by the weighted score (weights at the bottom of the page). Fly-in and drive-from-Dallas routes sit on the same scale. Open a card for its photo gallery and the facts; pick two or three to compare side by side with photo sliders.</p>
+      <p>Ranked by weighted score (the weights are at the bottom of the page). Fly-in trips and drives from Dallas are scored on the same scale. Open a card for its photos and facts, or pick two or three and compare them side by side.</p>
     </div>
     <div class="board" id="board"></div>
     <div id="detail" aria-live="polite"></div>
@@ -422,7 +443,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="section-head">
       <h2 id="alberta-h">How different from Alberta?</h2>
-      <p>The novelty score places each option by how much of its landscape cannot be found within a day of Edmonton. Jasper and Banff are the zero point; mountains alone score low, deserts, canyons, coasts, geysers, volcanoes and dunes score high.</p>
+      <p>The novelty score measures how much of a landscape cannot be seen within a day of Edmonton. Jasper and Banff are the zero point, so mountains on their own score low; deserts, canyons, coasts, geysers, volcanoes and dunes score high.</p>
     </div>
     <div class="axis-wrap" id="axis"></div>
     <div class="axis-note" id="axisNotes"></div>
@@ -434,7 +455,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
     <div class="co-grid">
       <div>
         <h2 id="colorado-h">Colorado, in facts</h2>
-        <p class="muted" style="margin-top:14px">Denver came up as the obvious meeting point, so here is what the three ways of doing Colorado actually involve in <span class="season-label">May 2027</span>.</p>
+        <p class="muted" style="margin-top:14px">Denver is the obvious meeting point, so here is what each way of doing Colorado involves in <span class="season-label">May 2027</span>.</p>
       </div>
       <div class="co-table" id="coTable"></div>
     </div>
@@ -445,7 +466,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="section-head">
       <h2 id="routes-h">Route cards</h2>
-      <p>Nights and drive structure for the leading options in <span class="season-label">May 2027</span>. Highlighted circles are where the tent goes up. Drive-from-Dallas routes are drawn dashed.</p>
+      <p>Nights and driving for the leading options in <span class="season-label">May 2027</span>. Highlighted circles are where the tent goes up; drives from Dallas are drawn dashed.</p>
     </div>
     <div class="routes" id="routes"></div>
   </div>
@@ -455,7 +476,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="section-head">
       <h2 id="getting-h">Getting there: from YEG, from Dallas</h2>
-      <p><strong>Fly to the destination:</strong> both fly to a rendezvous airport and rent a car. <strong>Fly to Dallas and drive:</strong> Khush takes the one-stop to DFW (US customs cleared in Edmonton), then the Honda HR-V with the gear already packed. Airfares are not shown — they move too fast; flight burden is.</p>
+      <p><strong>Fly to the destination:</strong> both of us fly to a rendezvous airport and rent a car. <strong>Fly to Dallas and drive:</strong> Khush takes the one-stop to DFW, clears US customs in Edmonton, and we leave in the HR-V with the gear already packed. Airfares are not shown because they change too often; flight burden is.</p>
     </div>
     <div class="logi">
       <div>
@@ -483,7 +504,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="section-head">
       <h2 id="camping-h">Camping reality</h2>
-      <p>Neither traveller owns technical winter kit, so every option is graded: casual car camping, cold-weather camping (good bag and layers), or true winter camping where a cabin night is the fallback.</p>
+      <p>Neither of us has proper winter kit, so each option is graded: casual car camping, cold-weather camping (a good bag and layers), or true winter camping, where a cabin night is the fallback.</p>
     </div>
     <div class="legend"><span><i style="background:var(--status-ok)"></i>Casual</span><span><i style="background:var(--accent)"></i>Cold-weather</span><span><i style="background:var(--snow);border:1px solid var(--ink-3)"></i>True winter</span></div>
     <div class="camp-grid" id="campGrid"></div>
@@ -495,11 +516,11 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="section-head">
       <h2 id="verify-h">Verify before booking</h2>
-      <p>What is published for 2027, what is a 2026 rule that may roll forward, what is only a historical pattern, and what nobody knows yet. Last researched <span class="researched"></span>.</p>
+      <p>What is already published for 2027, what is a 2026 rule that will probably carry over, what is only a historical pattern, and what nobody knows yet. Last researched <span class="researched"></span>.</p>
     </div>
     <div class="ledger-key"><span><span class="status confirmed">Confirmed</span> published for 2027 or a completed event</span><span><span class="status rule2026">2026 rule</span> in force now, re-check for 2027</span><span><span class="status typical">Typical pattern</span> historical, not a promise</span><span><span class="status tbd">TBD</span> unknowable until closer to travel</span></div>
     <div class="ledger" id="ledger"></div>
-    <p class="small muted" style="margin-top:18px">Nonresident surcharge parks under the 2026 rule: <span id="surchargeParks"></span>. A $250 Non-Resident Annual Pass covers everyone in one vehicle; a resident's pass does not cover a nonresident passenger.</p>
+    <p class="small muted" style="margin-top:18px">Parks charging the nonresident fee under the 2026 rule: <span id="surchargeParks"></span>. A $250 Non-Resident Annual Pass covers everyone in the vehicle; a resident's pass does not cover a nonresident passenger.</p>
   </div>
 </section>
 
@@ -507,10 +528,10 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   <div class="wrap">
     <div class="section-head">
       <h2 id="sources-h">Method, sources and photo credits</h2>
-      <p>Scores are judgement calls informed by official sources, not measurements; change the weights in the data file and everything re-ranks. Every photograph is from Wikimedia Commons under public-domain or Creative Commons terms — the source chip on each image links to the file page with full attribution.</p>
+      <p>Scores are judgement calls built on official sources, not measurements; change the weights in the data file and everything re-ranks. Every photo is from Wikimedia Commons under public-domain or Creative Commons terms, and the source chip on each image links to its file page.</p>
     </div>
     <div class="weights" id="weights"></div>
-    <h3 class="sub">Bolt-on weekends when Khush lands in Dallas</h3>
+    <h3 class="sub">Extra weekends from Dallas</h3>
     <div class="cut-list" id="boltOns" style="margin-bottom:36px"></div>
     <h3 class="sub">Sources</h3>
     <div class="src-cols" id="srcList"></div>
@@ -527,7 +548,7 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
   </div>
 </div>
 
-<footer><div class="wrap">Built for Khush and a Dallas friend, September 2026. Photographs: Wikimedia Commons contributors and the US National Park Service (credits above). Coloured landscapes are illustrations. Weather figures are approximate historical averages; every date and rule links to its official source and should be re-checked before money changes hands.</div></footer>
+<footer><div class="wrap">Made for Khush and a friend in Dallas, September 2026. Photos: Wikimedia Commons contributors and the US National Park Service (credits above). The coloured landscapes are illustrations. Weather figures are approximate historical averages; every date and rule links to an official source and should be checked again before booking.</div></footer>
 
 <script>
 /* ===========================================================
@@ -540,13 +561,13 @@ footer { padding: 20px 0 48px; color: var(--ink-3); font-size: .85rem; border-to
 const RESEARCHED = 'September 6, 2026';
 
 const WEIGHTS = [
-  { key: 'wow',     label: 'Wow / scenic impact',          w: 25, why: 'Would a photo from this trip stop someone scrolling? Density of landmark views per day.' },
-  { key: 'novelty', label: 'Novelty vs Alberta',           w: 20, why: 'How little of it Khush can already get within a day of Edmonton. Jasper and Banff are the benchmark, which is why plain alpine scenery scores low here.' },
-  { key: 'season',  label: 'Season fit',                   w: 20, why: 'Temperatures, snow, heat, rain, daylight and whether the roads and trails that make the place famous are actually open in that window.' },
-  { key: 'camping', label: 'Camping experience',           w: 15, why: 'Quality of the campgrounds themselves, how hard they are to book, and whether a tent is comfortable rather than survivable.' },
-  { key: 'travel',  label: 'Travel efficiency',            w: 10, why: 'Flight burden from YEG and Dallas, driving after landing, rental-car need, and days lost in transit.' },
-  { key: 'variety', label: 'Activity variety',             w: 5,  why: 'Hiking, water, wildlife, stargazing, scenic driving, culture — how many different days the trip contains.' },
-  { key: 'crowd',   label: 'Crowd / access risk',          w: 5,  why: 'Higher is calmer: fewer permits, lotteries, timed-entry systems, holiday crushes and closure roulette.' }
+  { key: 'wow',     label: 'Wow / scenic impact',          w: 25, why: "How much the scenery stops you. Landmark views per day." },
+  { key: 'novelty', label: 'Novelty vs Alberta',           w: 20, why: "How little of it is already within a day of Edmonton. Jasper and Banff are the benchmark, so plain alpine scenery scores low." },
+  { key: 'season',  label: 'Season fit',                   w: 20, why: "Temperatures, snow, heat, rain, daylight, and whether the roads and trails the place is known for are open in that window." },
+  { key: 'camping', label: 'Camping experience',           w: 15, why: "The campgrounds themselves, how hard they are to book, and whether a tent is comfortable rather than merely survivable." },
+  { key: 'travel',  label: 'Travel efficiency',            w: 10, why: "Flights from Edmonton and Dallas, driving after landing, whether a rental car is needed, and days lost in transit." },
+  { key: 'variety', label: 'Activity variety',             w: 5,  why: "Hiking, water, wildlife, night skies, scenic driving, towns: how many different kinds of day the trip has." },
+  { key: 'crowd',   label: 'Crowd / access risk',          w: 5,  why: "Higher is calmer: fewer permits, lotteries, timed-entry systems, holiday crowds and closure surprises." }
 ];
 
 const SEASONS = {
@@ -570,7 +591,7 @@ const FLIGHTS = {
     { code: 'OGG', city: 'Maui (Kahului)', via: 'WestJet, Nov–Apr',                   season: 'dec' },
     { code: 'DFW', city: 'Dallas/Fort Worth', via: 'No nonstop. One stop via DEN, IAH, SLC, MSP, YYC or YYZ; ~6.5–7 h total', season: 'both' }
   ],
-  dfw: 'American Airlines flies nonstop from DFW to every rendezvous airport used on this site (LAS, PHX, DEN, SEA, SFO, LAX, PSP seasonal, HNL, OGG, KOA seasonal, ELP, MAF, MIA). Love Field is not useful for Khush.'
+  dfw: "American flies nonstop from DFW to every rendezvous airport on this site (LAS, PHX, DEN, SEA, SFO, LAX, PSP seasonal, HNL, OGG, KOA seasonal, ELP, MAF, MIA). Love Field does not help Khush."
 };
 
 /* Nonresident fee rule in force for 2026 — verify for 2027. */
@@ -580,17 +601,17 @@ const DESTINATIONS = [
   /* ---------------- MAY: FLY-IN ---------------- */
   {
     id: 'zion-bryce', name: 'Zion + Bryce Canyon', place: 'Southern Utah', mode: 'fly', seasons: ['may'],
-    tagline: 'Red sandstone canyons and a forest of hoodoos, two and a half hours from an airport you both reach nonstop.',
+    tagline: "Red sandstone canyon and an amphitheatre of pink hoodoos, both within three hours of an airport each of you can reach nonstop.",
     climate: { may: { day: '80s°F Zion · 60s Bryce', night: 'low 50s · ~30°F' } },
     art: 'canyon',
     hub: { code: 'LAS', yeg: 'Nonstop (WestJet)', dfw: 'Nonstop (American)', drive: 'LAS → Zion 2.5 h; Zion → Bryce 1.75 h; Bryce → LAS 4 h' },
     trip: { days: '6–7 days', nights: '5–6 nights camping' },
     scores: { may: { wow: 9.5, novelty: 9.5, season: 8.5, camping: 8, travel: 9.5, variety: 8, crowd: 5 } },
-    novelty: { has: 'Alberta has mountains, forests and turquoise lakes.', lacks: 'It has nothing like a 2,000-foot slot canyon in orange Navajo sandstone or a bowl of pink limestone spires.' },
-    weather: { may: 'Zion Canyon floor roughly 80s°F days / low 50s nights; Bryce at 8,000 ft roughly 60s days and nights near or below freezing. Spring runoff often closes The Narrows for high flow — do not plan around it.' },
-    drawback: 'Late May is peak season. Angels Landing needs a lottery permit, Watchman Campground sells out the morning it opens six months ahead, and the canyon runs on shuttles. Khush also pays the $100-per-park nonresident surcharge here (or buys the $250 pass).',
+    novelty: { has: "Mountains, forests and turquoise lakes are already within a day of Edmonton.", lacks: "A 2,000-foot slot canyon in orange sandstone and a bowl of pink limestone spires are not." },
+    weather: { may: "Zion Canyon floor around 80°F by day and low 50s at night. Bryce sits at 8,000 ft: 60s by day, near or below freezing at night. Spring runoff often closes the Narrows in May." },
+    drawback: "Late May is peak season. Angels Landing needs a lottery permit, Watchman Campground sells out within hours of its six-month window opening, and the canyon runs on shuttles. Khush pays the $100 nonresident fee at each park, or buys the $250 pass.",
     surcharge: 200,
-    camping: { type: 'casual', typeLabel: 'Casual at Zion, cold nights at Bryce', reservation: 'hard', detail: 'Watchman (Zion): Recreation.gov, 6-month rolling window, fills within hours for late May. South Campground remains closed for rehabilitation. Bryce: North and Sunset campgrounds; bring a real sleeping bag — 8,000 ft.', backup: 'Springdale motels and Bryce Canyon City lodges are plentiful; a one-night cabin at Bryce is a sensible hedge if the forecast turns.' },
+    camping: { type: 'casual', typeLabel: 'Casual at Zion, cold nights at Bryce', reservation: 'hard', detail: "Watchman (Zion) is on Recreation.gov with a six-month rolling window and fills within hours for late May. South Campground is closed for rehabilitation. Bryce has the North and Sunset campgrounds; bring a warm sleeping bag for 8,000 ft.", backup: "Motels in Springdale and lodges at Bryce Canyon City. A cabin night at Bryce is an easy hedge if the forecast turns." },
     access: [
       { status: 'rule2026', text: 'Angels Landing permit lottery runs year-round (seasonal lottery plus day-before lottery). 2026 spring lottery opened Feb 13 — expect a similar cadence for 2027.', url: 'https://www.nps.gov/zion/learn/news/2026-02-11-angels-landing.htm' },
       { status: 'typical', text: 'The Narrows (bottom-up) needs no permit but closes when flow is high; May snowmelt frequently closes it.', url: 'https://www.nps.gov/zion/planyourvisit/thenarrows.htm' },
@@ -613,17 +634,17 @@ const DESTINATIONS = [
   },
   {
     id: 'yosemite', name: 'Yosemite', place: 'Sierra Nevada, California', mode: 'fly', seasons: ['may'],
-    tagline: 'The single most spectacular valley on the list, at the exact moment its waterfalls peak.',
+    tagline: "Yosemite Valley in the second half of May, when the waterfalls are at their fullest.",
     climate: { may: { day: '70s°F', night: 'mid-40s' } },
     art: 'granite',
     hub: { code: 'SFO', yeg: 'Air Canada seasonal nonstop — confirm May 2027 dates; otherwise one stop', dfw: 'Nonstop (American)', drive: 'SFO → Yosemite Valley ≈ 4 h' },
     trip: { days: '5–6 days', nights: '4–5 nights camping' },
     scores: { may: { wow: 10, novelty: 8, season: 9, camping: 7, travel: 6.5, variety: 7.5, crowd: 4 } },
-    novelty: { has: 'Khush already has big granite-and-glacier mountains, so the alpine half of Yosemite is familiar in kind.', lacks: 'Alberta has no 2,400-foot waterfall pouring into a flat, walkable valley floor, and nothing like El Capitan.' },
-    weather: { may: 'Valley roughly 70s°F days / mid-40s nights; waterfalls near peak from snowmelt. Tioga Road opened May 15 in 2026 (earliest in 16 years) but typically opens late May to June — assume the high country is a bonus, not a plan.' },
-    drawback: 'Valley campsites release five months ahead and vanish in minutes; parking fills by mid-morning; the 2026 season had no entry-reservation system but 2027 is undecided. Khush\'s nonstop to San Francisco is seasonal and must be confirmed.',
+    novelty: { has: "Big granite-and-glacier mountains are familiar from the Rockies.", lacks: "A 2,400-foot waterfall dropping into a flat valley floor, and a wall like El Capitan, are not." },
+    weather: { may: "Valley around 70°F by day and mid-40s at night, with the waterfalls close to peak flow. Tioga Road opened May 15 in 2026, its earliest in 16 years; it usually opens between late May and June, so treat the high country as a bonus." },
+    drawback: "Valley campsites are released five months ahead and go in minutes. Parking fills by mid-morning. There was no entry reservation in 2026, but 2027 is undecided. Khush's nonstop to San Francisco is seasonal and needs confirming.",
     surcharge: 100,
-    camping: { type: 'casual', typeLabel: 'Casual, but the hardest booking on this site', reservation: 'hard', detail: 'Upper/Lower/North Pines in the Valley release on Recreation.gov 5 months ahead on the 15th and sell out in minutes. Wawona, Hodgdon Meadow and Bridalveil Creek are easier fallbacks; Camp 4 is a daily lottery.', backup: 'Curry Village tent cabins or El Portal/Mariposa lodging if the campground lottery fails.' },
+    camping: { type: 'casual', typeLabel: 'Casual, but the hardest booking on this site', reservation: 'hard', detail: "Upper, Lower and North Pines release on Recreation.gov five months ahead on the 15th and sell out in minutes. Wawona, Hodgdon Meadow and Bridalveil Creek are easier; Camp 4 runs a daily lottery.", backup: "Curry Village tent cabins, or lodging in El Portal and Mariposa." },
     access: [
       { status: 'rule2026', text: 'No day-use or peak-hours entry reservation in 2026; 2027 policy not yet announced.', url: 'https://yosemite.org/know-before-you-go-yosemite-in-2026/' },
       { status: 'typical', text: 'Tioga Road plowing starts ~April 15 and takes 1–2 months; NPS says predicting the opening is impossible even in late spring.', url: 'https://www.nps.gov/yose/planyourvisit/tiogaopen.htm' },
@@ -644,17 +665,17 @@ const DESTINATIONS = [
   },
   {
     id: 'olympic', name: 'Olympic', place: 'Olympic Peninsula, Washington', mode: 'fly', seasons: ['may'],
-    tagline: 'Rainforest, sea stacks and a glacier-capped range in one loop — and no nonresident surcharge.',
+    tagline: "Rain forest, sea stacks and a glaciated range in one loop, with no nonresident fee.",
     climate: { may: { day: '55–62°F', night: 'low 40s' } },
     art: 'coast',
     hub: { code: 'SEA', yeg: 'Nonstop (Alaska)', dfw: 'Nonstop (American, Alaska)', drive: 'SEA → Port Angeles 2.5–3 h (ferry or via Tacoma); Hoh Rain Forest another 2 h' },
     trip: { days: '6–7 days', nights: '5–6 nights camping' },
     scores: { may: { wow: 8.5, novelty: 8.5, season: 7, camping: 8, travel: 8.5, variety: 9, crowd: 7.5 } },
-    novelty: { has: 'Alberta has old forest and mountains.', lacks: 'It has no ocean. Sea stacks at Rialto and Second Beach, tide pools, and moss-draped Sitka spruce growing on 12 feet of rain a year are a different planet from the boreal.' },
-    weather: { may: 'Coast and rainforest 55–62°F days / low 40s nights with frequent rain (Forks averages several inches in May). Hurricane Ridge often still snowy; the ridge road generally opens daily by late spring — check.' },
-    drawback: 'It will probably rain on you, and the alpine third of the park may still be under snow. Wet-tent camping is the price of the moss.',
+    novelty: { has: "Old forest and mountains.", lacks: "The Pacific: sea stacks at Rialto and Second Beach, tide pools, and Sitka spruce hung with moss on 12 feet of rain a year." },
+    weather: { may: "Coast and rain forest 55–62°F by day and low 40s at night, with frequent rain; Forks averages several inches in May. Hurricane Ridge is often still snowy, and its road usually opens daily by late spring." },
+    drawback: "Expect rain, and expect the high country to still be under snow. Wet-weather camping comes with the moss.",
     surcharge: 0,
-    camping: { type: 'casual', typeLabel: 'Casual but wet', reservation: 'moderate', detail: 'Kalaloch, Mora and Fairholme enter the reservation season May 15 with staggered releases (6 months, 2 weeks and 4 days ahead). Hoh stays first-come until mid-June. Kalaloch\'s bluff loops have erosion damage.', backup: 'Kalaloch Lodge cabins, Lake Crescent Lodge, Forks and Port Angeles motels.' },
+    camping: { type: 'casual', typeLabel: 'Casual but wet', reservation: 'moderate', detail: "Kalaloch, Mora and Fairholme start their reservation season on May 15, with releases six months, two weeks and four days ahead. Hoh stays first-come until mid-June. Some Kalaloch bluff loops have erosion damage.", backup: "Kalaloch Lodge cabins, Lake Crescent Lodge, motels in Forks and Port Angeles." },
     access: [
       { status: 'rule2026', text: 'Kalaloch and Mora reservation season May 15 – Sep 20, 2026; Fairholme May 15 – Sep 29; three staggered release windows.', url: 'https://www.recreation.gov/camping/campgrounds/232464' },
       { status: 'typical', text: 'Hoh Rain Forest campground first-come before its June reservation season.', url: 'https://www.nps.gov/olym/planyourvisit/camping.htm' },
@@ -676,17 +697,17 @@ const DESTINATIONS = [
   },
   {
     id: 'yellowstone', name: 'Yellowstone + Grand Teton', place: 'Wyoming', mode: 'fly', seasons: ['may'],
-    tagline: 'Geysers, bison calves and grizzlies with cubs — late May is the wildlife month, if you can stand the nights.',
+    tagline: "Geysers, bison calves and bears with cubs. Late May is the wildlife month, and the nights are cold.",
     climate: { may: { day: '55–65°F', night: '~30°F' } },
     art: 'geyser',
     hub: { code: 'SLC / BZN', yeg: 'One stop to Bozeman or Jackson (via DEN); WestJet\'s Salt Lake nonstop is seasonal — confirm', dfw: 'Nonstop to SLC; Bozeman and Jackson nonstops are summer-seasonal — check May start dates', drive: 'SLC → West Yellowstone ≈ 5 h; BZN → West Yellowstone ≈ 1.75 h' },
     trip: { days: '7–8 days', nights: '6 nights, some cold' },
     scores: { may: { wow: 9.5, novelty: 9, season: 7, camping: 7, travel: 5.5, variety: 8.5, crowd: 6.5 } },
-    novelty: { has: 'The Tetons look like a sharper Rockies, and Khush has elk and bears at home.', lacks: 'Half the world\'s geysers, boiling rivers, travertine terraces and a super-volcano caldera exist nowhere in Canada.' },
-    weather: { may: 'Old Faithful roughly 55–65°F days and nights around freezing; snow squalls happen. Most park roads open in stages through May; the last high pass opened May 22 in 2026.' },
-    drawback: 'Cold-weather camping, half the campgrounds still closed, and the worst flight geometry on the May list. Two surcharge parks for Khush ($200 or the pass).',
+    novelty: { has: "The Tetons look like a sharper version of the Rockies, and elk and bears are familiar.", lacks: "Half the world's geysers, boiling rivers, travertine terraces and a volcanic caldera." },
+    weather: { may: "Old Faithful area 55–65°F by day and around freezing at night; snow squalls happen. Park roads open in stages through May, and the last high pass opened May 22 in 2026." },
+    drawback: "Cold-weather camping, half the campgrounds still closed, and the most awkward flights on the May list. Two fee parks for Khush: $200, or the pass.",
     surcharge: 200,
-    camping: { type: 'cold', typeLabel: 'Cold-weather camping', reservation: 'moderate', detail: 'Madison opens May 7, 2027 and Grant Village not until June 18, 2027 (published). 2027 bookings for Madison, Grant, Canyon and Bridge Bay move to Recreation.gov roughly 6 months ahead. Grand Teton campgrounds open progressively in May.', backup: 'Old Faithful and Canyon lodges, West Yellowstone and Gardiner motels; Jackson for Grand Teton.' },
+    camping: { type: 'cold', typeLabel: 'Cold-weather camping', reservation: 'moderate', detail: "Madison opens May 7, 2027 and Grant Village June 18, 2027 (published). Bookings for Madison, Grant, Canyon and Bridge Bay move to Recreation.gov about six months ahead. Grand Teton campgrounds open through May.", backup: "Old Faithful and Canyon lodges; motels in West Yellowstone and Gardiner; Jackson for Grand Teton." },
     access: [
       { status: 'confirmed', text: 'Madison Campground 2027 season: May 7 – Oct 17. Grant Village 2027: Jun 18 – Sep 26. Dates subject to change.', url: 'https://www.yellowstonenationalparklodges.com/lodgings/camping/madison-campground/' },
       { status: 'rule2026', text: '2026 road schedule: most interior roads open by May 8; Dunraven Pass May 22. Expect a similar stagger in 2027.', url: 'https://home.nps.gov/yell/planyourvisit/parkroads.htm' },
@@ -707,17 +728,17 @@ const DESTINATIONS = [
   },
   {
     id: 'colorado-fly', name: 'Great Sand Dunes + Rocky Mountain', place: 'Colorado', mode: 'fly', seasons: ['may'],
-    tagline: 'Colorado\'s two national parks in one loop: North America\'s tallest dunes and the Front Range high country.',
+    tagline: "Colorado's two national parks in one loop: the tallest dunes in North America, then the Front Range high country.",
     climate: { may: { day: '~70°F', night: 'high 30s' } },
     art: 'dunes',
     hub: { code: 'DEN', yeg: 'Nonstop (United)', dfw: 'Nonstop (American, Southwest, United)', drive: 'DEN → Great Sand Dunes ≈ 4 h; Dunes → Estes Park ≈ 4.5 h; Estes → DEN ≈ 1.5 h' },
     trip: { days: '6–7 days', nights: '5 nights' },
     scores: { may: { wow: 8.5, novelty: 7.5, season: 7.5, camping: 7.5, travel: 8.5, variety: 7.5, crowd: 6.5 } },
-    novelty: { has: 'Rocky Mountain National Park\'s alpine lakes and peaks are the closest thing on this list to what Alberta already has.', lacks: 'A 750-foot dune field against snowy 13,000-foot peaks, with a creek that pulses in waves across the sand, exists nowhere else on the continent.' },
-    weather: { may: 'Dunes roughly 70°F days / high 30s nights, windy afternoons, sand hot by noon. Medano Creek typically peaks late May to early June but ran nearly dry in 2026\'s low-snow year — never promise it. Trail Ridge Road opened May 29 in 2026 and May 30 in 2025: a coin flip for your window.' },
-    drawback: 'Two four-hour drives inside the trip, and the Rocky Mountain half is the least novel thing on the list for someone from Edmonton. Timed entry starts in late May (May 22 in 2026).',
+    novelty: { has: "Rocky Mountain's alpine lakes and peaks are the same kind of scenery as Jasper.", lacks: "A 750-foot dune field under snow-covered 13,000-foot peaks, with a creek that runs in pulses across the sand." },
+    weather: { may: "Dunes around 70°F by day and high 30s at night, with windy afternoons and hot sand by noon. Medano Creek usually peaks late May to early June but nearly dried up in 2026's low-snow year. Trail Ridge Road opened May 29 in 2026 and May 30 in 2025, so it may or may not be open in this window." },
+    drawback: "Two four-hour drives inside the trip, and the Rocky Mountain half is the closest thing on this list to home for someone from Edmonton. Timed entry starts in late May (May 22 in 2026).",
     surcharge: 100,
-    camping: { type: 'cold', typeLabel: 'Casual by day, cold nights at 8,000+ ft', reservation: 'hard', detail: 'Piñon Flats (88 sites, Apr–Oct) is reservation-only on Recreation.gov; the booking window changed to a rolling 3-month window in 2026 and late-May weekends go instantly. Moraine Park in RMNP is open; Timber Creek (west side) is closed through 2027 for sewer work.', backup: 'Alamosa or Great Sand Dunes Lodge by the park entrance; Estes Park has everything.' },
+    camping: { type: 'cold', typeLabel: 'Casual by day, cold nights at 8,000+ ft', reservation: 'hard', detail: "Piñon Flats (88 sites, April to October) is reservation-only on Recreation.gov; the window changed to a rolling three months in 2026 and late-May weekends go immediately. Moraine Park in Rocky Mountain is open; Timber Creek on the west side is closed through 2027.", backup: "Alamosa, or Great Sand Dunes Lodge at the park entrance; Estes Park has plenty of lodging." },
     access: [
       { status: 'rule2026', text: 'Piñon Flats open April–October, reservation-only; no car camping anywhere in the park Nov–Mar.', url: 'https://home.nps.gov/grsa/planyourvisit/hours.htm' },
       { status: 'rule2026', text: 'RMNP timed entry May 22 – Oct 18, 2026 (Bear Lake corridor 5am–6pm; rest of park 9am–2pm).', url: 'https://www.recreation.gov/timed-entry/10086910' },
@@ -741,17 +762,17 @@ const DESTINATIONS = [
   /* ---------------- MAY: DRIVE FROM DALLAS ---------------- */
   {
     id: 'b3-panhandle-dunes', name: 'Panhandle canyons → Great Sand Dunes', place: 'Texas → New Mexico → Colorado, from Dallas', mode: 'drive', seasons: ['may'], pair: 'colorado-fly',
-    tagline: 'Bison walking through your campsite, then the tallest dunes in North America — no rental car, one flight, zero park surcharges.',
+    tagline: "Bison in the campground at Caprock Canyons, then the Great Sand Dunes by way of Taos. One flight, no rental car, no park fees.",
     climate: { may: { day: '85–90°F Panhandle · 70 dunes', night: '60s · high 30s' } },
     art: 'dunes',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h; US preclearance in Edmonton', dfw: 'Home. Own car, own gear', drive: 'Dallas → Caprock Canyons 5 h → Taos 5 h → Great Sand Dunes 2.5 h → Santa Fe 3 h → Dallas 10 h' },
     trip: { days: '8–9 days', nights: '6–7 nights' },
     scores: { may: { wow: 8, novelty: 8.5, season: 8, camping: 8, travel: 6, variety: 8, crowd: 7 } },
-    novelty: { has: 'Alberta has bison too — at Elk Island, behind a fence.', lacks: 'A free-roaming state herd in a red-rock canyon, the Rio Grande Gorge, and the dune field are all new; Taos and Santa Fe add a culture Khush cannot get at home.' },
-    weather: { may: 'Panhandle late May: 85–90°F afternoons, storm season (wind, hail, tornado watches). Great Sand Dunes ~70°F days / high 30s nights. Santa Fe pleasant.' },
-    drawback: 'Roughly 25 hours behind the wheel. Two full days of the trip are highway, and the Honda HR-V rules out Medano Pass Primitive Road.',
+    novelty: { has: "Alberta has bison at Elk Island, behind a fence.", lacks: "A free-roaming herd in a red-rock canyon, the Rio Grande Gorge, the dune field, and Taos and Santa Fe on the way." },
+    weather: { may: "Panhandle in late May: 85–90°F afternoons and storm season, with wind, hail and tornado watches possible. Great Sand Dunes around 70°F by day and high 30s at night. Santa Fe is mild." },
+    drawback: "About 25 hours of driving. Two days of the trip are highway, and the HR-V cannot take Medano Pass Primitive Road.",
     surcharge: 0,
-    camping: { type: 'casual', typeLabel: 'Casual car camping with your own gear', reservation: 'moderate', detail: 'Caprock Canyons (Honey Flat drive-up) and Palo Duro (seven camping areas) book through Texas State Parks. Piñon Flats is the tight one — rolling 3-month window. Bandelier\'s Juniper Campground is a low-stress final night.', backup: 'Cabins at Palo Duro; Alamosa motels; Santa Fe hotels.' },
+    camping: { type: 'casual', typeLabel: 'Casual car camping with your own gear', reservation: 'moderate', detail: "Caprock Canyons (Honey Flat, drive-up) and Palo Duro (seven camping areas) book through Texas State Parks. Piñon Flats is the tight one, with a rolling three-month window. Bandelier's Juniper Campground is an easy last night.", backup: "Cabins at Palo Duro; motels in Alamosa; hotels in Santa Fe." },
     access: [
       { status: 'rule2026', text: 'Piñon Flats reservation-only, April–October.', url: 'https://www.recreation.gov/camping/campgrounds/234685' },
       { status: 'typical', text: 'Texas State Parks campsites generally open ~5 months ahead; some cabins further out. Verify per park.', url: 'https://tpwd.texas.gov/state-parks/' },
@@ -775,17 +796,17 @@ const DESTINATIONS = [
   /* ---------------- DECEMBER: FLY-IN ---------------- */
   {
     id: 'deathvalley-jt', name: 'Death Valley + Joshua Tree', place: 'California desert', mode: 'fly', seasons: ['dec'],
-    tagline: 'Salt flats below sea level, badlands, dunes and a forest of Joshua trees, in the one month the desert is kind.',
+    tagline: "Salt flats below sea level, badlands, dunes and Joshua trees, in the month the desert is comfortable.",
     climate: { dec: { day: '~65°F', night: 'high 30s' } },
     art: 'saltflat',
     hub: { code: 'LAS (or PSP)', yeg: 'Nonstop to Las Vegas year-round; Palm Springs nonstop in winter', dfw: 'Nonstop to both', drive: 'LAS → Furnace Creek 2 h; Furnace Creek → Joshua Tree 4 h; Joshua Tree → LAS 3.5 h or → PSP 1 h' },
     trip: { days: '6–7 days', nights: '5–6 nights' },
     scores: { dec: { wow: 9.5, novelty: 10, season: 9.5, camping: 8.5, travel: 9.5, variety: 8, crowd: 7 } },
-    novelty: { has: 'Alberta in December is −20°C and white.', lacks: 'Badwater Basin, Zabriskie Point at dawn, Mesquite Flat dunes, Artist\'s Palette and Joshua trees at 60°F is the least Alberta-like week on this site.' },
-    weather: { dec: 'Furnace Creek roughly 65°F days / high 30s nights, almost no rain, 10 hours of daylight. Joshua Tree roughly 60°F / mid-30s, windy some nights. Snow is possible only at Dante\'s View and Telescope Peak.' },
-    drawback: 'Christmas-to-New-Year is Death Valley\'s busiest fortnight; Furnace Creek must be booked six months out and the first-come campgrounds fill by early afternoon. Emigrant Campground has been closed since 2025 flood damage.',
+    novelty: { has: "Alberta in December is −20°C and white.", lacks: "Badwater Basin, Zabriskie Point at dawn, the Mesquite Flat dunes, Artist's Palette and Joshua trees, at 60°F." },
+    weather: { dec: "Furnace Creek around 65°F by day and high 30s at night, with almost no rain and about ten hours of daylight. Joshua Tree around 60°F by day and mid-30s at night, windy some nights. Snow only at Dante's View and Telescope Peak." },
+    drawback: "Christmas to New Year is Death Valley's busiest two weeks. Furnace Creek needs booking six months out, and the first-come campgrounds fill by early afternoon. Emigrant Campground has been closed since the 2025 floods.",
     surcharge: 0,
-    camping: { type: 'casual', typeLabel: 'Casual — the best desert camping month', reservation: 'moderate', detail: 'Furnace Creek (136 sites) is reservable Oct 15 – Apr 15 on Recreation.gov, 6 months ahead. Texas Springs, Sunset and Stovepipe Wells are first-come. Joshua Tree: Jumbo Rocks, Ryan, Cottonwood, Black Rock and Indian Cove reserve ahead; Hidden Valley, White Tank and Belle are first-come.', backup: 'The Oasis at Death Valley and Stovepipe Wells hotel; Twentynine Palms and Joshua Tree town for JT.' },
+    camping: { type: 'casual', typeLabel: 'Casual — the best desert camping month', reservation: 'moderate', detail: "Furnace Creek (136 sites) is reservable October 15 to April 15 on Recreation.gov, six months ahead. Texas Springs, Sunset and Stovepipe Wells are first-come. In Joshua Tree, Jumbo Rocks, Ryan, Cottonwood, Black Rock and Indian Cove take reservations; Hidden Valley, White Tank and Belle are first-come.", backup: "The Oasis at Death Valley and the Stovepipe Wells hotel; Twentynine Palms and Joshua Tree town." },
     access: [
       { status: 'rule2026', text: 'Furnace Creek reservation season Oct 15 – Dec 31, 2026 and Jan 1 – Apr 15, 2026; other NPS campgrounds first-come.', url: 'https://www.recreation.gov/camping/campgrounds/232496' },
       { status: 'confirmed', text: 'Neither Death Valley nor Joshua Tree charges the nonresident surcharge (2026 rule).', url: 'https://www.nps.gov/planyourvisit/passes.htm' },
@@ -805,17 +826,17 @@ const DESTINATIONS = [
   },
   {
     id: 'bigbend-fly', name: 'Big Bend', place: 'West Texas', mode: 'fly', seasons: ['dec'], pair: 'bigbend-drive',
-    tagline: 'Chihuahuan Desert, a mountain island and the Rio Grande cutting through 1,500-foot canyon walls, under the darkest skies in Texas.',
+    tagline: "Chihuahuan Desert, the Chisos Mountains and the Rio Grande between 1,500-foot canyon walls, under some of the darkest skies in the country.",
     climate: { dec: { day: '61–74°F', night: '29–41°F' } },
     art: 'desertmtn',
-    hub: { code: 'MAF / ELP', yeg: 'Two stops to Midland, one stop to El Paso — the worst flight on the December list', dfw: 'Nonstop to both', drive: 'MAF → Panther Junction 3.5 h; ELP → 4.5 h' },
+    hub: { code: 'MAF / ELP', yeg: "Two stops to Midland or one stop to El Paso", dfw: 'Nonstop to both', drive: 'MAF → Panther Junction 3.5 h; ELP → 4.5 h' },
     trip: { days: '6–7 days', nights: '5 nights' },
     scores: { dec: { wow: 9, novelty: 9.5, season: 9.5, camping: 8.5, travel: 5, variety: 8, crowd: 6.5 } },
-    novelty: { has: 'Mountains and rivers, yes.', lacks: 'Not a desert mountain range rising 5,000 feet out of creosote flats, not a river canyon you paddle on the Mexican border, not a Bortle-1 sky.' },
-    weather: { dec: 'Chisos Basin roughly 61°F days / low 40s nights; Panther Junction 65/37; Rio Grande Village 74/29. Frost is normal, hard freezes happen, days are dry and clear.' },
-    drawback: 'Khush has no nonstop to Midland or El Paso (one or two connections); the paired drive-from-Dallas version avoids that. Holiday weeks fill every campground.',
+    novelty: { has: "Mountains and rivers.", lacks: "A desert range rising 5,000 feet out of creosote flats, a river canyon on the Mexican border, and a Bortle 1 night sky." },
+    weather: { dec: "Chisos Basin around 61°F by day and low 40s at night; Panther Junction 65/37; Rio Grande Village 74/29. Frost is normal and hard freezes happen; days are dry and clear." },
+    drawback: "Khush has no nonstop to Midland or El Paso, so this version means one or two connections; the drive-from-Dallas version avoids that. Holiday weeks fill every campground.",
     surcharge: 0,
-    camping: { type: 'cold', typeLabel: 'Cold nights, ideal days', reservation: 'hard', detail: 'Chisos Basin (5,400 ft), Rio Grande Village and Cottonwood are all reservable on Recreation.gov 6 months ahead and sell out for the holidays. The Chisos Basin closure planned for May 2026 was cancelled on April 1, 2026 — the basin, campground and trails stay open; a smaller water-system project may follow later.', backup: 'Chisos Mountains Lodge (limited), Terlingua and Study Butte lodging, Marathon.' },
+    camping: { type: 'cold', typeLabel: 'Cold nights, ideal days', reservation: 'hard', detail: "Chisos Basin (5,400 ft), Rio Grande Village and Cottonwood are all on Recreation.gov six months ahead and sell out for the holidays. The Chisos Basin closure planned for May 2026 was cancelled on April 1, 2026; the basin, campground and trails are open, and a smaller water-system project may follow.", backup: "Chisos Mountains Lodge (limited), Terlingua and Study Butte, Marathon." },
     access: [
       { status: 'confirmed', text: 'Chisos Basin lodge/campground reconstruction cancelled April 1, 2026; the basin remains open. Watch for a future water-system rehabilitation.', url: 'https://bigbendsentinel.com/2026/04/08/chisos-basin-to-remain-open-with-construction-cancellation/' },
       { status: 'typical', text: 'NPS five-year averages: Rio Grande Village Dec 74/29°F; Panther Junction 65/37°F; Chisos Basin cooler still.', url: 'https://www.nps.gov/bibe/planyourvisit/weather.htm' },
@@ -835,17 +856,17 @@ const DESTINATIONS = [
   },
   {
     id: 'maui', name: 'Maui: Haleakalā + the Hāna coast', place: 'Hawaiʻi', mode: 'fly', seasons: ['dec'],
-    tagline: 'Camp on the rim of a 10,000-foot volcano, then at a black-sand beach — and you both get there nonstop in winter.',
+    tagline: "Camp on the rim of a 10,000-foot volcano, then on a black-sand coast. Both of you can get there nonstop in winter.",
     climate: { dec: { day: '80°F coast · 45 summit', night: '65 · ~32°F' } },
     art: 'volcano',
     hub: { code: 'OGG', yeg: 'Nonstop (WestJet, Nov–Apr) — 7.5 h', dfw: 'Nonstop (American, up to twice daily in peak season)', drive: 'OGG → Hosmer Grove 1.25 h; OGG → Hāna 2.5 h on the Hāna Highway' },
     trip: { days: '7–8 days', nights: '4–5 nights camping + 2 nights indoors' },
     scores: { dec: { wow: 9, novelty: 10, season: 7.5, camping: 6.5, travel: 8, variety: 9.5, crowd: 6 } },
-    novelty: { has: 'Nothing that resembles a tropical volcano, a rainforest coast or humpback whales in warm water.', lacks: 'Everything here is new for an Albertan in December.' },
-    weather: { dec: 'Wet season. Hāna and Kīpahulu get heavy showers; Kīhei and the west side stay dry and 80°F. The Haleakalā summit is 40–55°F by day and near freezing at night, often above the clouds. Whales arrive in December.' },
-    drawback: 'Cost. Holiday-season flights, an expensive rental car and island food prices make this the priciest week on the list, and the campgrounds are small: Hosmer Grove is six sites with a three-night limit.',
+    novelty: { has: "Nothing like a tropical volcano, a rain-forest coast or humpback whales in warm water.", lacks: "All of it is new for someone from Alberta in December." },
+    weather: { dec: "Wet season. Hāna and Kīpahulu get heavy showers; Kīhei and the west side stay dry at around 80°F. The Haleakalā summit is 40–55°F by day and near freezing at night, often above the clouds. Whales arrive in December." },
+    drawback: "Cost. Holiday-season fares, an expensive rental car and island food prices make this the most expensive week on the list, and the campgrounds are small: Hosmer Grove has six sites and a three-night limit.",
     surcharge: 0,
-    camping: { type: 'cold', typeLabel: 'Rain-and-cold camping on the mountain, warm camping on the coast', reservation: 'hard', detail: 'Hosmer Grove ($20/night, 3-night max, sunrise access included) and Kīpahulu (rolling 30-day window) are reservation-only on Recreation.gov. Waiʻānapanapa State Park (black sand) books through Hawaiʻi\'s Explore Outdoor system. Crater sites at Hōlua and Palikū are reservable and spectacular.', backup: 'Hāna and Kula rentals; a Kīhei condo for the beach days.' },
+    camping: { type: 'cold', typeLabel: 'Rain-and-cold camping on the mountain, warm camping on the coast', reservation: 'hard', detail: "Hosmer Grove ($20 a night, three-night maximum, sunrise access included) and Kīpahulu (rolling 30-day window) are reservation-only on Recreation.gov. Waiʻānapanapa State Park books through Hawaiʻi's Explore Outdoor system. The crater sites at Hōlua and Palikū are reservable.", backup: "Rentals in Hāna and Kula; a Kīhei condo for the beach days." },
     access: [
       { status: 'rule2026', text: 'Hosmer Grove reservation-only, $20/night, 3-night max; sunrise reservations ($1) otherwise required 3–7 am.', url: 'https://home.nps.gov/hale/planyourvisit/hosmer-grove-campground.htm' },
       { status: 'rule2026', text: 'Kīpahulu campground reservations on a rolling 30-day window; Pools of ʻOheʻo closed to swimming.', url: 'https://home.nps.gov/hale/planyourvisit/conditions.htm' },
@@ -866,17 +887,17 @@ const DESTINATIONS = [
   },
   {
     id: 'zion-winter', name: 'Zion + Bryce in snow', place: 'Southern Utah', mode: 'fly', seasons: ['dec'],
-    tagline: 'The same red rock with white on top and a fraction of the people — but Bryce at 8,000 feet in December is winter camping, full stop.',
+    tagline: "The same red rock with snow on top and far fewer people. Bryce at 8,000 feet in December is winter camping.",
     climate: { dec: { day: '53°F Zion · 37 Bryce', night: '30 · 14°F' } },
     art: 'canyon',
     hub: { code: 'LAS', yeg: 'Nonstop (WestJet)', dfw: 'Nonstop (American)', drive: 'LAS → Valley of Fire 1 h → Zion 2 h → Bryce 1.75 h → LAS 4 h' },
     trip: { days: '6 days', nights: '3 nights camping + 2 nights cabin' },
     scores: { dec: { wow: 9, novelty: 9.5, season: 7, camping: 6, travel: 9.5, variety: 7.5, crowd: 8.5 } },
-    novelty: { has: 'Snow, in quantity.', lacks: 'Snow on orange sandstone and pink hoodoos is a colour combination that does not exist north of the 49th.' },
-    weather: { dec: 'Zion Canyon roughly 53°F days / 30°F nights; Bryce roughly 37°F / 14°F with snow on the ground. Trails ice over; microspikes required. Shuttles stop, so you drive the canyon yourself.' },
-    drawback: 'Bryce nights in a tent at 14°F are true winter camping; Angels Landing chains ice up; short days. Two surcharge parks for Khush ($200 or the pass).',
+    novelty: { has: "Snow, in quantity.", lacks: "Snow on orange sandstone and pink hoodoos." },
+    weather: { dec: "Zion Canyon around 53°F by day and 30°F at night; Bryce around 37°F by day and 14°F at night with snow on the ground. Trails ice over, so microspikes are needed. The shuttles stop for winter, so you drive the canyon yourself." },
+    drawback: "Nights at Bryce in a tent can reach 14°F. The chains on Angels Landing ice up, and the days are short. Two fee parks for Khush: $200, or the pass.",
     surcharge: 200,
-    camping: { type: 'winter', typeLabel: 'Winter camping at Bryce, cold camping at Zion', reservation: 'easy', detail: 'Watchman stays open and usually has space outside the holiday week; Bryce\'s North Campground keeps a loop open year-round. Neither is comfortable in a three-season bag.', backup: 'Bryce Canyon Lodge-area cabins or Ruby\'s Inn for the Bryce nights, tent only at Zion.' },
+    camping: { type: 'winter', typeLabel: 'Winter camping at Bryce, cold camping at Zion', reservation: 'easy', detail: "Watchman stays open and usually has space outside the holiday week; Bryce's North Campground keeps one loop open all year. Neither is comfortable in a three-season bag.", backup: "Cabins near Bryce Canyon Lodge or Ruby's Inn for the Bryce nights; tent only at Zion." },
     access: [
       { status: 'rule2026', text: 'Angels Landing permits required year-round via lottery.', url: 'https://www.nps.gov/zion/planyourvisit/angels-landing-hiking-permits.htm' },
       { status: 'rule2026', text: '$100 nonresident fee at Zion and Bryce.', url: 'https://www.nps.gov/planyourvisit/passes.htm' },
@@ -896,17 +917,17 @@ const DESTINATIONS = [
   },
   {
     id: 'arizona', name: 'Grand Canyon South Rim + Sedona', place: 'Northern Arizona', mode: 'fly', seasons: ['dec'],
-    tagline: 'The canyon with snow on the rim and Sedona\'s red rock at 60°F, from an airport with year-round nonstops for both of you.',
+    tagline: "The canyon with snow on the rim, and Sedona's red rock at 60°F, from an airport with year-round nonstops for both of you.",
     climate: { dec: { day: '43°F rim · 57 Sedona', night: '18 · 31°F' } },
     art: 'strata',
     hub: { code: 'PHX', yeg: 'Nonstop (WestJet year-round)', dfw: 'Nonstop (American, Southwest)', drive: 'PHX → Sedona 2 h; Sedona → South Rim 2 h; South Rim → PHX 3.5 h' },
     trip: { days: '5–6 days', nights: '3 nights camping + 1–2 indoors' },
     scores: { dec: { wow: 9.5, novelty: 9, season: 6.5, camping: 6, travel: 9, variety: 8, crowd: 7.5 } },
-    novelty: { has: 'Nothing on this scale exists in Canada.', lacks: 'A mile-deep canyon with snow dusting the rim and warm light on the buttes below.' },
-    weather: { dec: 'South Rim (7,000 ft) roughly 43°F days / 18°F nights with snow and icy trails; Sedona roughly 57°F / 31°F. North Rim is closed for winter and, after the 2025 Dragon Bravo Fire, ran a limited recovery season in 2026.' },
-    drawback: 'Rim camping at 18°F is real winter camping. The North Rim is off the table. $100 surcharge for Khush at Grand Canyon.',
+    novelty: { has: "Nothing on this scale exists in Canada.", lacks: "A mile-deep canyon with snow on the rim and warm light on the buttes below." },
+    weather: { dec: "South Rim (7,000 ft) around 43°F by day and 18°F at night, with snow and icy trails; Sedona around 57°F by day and 31°F at night. The North Rim is closed for winter and, after the 2025 Dragon Bravo Fire, ran only a limited season in 2026." },
+    drawback: "Camping on the rim at 18°F is real winter camping. The North Rim is closed. Khush pays the $100 fee at Grand Canyon.",
     surcharge: 100,
-    camping: { type: 'winter', typeLabel: 'Winter camping on the rim, cold camping in Sedona', reservation: 'easy', detail: 'Mather Campground (South Rim) is open year-round; winter sites are generally first-come. Sedona-area Forest Service campgrounds (Manzanita is year-round) are small — check seasonal closures.', backup: 'Grand Canyon Village lodges and Tusayan motels; Sedona has endless lodging. Camp Sedona, lodge at the rim.' },
+    camping: { type: 'winter', typeLabel: 'Winter camping on the rim, cold camping in Sedona', reservation: 'easy', detail: "Mather Campground on the South Rim is open all year; winter sites are generally first-come. Forest Service campgrounds around Sedona are small (Manzanita is open year-round); check seasonal closures.", backup: "Grand Canyon Village lodges and Tusayan motels; Sedona has plenty of lodging. Tent in Sedona, lodge on the rim." },
     access: [
       { status: 'confirmed', text: 'North Rim developed area destroyed in July 2025; 2026 reopened May 15 with no lodge and no potable water; closed every winter (Nov–mid-May).', url: 'https://www.nps.gov/grca/northrimstatus.htm' },
       { status: 'rule2026', text: '$100 nonresident fee at Grand Canyon.', url: 'https://www.nps.gov/planyourvisit/passes.htm' },
@@ -925,17 +946,17 @@ const DESTINATIONS = [
   },
   {
     id: 'whitesands-fly', name: 'White Sands + Guadalupe + Carlsbad', place: 'New Mexico and West Texas', mode: 'fly', seasons: ['dec'], pair: 'b2-desert-trio',
-    tagline: 'Gypsum dunes, the highest point in Texas and a cavern the size of a stadium — three landscapes Alberta cannot imitate.',
+    tagline: "Gypsum dunes, the highest point in Texas and a cavern the size of a stadium.",
     climate: { dec: { day: '~58°F', night: '~22°F' } },
     art: 'gypsum',
     hub: { code: 'ELP', yeg: 'One stop (via DEN or IAH)', dfw: 'Nonstop (American, Southwest)', drive: 'ELP → White Sands 1.5 h; White Sands → Carlsbad 3 h; Carlsbad → Guadalupe 0.75 h; Guadalupe → ELP 1.75 h' },
     trip: { days: '6 days', nights: '4–5 nights' },
     scores: { dec: { wow: 8.5, novelty: 9.5, season: 8, camping: 6.5, travel: 6, variety: 8, crowd: 8.5 } },
-    novelty: { has: 'Alberta has snow-white landscapes in December.', lacks: 'Warm white dunes you sled down in a T-shirt, a fossil reef mountain, and a 750-foot elevator descent into a limestone cathedral.' },
-    weather: { dec: 'White Sands roughly 58°F days / 22°F nights, clear and calm mornings. Guadalupe is famously windy. The cave stays at 56°F.' },
-    drawback: 'You cannot sleep in White Sands at all — backcountry camping is closed indefinitely — and missile-range tests close the park and US-70 with little notice.',
+    novelty: { has: "White landscapes in December.", lacks: "Warm white dunes you can sled in a T-shirt, a mountain that used to be a reef, and a 750-foot elevator ride into a limestone cavern." },
+    weather: { dec: "White Sands around 58°F by day and 22°F at night, with clear, calm mornings. Guadalupe is windy. The cave stays at 56°F." },
+    drawback: "There is no camping in White Sands at all; backcountry camping is closed indefinitely. Missile-range tests close the park and US-70 with little notice.",
     surcharge: 0,
-    camping: { type: 'cold', typeLabel: 'Cold-night desert camping outside the park', reservation: 'moderate', detail: 'Oliver Lee Memorial State Park (27 miles from White Sands) is the base, open through entrance construction in 2026. Pine Springs at Guadalupe books on Recreation.gov. Carlsbad Caverns has no car camping; use Guadalupe or Carlsbad town.', backup: 'Alamogordo and Carlsbad motels.' },
+    camping: { type: 'cold', typeLabel: 'Cold-night desert camping outside the park', reservation: 'moderate', detail: "Oliver Lee Memorial State Park, 27 miles from White Sands, is the base; it stayed open through entrance construction in 2026. Pine Springs at Guadalupe books on Recreation.gov. Carlsbad Caverns has no car camping, so use Guadalupe or the town of Carlsbad.", backup: "Motels in Alamogordo and Carlsbad." },
     access: [
       { status: 'confirmed', text: 'White Sands backcountry camping closed indefinitely; no permits issued; the park is day-use only.', url: 'https://www.nps.gov/whsa/planyourvisit/backpackingpr.htm' },
       { status: 'rule2026', text: 'Carlsbad Cavern timed-entry tickets required (Recreation.gov).', url: 'https://home.nps.gov/cave/planyourvisit/permitsandreservations.htm' },
@@ -956,17 +977,17 @@ const DESTINATIONS = [
   },
   {
     id: 'everglades', name: 'Everglades + Florida Keys', place: 'South Florida', mode: 'fly', seasons: ['dec'],
-    tagline: 'Mangroves, alligators, roseate spoonbills and warm-water camping in the dry season — the opposite of Edmonton, at the cost of mountains.',
+    tagline: "Mangroves, alligators, roseate spoonbills and warm-water camping in the dry season. No mountains anywhere.",
     climate: { dec: { day: '~77°F', night: '~57°F' } },
     art: 'wetland',
     hub: { code: 'MIA (or MCO)', yeg: 'One stop to Miami; WestJet has a seasonal Orlando nonstop (4 h drive)', dfw: 'Nonstop (American)', drive: 'MIA → Flamingo 1.75 h; Flamingo → Key West ≈ 4 h' },
     trip: { days: '6–7 days', nights: '4–5 nights' },
     scores: { dec: { wow: 7.5, novelty: 9.5, season: 9, camping: 7.5, travel: 6.5, variety: 8.5, crowd: 7 } },
-    novelty: { has: 'Wetlands, yes — frozen ones.', lacks: 'Crocodiles and alligators in the same water, coral reef, a paddle through mangrove tunnels, 77°F in December.' },
-    weather: { dec: 'Roughly 77°F days / 57°F nights, dry season, low mosquitoes, peak birding.' },
-    drawback: 'No vertical drama at all. Keys state-park campsites book eleven months ahead and vanish; the Everglades campgrounds are exposed and buggy after rain. $100 surcharge at Everglades.',
+    novelty: { has: "Wetlands, frozen ones.", lacks: "Crocodiles and alligators in the same water, a coral reef, mangrove tunnels to paddle, and 77°F in December." },
+    weather: { dec: "Around 77°F by day and 57°F at night, dry season, few mosquitoes, peak birding." },
+    drawback: "Flat, start to finish. Keys state-park campsites book eleven months ahead and go fast; the Everglades campgrounds are exposed and buggy after rain. $100 fee at Everglades.",
     surcharge: 100,
-    camping: { type: 'casual', typeLabel: 'Warm casual camping', reservation: 'hard', detail: 'Flamingo and Long Pine Key reserve through the park\'s concessioner; Keys campgrounds (Bahia Honda, Long Key, John Pennekamp) are among the hardest bookings in the US.', backup: 'Flamingo eco-tents and lodge; Homestead and Key Largo motels.' },
+    camping: { type: 'casual', typeLabel: 'Warm casual camping', reservation: 'hard', detail: "Flamingo and Long Pine Key book through the park's concessioner. Keys campgrounds (Bahia Honda, Long Key, John Pennekamp) are among the hardest bookings in the country.", backup: "Flamingo eco-tents and lodge; motels in Homestead and Key Largo." },
     access: [
       { status: 'rule2026', text: '$100 nonresident fee at Everglades.', url: 'https://www.nps.gov/planyourvisit/passes.htm' },
       { status: 'typical', text: 'Everglades camping and dry-season conditions — check current NPS pages.', url: 'https://www.nps.gov/ever/' }
@@ -985,17 +1006,17 @@ const DESTINATIONS = [
   /* ---------------- DECEMBER: DRIVE FROM DALLAS ---------------- */
   {
     id: 'bigbend-drive', name: 'West Texas desert & dark-sky loop', place: 'Big Bend + Davis Mountains, from Dallas', mode: 'drive', seasons: ['dec'], pair: 'bigbend-fly',
-    tagline: 'Route B1. Big Bend for three nights, then a McDonald Observatory Star Party — with your own gear, your own car and one flight between you.',
+    tagline: "Route B1. Three nights in Big Bend, then a McDonald Observatory Star Party, with the gear and the car we already have.",
     climate: { dec: { day: '61–74°F', night: '29–41°F' } },
     art: 'desertmtn',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h; US preclearance in Edmonton', dfw: 'Home. Own car, own gear', drive: 'Dallas → Monahans 5 h → Chisos Basin 4 h → Fort Davis 2.5 h → Dallas 7.5 h' },
     trip: { days: '7–9 days', nights: '6–7 nights' },
     scores: { dec: { wow: 9, novelty: 9.5, season: 9.5, camping: 8.5, travel: 6.5, variety: 8.5, crowd: 6.5 } },
-    novelty: { has: 'Mountains and rivers, yes.', lacks: 'A desert range rising out of creosote flats, a border-river canyon, sky-island astronomy and a 1,000-mile Texas road trip.' },
-    weather: { dec: 'Chisos Basin roughly 61/41°F; desert floor 74/29; Davis Mountains (5,000 ft) similar to the basin. Frost every night, sun every day. Burn bans are common.' },
-    drawback: 'About 19 hours of driving across two full days, and the Christmas/New Year campground crush — book the day the six-month window opens. Big Bend Ranch\'s rougher roads are out for the HR-V.',
+    novelty: { has: "Mountains and rivers.", lacks: "A desert range out of creosote flats, a border-river canyon, a mountaintop observatory and a 1,300-mile Texas road trip." },
+    weather: { dec: "Chisos Basin around 61/41°F; desert floor 74/29; Davis Mountains (5,000 ft) similar to the basin. Frost most nights, sun most days. Burn bans are common." },
+    drawback: "About 19 hours of driving across two full days, and the Christmas to New Year campground rush: book the day the six-month window opens. Big Bend Ranch's rough roads are out for the HR-V.",
     surcharge: 0,
-    camping: { type: 'cold', typeLabel: 'Cold nights, ideal days, your own gear', reservation: 'hard', detail: 'Chisos Basin, Rio Grande Village and Cottonwood on Recreation.gov 6 months ahead. Davis Mountains SP has full, partial and primitive sites; Indian Lodge as backup. Monahans Sandhills is a great first-night dune camp.', backup: 'Chisos Mountains Lodge, Indian Lodge (Davis Mountains), Marfa and Alpine hotels.' },
+    camping: { type: 'cold', typeLabel: 'Cold nights, ideal days, your own gear', reservation: 'hard', detail: "Chisos Basin, Rio Grande Village and Cottonwood on Recreation.gov six months ahead. Davis Mountains State Park has full-hookup, partial and primitive sites, with Indian Lodge as a backup. Monahans Sandhills makes a good first night among the dunes.", backup: "Chisos Mountains Lodge, Indian Lodge in the Davis Mountains, hotels in Marfa and Alpine." },
     access: [
       { status: 'confirmed', text: 'Chisos Basin reconstruction cancelled April 2026; basin open. Watch for a later water-system project.', url: 'https://bigbendsentinel.com/2026/04/08/chisos-basin-to-remain-open-with-construction-cancellation/' },
       { status: 'typical', text: 'McDonald Observatory Star Parties typically run several evenings a week and sell out — book on the observatory site.', url: 'https://mcdonaldobservatory.org/' },
@@ -1016,17 +1037,17 @@ const DESTINATIONS = [
   },
   {
     id: 'b2-desert-trio', name: 'Three-park desert trio, by road', place: 'Guadalupe → Carlsbad → White Sands, from Dallas', mode: 'drive', seasons: ['dec'], pair: 'whitesands-fly',
-    tagline: 'Route B2. The same three landscapes as the El Paso fly-in, reached from Dallas with the gear already in the trunk.',
+    tagline: "Route B2. The same three landscapes as the El Paso fly-in, reached from Dallas with the gear already in the trunk.",
     climate: { dec: { day: '~58°F', night: '~22°F' } },
     art: 'gypsum',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h', dfw: 'Home. Own car, own gear', drive: 'Dallas → Guadalupe 8 h → Carlsbad 0.75 h → White Sands 3 h → Dallas 10 h (Roswell / Lubbock)' },
     trip: { days: '7–8 days', nights: '5–6 nights' },
     scores: { dec: { wow: 8.5, novelty: 9.5, season: 8, camping: 7, travel: 6.5, variety: 8, crowd: 8.5 } },
-    novelty: { has: 'Snow-white landscapes, yes.', lacks: 'Warm gypsum dunes, a fossil-reef summit and a giant cave.' },
-    weather: { dec: 'White Sands 58/22°F, Guadalupe windy 55/33°F, cave 56°F.' },
-    drawback: 'Roughly 22 hours of driving for a trip whose in-park camping is limited (none at White Sands). Optional Caprock Canyons bison night on the return breaks the drive.',
+    novelty: { has: "White landscapes in December.", lacks: "Warm gypsum dunes, a reef turned mountain and a giant cave." },
+    weather: { dec: "White Sands 58/22°F, Guadalupe windy at 55/33°F, cave 56°F." },
+    drawback: "About 22 hours of driving for a trip with limited in-park camping (none at White Sands). A Caprock Canyons bison night on the way home breaks up the drive.",
     surcharge: 0,
-    camping: { type: 'cold', typeLabel: 'Cold-night desert camping, own gear', reservation: 'moderate', detail: 'Pine Springs (Guadalupe) on Recreation.gov; Oliver Lee Memorial SP near White Sands; Caprock Canyons on the way home.', backup: 'Carlsbad and Alamogordo motels.' },
+    camping: { type: 'cold', typeLabel: 'Cold-night desert camping, own gear', reservation: 'moderate', detail: "Pine Springs (Guadalupe) on Recreation.gov; Oliver Lee Memorial State Park near White Sands; Caprock Canyons on the way home.", backup: "Motels in Carlsbad and Alamogordo." },
     access: [
       { status: 'confirmed', text: 'No overnight camping inside White Sands — backcountry sites closed indefinitely.', url: 'https://www.nps.gov/whsa/planyourvisit/backpackingpr.htm' },
       { status: 'rule2026', text: 'Carlsbad Cavern timed-entry tickets required.', url: 'https://home.nps.gov/cave/planyourvisit/permitsandreservations.htm' }
@@ -1046,17 +1067,17 @@ const DESTINATIONS = [
   },
   {
     id: 'b4-padre', name: 'Gulf Coast winter beach', place: 'Padre Island + Aransas, from Dallas', mode: 'drive', seasons: ['dec'],
-    tagline: 'Route B4. Tent on a Gulf beach in December, and whooping cranes that spend the summer in northern Alberta.',
+    tagline: "Route B4. A tent on a Gulf beach in December, and whooping cranes that spend the summer in northern Alberta.",
     climate: { dec: { day: '65–70°F', night: 'low 50s' } },
     art: 'beach',
     hub: { code: 'DFW', yeg: 'One stop, ~6.5–7 h', dfw: 'Home. Own car, own gear', drive: 'Dallas → Padre Island NS ≈ 6.5–7 h; → Aransas NWR ≈ 2 h; → Dallas ≈ 5.5 h' },
     trip: { days: '5–6 days', nights: '3–4 nights' },
     scores: { dec: { wow: 6.5, novelty: 8.5, season: 8, camping: 7, travel: 7, variety: 7, crowd: 8 } },
-    novelty: { has: 'Alberta shares its whooping cranes with Texas — they breed at Wood Buffalo, they winter at Aransas.', lacks: 'A 60-mile undeveloped barrier island, warm surf in December, and beach camping.' },
-    weather: { dec: 'Roughly 65–70°F days / low 50s nights; fronts bring wind and rain for a day or two. Mosquitoes fade after cold fronts.' },
-    drawback: 'The least dramatic scenery on the list, and the 2WD HR-V must stay on the hard-packed north stretch of the beach — no reservations exist anywhere in the seashore.',
+    novelty: { has: "Alberta shares its whooping cranes with Texas: they breed at Wood Buffalo and winter at Aransas.", lacks: "A 60-mile undeveloped barrier island, warm surf in December, and camping on the beach." },
+    weather: { dec: "Around 65–70°F by day and low 50s at night. Cold fronts bring a day or two of wind and rain and knock down the mosquitoes." },
+    drawback: "The quietest scenery on the list, and the two-wheel-drive HR-V has to stay on the hard-packed north stretch of beach. Nothing here can be reserved.",
     surcharge: 0,
-    camping: { type: 'casual', typeLabel: 'Warm casual camping', reservation: 'none', detail: 'Malaquite (48 sites, cold showers, no hookups) and free beach camping are first-come, first-served with self-registration kiosks. Bird Island Basin is $8 and primitive.', backup: 'Corpus Christi and Port Aransas motels.' },
+    camping: { type: 'casual', typeLabel: 'Warm casual camping', reservation: 'none', detail: "Malaquite (48 sites, cold showers, no hookups) and free beach camping are first-come with self-registration kiosks. Bird Island Basin is $8 and primitive.", backup: "Motels in Corpus Christi and Port Aransas." },
     access: [
       { status: 'confirmed', text: 'No reservations for any camping in the seashore; all first-come with self-serve kiosks.', url: 'https://home.nps.gov/pais/planyourvisit/permitsandreservations.htm' },
       { status: 'typical', text: 'Whooping crane season at Aransas runs roughly November–March; boat tours from Rockport — verify schedules.', url: 'https://www.fws.gov/refuge/aransas' }
@@ -1077,23 +1098,23 @@ const DESTINATIONS = [
 /* Considered and cut — shown briefly so nothing looks forgotten. */
 const CUT = {
   may: [
-    { name: 'Glacier, Montana', why: 'Going-to-the-Sun Road opened June 22 in 2026 and June 16 in 2025 — never in May. It is also the most Canadian-Rockies-like park in the US, and a surcharge park.', url: 'https://www.nps.gov/glac/learn/news/going-to-the-sun-road-projected-to-open-monday-june-22.htm' },
-    { name: 'Big Bend in May', why: 'NPS averages put Rio Grande Village at 102°F in May and Panther Junction at 90°F. Save it for December.', url: 'https://www.nps.gov/bibe/planyourvisit/weather.htm' },
-    { name: 'Redwood National and State Parks', why: 'Extraordinary and novel, but 5–6 hours north of the Bay Area on top of the flights; only worth it as a 10-day California combination.', url: 'https://www.nps.gov/redw/' },
-    { name: 'Denver + Rocky Mountain only', why: 'Beautiful, but it is the one trip on this list Khush could roughly replicate from Edmonton in a weekend. Great Sand Dunes is the part of Colorado with no Alberta equivalent.', url: 'https://www.nps.gov/romo/' }
+    { name: 'Glacier, Montana', why: "Going-to-the-Sun Road opened June 22 in 2026 and June 16 in 2025, never in May. It is also the US park most like the Canadian Rockies, and a fee park.", url: 'https://www.nps.gov/glac/learn/news/going-to-the-sun-road-projected-to-open-monday-june-22.htm' },
+    { name: 'Big Bend in May', why: "NPS averages put Rio Grande Village at 102°F in May and Panther Junction at 90°F. It is on the December list instead.", url: 'https://www.nps.gov/bibe/planyourvisit/weather.htm' },
+    { name: 'Redwood National and State Parks', why: "Remarkable trees, but five to six hours north of the Bay Area on top of the flights. Only fits a ten-day California trip.", url: 'https://www.nps.gov/redw/' },
+    { name: 'Denver + Rocky Mountain only', why: "Beautiful, and the one trip on this list Khush could roughly reproduce from Edmonton in a weekend. Great Sand Dunes is the part of Colorado with no Alberta equivalent.", url: 'https://www.nps.gov/romo/' }
   ],
   dec: [
-    { name: 'Denver + Rocky Mountain in winter', why: 'A superb ski-and-hot-springs holiday, a poor tent-camping trip: sub-zero nights, no in-park camping at Great Sand Dunes Nov–Mar, and scenery closest to home. Works as a ski or hot-springs holiday rather than a camping trip.', url: 'https://home.nps.gov/grsa/planyourvisit/hours.htm' },
-    { name: 'Hawaiʻi Island (Volcanoes) instead of Maui', why: 'Equally strong on novelty, with Kīlauea and Mauna Kea, but Khush needs a connection to Kona while Maui is nonstop for both of you. A swap if fares favour it.', url: 'https://www.nps.gov/havo/' },
-    { name: 'Kauaʻi', why: 'Wettest island in December on the north shore; Nāpali permits are scarce; no nonstop for either of you. Beautiful; the logistics are the obstacle.', url: 'https://www.nps.gov/havo/' },
-    { name: 'Saguaro / Organ Pipe / Sedona as the headline', why: 'Good Sonoran Desert camping, but the Grand Canyon + Sedona pairing from Phoenix delivers more per day; Saguaro is a fine add-on if you have a spare day.', url: 'https://www.nps.gov/sagu/' }
+    { name: 'Denver + Rocky Mountain in winter', why: "A good ski-and-hot-springs holiday and a poor tent trip: nights well below freezing, no in-park camping at Great Sand Dunes November to March, and scenery closest to home.", url: 'https://home.nps.gov/grsa/planyourvisit/hours.htm' },
+    { name: 'Hawaiʻi Island (Volcanoes) instead of Maui', why: "As strong as Maui on novelty, with Kīlauea and Mauna Kea, but Khush would need a connection to Kona while Maui is nonstop for both. Worth swapping if fares favour it.", url: 'https://www.nps.gov/havo/' },
+    { name: 'Kauaʻi', why: "The north shore is the wettest place on the islands in December, Nāpali permits are scarce, and neither of you has a nonstop.", url: 'https://www.nps.gov/havo/' },
+    { name: 'Saguaro / Organ Pipe / Sedona as the headline', why: "Good Sonoran Desert camping, but Grand Canyon plus Sedona from Phoenix gives more per day. Saguaro fits as an extra day.", url: 'https://www.nps.gov/sagu/' }
   ]
 };
 
 /* Bolt-on weekends when Khush lands in Dallas (either season). */
 const BOLT_ONS = [
-  { name: 'Caddo Lake State Park', hours: '~3 h east', why: 'Canoe a cypress-and-Spanish-moss bayou with alligators. Humid and mosquito-heavy in May; quiet in December.', url: 'https://tpwd.texas.gov/state-parks/caddo-lake' },
-  { name: 'Wichita Mountains Wildlife Refuge', hours: '~3–3.5 h north', why: 'Free-roaming bison, elk and longhorn on ancient granite; Doris Campground on Recreation.gov, open year-round.', url: 'https://www.fws.gov/refuge/wichita-mountains' }
+  { name: 'Caddo Lake State Park', hours: '~3 h east', why: "A canoe trip through cypress and Spanish moss, with alligators. Humid and full of mosquitoes in May; quiet in December.", url: 'https://tpwd.texas.gov/state-parks/caddo-lake' },
+  { name: 'Wichita Mountains Wildlife Refuge', hours: '~3–3.5 h north', why: "Free-roaming bison, elk and longhorns on old granite. Doris Campground is on Recreation.gov and open all year.", url: 'https://www.fws.gov/refuge/wichita-mountains' }
 ];
 
 /* Colorado facts table. */
@@ -1121,8 +1142,8 @@ const LEDGER = [
   { status: 'typical', item: 'Tioga Road, Trail Ridge Road and Yellowstone interior roads open on snowpack, not a calendar; no 2027 dates exist.', url: 'https://www.nps.gov/yose/planyourvisit/tiogaopen.htm' },
   { status: 'typical', item: 'Medano Creek peak flow is usually late May–early June; 2026 ran nearly dry. Treat it as a bonus.', url: 'https://www.nps.gov/grsa/planyourvisit/conditions.htm' },
   { status: 'tbd', item: 'Seasonal nonstops (YEG–SFO, YEG–SLC, YEG–PSP, YEG–HNL/OGG, DFW–PSP, DFW–KOA) are schedule-dependent; confirm for 2027 before committing to a rendezvous airport.', url: 'https://www.flightconnections.com/flights-from-edmonton-yeg' },
-  { status: 'tbd', item: 'Every drive time on this site is approximate; re-check with live routing before publishing dates.', url: null },
-  { status: 'tbd', item: 'Airfares are not shown anywhere on this site on purpose; flight burden is labelled instead.', url: null }
+  { status: 'tbd', item: "Every drive time here is approximate; check them with live routing before fixing dates.", url: null },
+  { status: 'tbd', item: "Airfares are not shown; they change too often. Flight burden is labelled instead.", url: null }
 ];
 
 </script>
@@ -1611,8 +1632,10 @@ function creditFor(p) {
   return 'Wikimedia Commons, CC licence';
 }
 function gallery(id) { return GALLERIES[id] || []; }
+const ONLOAD = `onload="this.classList.add('loaded');this.parentNode.classList.add('has-img')" onerror="this.parentNode.classList.add('no-img');this.remove()"`;
+const ph = () => `<span class="ph" aria-hidden="true"><i></i><span class="ph-load">Loading photo…</span><span class="ph-fail">Illustration · no photo</span></span>`;
 function imgTag(p, w, cls = '', eager = false) {
-  return `<img class="${cls}" src="${photoURL(p.file, w)}" alt="${esc(p.cap)}" loading="${eager ? 'eager' : 'lazy'}" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()">`;
+  return `<img class="${cls}" src="${photoURL(p.file, w)}" alt="${esc(p.cap)}" loading="${eager ? 'eager' : 'lazy'}" decoding="async" ${ONLOAD}>`;
 }
 const creditChip = p => `<a class="credit" href="${photoPage(p.file)}" target="_blank" rel="noopener" title="Source and licence on Wikimedia Commons">Source: ${esc(creditFor(p))}</a>`;
 
@@ -1623,22 +1646,22 @@ function galleryHTML(d, w = 1000, opts = {}) {
   return `<div class="gal ${opts.cls || ''}" data-gal="${d.id}" data-i="${start}" data-w="${w}">
     <div class="gal-main">
       ${landscape(d.art, season, { w: 1200, h: 800, seed: 3 + start, label: 'Illustration of ' + d.name })}
-      ${imgTag(p, w, 'gal-img', !!opts.eager)}
+      ${imgTag(p, w, 'gal-img', !!opts.eager)}${ph()}
       <button class="gal-btn prev" type="button" aria-label="Previous photo">&#8249;</button>
       <button class="gal-btn next" type="button" aria-label="Next photo">&#8250;</button>
       <span class="gal-count">${start + 1} / ${list.length}</span>
       <div class="gal-cap"><span class="gal-text">${esc(p.cap)}</span>${creditChip(p)}</div>
     </div>
-    ${opts.strip === false ? '' : `<div class="gal-strip" role="list">${list.map((q, i) => `<button type="button" class="gal-th ${i === start ? 'on' : ''}" data-th="${i}" aria-label="Photo ${i + 1}: ${esc(q.cap)}"><img src="${photoURL(q.file, 240)}" alt="" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="this.remove()"></button>`).join('')}</div>`}
+    ${opts.strip === false ? '' : `<div class="gal-strip" role="list">${list.map((q, i) => `<button type="button" class="gal-th ${i === start ? 'on' : ''}" data-th="${i}" aria-label="Photo ${i + 1}: ${esc(q.cap)}"><img src="${photoURL(q.file, 240)}" alt="" loading="lazy" decoding="async" ${ONLOAD}></button>`).join('')}</div>`}
   </div>`;
 }
 function galGo(gal, i) {
   const id = gal.dataset.gal, list = gallery(id), w = gal.dataset.w || 1000;
   i = (i + list.length) % list.length; gal.dataset.i = i;
   const p = list[i], main = $('.gal-main', gal), old = $('.gal-img', main);
-  if (old) old.remove();
+  if (old) old.remove(); main.classList.remove('has-img', 'no-img');
   const img = document.createElement('img'); img.className = 'gal-img'; img.alt = p.cap; img.decoding = 'async';
-  img.onload = () => img.classList.add('loaded'); img.onerror = () => img.remove(); img.src = photoURL(p.file, w);
+  img.onload = () => { img.classList.add('loaded'); main.classList.add('has-img'); }; img.onerror = () => { main.classList.add('no-img'); img.remove(); }; img.src = photoURL(p.file, w);
   main.insertBefore(img, $('.gal-btn.prev', main));
   $('.gal-text', main).textContent = p.cap; $('.gal-cap .credit', main).outerHTML = creditChip(p);
   $('.gal-count', main).textContent = `${i + 1} / ${list.length}`;
@@ -1657,7 +1680,7 @@ function renderHero() {
 }
 function renderMosaic() {
   const picks = ranked(season).filter(x => gallery(x.d.id).length).slice(0, 6);
-  $('#mosaic').innerHTML = picks.map((x, i) => { const p = gallery(x.d.id)[0]; return `<button type="button" class="tile" data-open="${x.d.id}" aria-label="Open ${esc(x.d.name)}">${imgTag(p, 700, '', i < 3)}<span class="tile-lab"><b>${esc(x.d.name)}</b><span>${fmt(x.total)}</span></span></button>`; }).join('');
+  $('#mosaic').innerHTML = picks.map((x, i) => { const p = gallery(x.d.id)[0]; return `<button type="button" class="tile" data-open="${x.d.id}" aria-label="Open ${esc(x.d.name)}">${landscape(x.d.art, season, { w: 700, h: 500, seed: 41 + i })}${imgTag(p, 700, '', i < 3)}${ph()}<span class="tile-lab"><b>${esc(x.d.name)}</b><span>${fmt(x.total)}</span></span></button>`; }).join('');
 }
 
 /* ============ board ============ */
@@ -1677,7 +1700,7 @@ function renderBoard() {
   $('#board').innerHTML = list.map((x, i) => { const d = x.d, p = gallery(d.id)[0];
     return `<article class="card enter" data-id="${d.id}" style="--delay:${i * 45}ms">
       <button type="button" class="card-img" data-open="${d.id}" aria-label="Photos and details: ${esc(d.name)}">
-        <div class="frame">${landscape(d.art, season, { w: 800, h: 600, seed: 13 + i })}${p ? imgTag(p, 800, '', i < 3) : ''}</div>
+        <div class="frame">${landscape(d.art, season, { w: 800, h: 600, seed: 13 + i })}${p ? imgTag(p, 800, '', i < 3) + ph() : ''}</div>
         ${p ? `<span class="chip-credit">Source: ${esc(creditFor(p))}</span>` : ''}
         <span class="badge"><b>${fmt(x.total)}</b><small>/10</small></span>
         <span class="rank">${String(i + 1).padStart(2, '0')}</span>
@@ -1726,8 +1749,8 @@ function openDetail(id) {
         <h4>Rules and access</h4>
         <ul class="rules">${d.access.map(a => `<li><span class="status ${a.status}">${statusLabel(a.status)}</span>${esc(a.text)} <a href="${a.url}" target="_blank" rel="noopener">source</a></li>`).join('')}</ul>
         <h4>Watch out for</h4><p>${esc(d.drawback)}</p>
-        <h4>Camping</h4><p>${esc(d.camping.detail)}</p><p><span class="muted">If the tent plan fails:</span> ${esc(d.camping.backup)}</p>
-        <h4>Compared with Alberta</h4><p><span class="muted">Already at home:</span> ${esc(d.novelty.has)}<br><span class="muted">Not at home:</span> ${esc(d.novelty.lacks)}</p>
+        <h4>Camping</h4><p>${esc(d.camping.detail)}</p><p><span class="muted">If camping falls through:</span> ${esc(d.camping.backup)}</p>
+        <h4>Compared with Alberta</h4><p><span class="muted">Already near home:</span> ${esc(d.novelty.has)}<br><span class="muted">Not near home:</span> ${esc(d.novelty.lacks)}</p>
         ${pair ? `<p class="small">Same place, another way: <a href="#" data-open="${pair.id}">${esc(pair.name)}</a> — ${fmt(score(pair, season))}.</p>` : ''}
       </div>
     </div>
@@ -1752,7 +1775,7 @@ function renderCompare() {
   if (compareMode === 'cards') {
     const item = (k, v) => `<dt>${k}</dt><dd>${v}</dd>`;
     $('#compareOut').innerHTML = `<div class="compare" id="comparePanel"><div class="compare-head"><h3>Side by side</h3><button type="button" class="btn ghost small" id="compareClose">Close</button></div>
-      <p class="compare-hint">Swipe between the ${ds.length} options; swipe inside a photo to browse its gallery.</p>
+      <p class="compare-hint">Swipe sideways to move between the ${ds.length} options; swipe on a photo to see more of that place.</p>
       <div class="compare-cards">${ds.map(d => { const c = d.climate && d.climate[season]; const sc = d.scores[season]; return `<article class="compare-card">
         ${galleryHTML(d, 800, { cls: 'compact', strip: false, eager: true })}
         <h4>${esc(d.name)}</h4><p class="place">${esc(d.place)}</p>
@@ -1801,7 +1824,7 @@ function renderRoutes() {
   for (const x of list) { if (picks.length >= 6) break; if (x.d.pair && shown.has(x.d.pair)) continue; picks.push(x.d); shown.add(x.d.id); }
   for (const x of list) if (x.d.mode === 'drive' && !shown.has(x.d.id)) { picks.push(x.d); shown.add(x.d.id); }
   $('#routes').innerHTML = picks.map((d, i) => { const p = gallery(d.id)[Math.min(1, gallery(d.id).length - 1)]; return `<article class="route reveal">
-    <div class="route-photo">${landscape(d.art, season, { w: 800, h: 300, seed: 31 + i })}${p ? imgTag(p, 800) : ''}${p ? `<span class="chip-credit">Source: ${esc(creditFor(p))}</span>` : ''}<h3>${esc(d.name)}</h3></div>
+    <div class="route-photo">${landscape(d.art, season, { w: 800, h: 300, seed: 31 + i })}${p ? imgTag(p, 800) + ph() : ''}${p ? `<span class="chip-credit">Source: ${esc(creditFor(p))}</span>` : ''}<h3>${esc(d.name)}</h3></div>
     <div class="meta">${esc(d.route.title)} · ${esc(d.trip.days)} · ${esc(d.route.miles)} · driving: ${esc(d.route.drivingDays)}</div>
     ${routeSVG(d)}
     <ol>${d.route.legs.map(l => `<li><span><b>${esc(l.at)}</b>${l.nights ? `<span class="n">${l.nights} night${l.nights > 1 ? 's' : ''}</span>` : ''}<span class="note">${esc(l.note)}</span></span></li>`).join('')}</ol>
